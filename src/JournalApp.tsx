@@ -1,7 +1,12 @@
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from '@/Router';
+
 export function JournalApp() {
   return (
     <>
-      <h1 className='bg-red-500'>Probando la App.</h1>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
     </>
   );
 }
