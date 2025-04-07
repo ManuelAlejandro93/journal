@@ -1,7 +1,7 @@
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
-
+//cambio generico
 export const LoginPage = () => {
   return (
     <Grid
