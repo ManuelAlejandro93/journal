@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Prueba sobre <AppTheme> Debe poder tener un snapshot 1`] = `
+<div>
+  <h1>
+    Soy un titulo generico.
+  </h1>
+</div>
+`;
