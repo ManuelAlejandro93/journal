@@ -1,3 +1,9 @@
+import { AuthLayout } from '@/Auth';
+
 export const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <AuthLayout authPageName='regISter'>
+      <div>RegisterPage</div>
+    </AuthLayout>
+  );
 };
