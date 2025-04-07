@@ -15,8 +15,8 @@ export const AuthLayout = ({ authPageName, children }: Props) => {
       justifyContent={'center'}
       sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
     >
-      <div className='grid shadow-2xl shadow-black grid-cols-2 rounded-md bg-white p-4 space-x-4'>
-        <div className='col-span-2 text-center'>
+      <div className='grid shadow-2xl shadow-black grid-cols-1 rounded-md bg-white p-4 space-x-4'>
+        <div className='text-center'>
           <Typography fontSize={'2rem'}>
             {authPageName.toUpperCase()}
           </Typography>
