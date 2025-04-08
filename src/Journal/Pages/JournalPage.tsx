@@ -1,9 +1,9 @@
-import { JournalLayout, NothingSelectedView } from '@/Journal';
+import { JournalLayout, NothingSelectedView, NoteView } from '@/Journal';
 
 export const JournalPage = () => {
   return (
     <JournalLayout>
-      <NothingSelectedView></NothingSelectedView>
+      <NoteView></NoteView>
     </JournalLayout>
   );
 };
