@@ -4,12 +4,14 @@ import { JournalLayout } from '@/Journal';
 export const JournalPage = () => {
   return (
     <JournalLayout>
-      <h1>Journal Page </h1>
-      <Button variant='contained'>click me</Button>
-      <Button variant='contained'>click me</Button>
-      <Button variant='contained'>click me</Button>
-      <Button variant='contained'>click me</Button>
-      <Button variant='contained'>click me</Button>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
+      <h1 className='bg-green-600 text-red-700'>Gordoo</h1>
     </JournalLayout>
   );
 };

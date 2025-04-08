@@ -1,7 +1,8 @@
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar } from '@mui/material';
 
-const drawerWidthSizePx: number = 240;
+import { drawerWidthSizePx } from '@/PseudoStore';
+
 export const Navbar = () => {
   return (
     <AppBar
