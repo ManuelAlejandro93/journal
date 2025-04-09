@@ -15,7 +15,7 @@ export function ImageGallery() {
     <ImageList
       sx={{ width: '70vw', height: '60vh' }}
       variant='masonry'
-      cols={4}
+      cols={5}
       rowHeight={121}
     >
       {itemData.map((item) => (
