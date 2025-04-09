@@ -10,7 +10,7 @@ export const JournalLayout = ({ children }: Props) => {
     <div className='flex'>
       <SideBar />
       <Navbar />
-      <main className='flex flex-grow p-4 mt-20'>{children}</main>
+      <main className='p-4 mt-20'>{children}</main>
     </div>
   );
 };
