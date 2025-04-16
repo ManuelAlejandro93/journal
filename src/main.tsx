@@ -10,4 +10,4 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>
 );
 
-//Empezando sección 19 capitulo 273
+//Empezando sección 19 capitulo 276
