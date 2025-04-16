@@ -9,3 +9,5 @@ createRoot(document.getElementById('root')!).render(
     <JournalApp />
   </StrictMode>
 );
+
+//Empezando sección 19 capitulo 273
