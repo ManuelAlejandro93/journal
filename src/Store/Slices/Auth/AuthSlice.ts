@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loginThunk } from '@/Store';
 
-interface InitialState {
+interface LogStatusType {
   displayName: string | null;
   email: string | null;
   errorMessage: string | null;
@@ -9,7 +10,13 @@ interface InitialState {
   uuid: string | null;
 }
 
-const initialState: InitialState = {
+interface LogQueryType {
+  data: LogStatusType | null;
+  state: 'fulfilled' | 'rejected' | 'pending' | null;
+  errorMessage: 'firebase-error-message.' | null;
+}
+
+const logInitalStatus: LogStatusType = {
   displayName: null,
   email: null,
   errorMessage: null,
@@ -18,11 +25,27 @@ const initialState: InitialState = {
   uuid: null
 };
 
+const initialLogQueryState: LogQueryType = {
+  data: logInitalStatus,
+  state: null,
+  errorMessage: null
+};
+
 const authSlice = createSlice({
   name: 'auth-state',
-  initialState,
-  reducers: {}
+  initialState: initialLogQueryState,
+  reducers: {},
+  extraReducers(builder) {
+    builder.addCase(loginThunk.fulfilled, (loginQueryState) => {
+      loginQueryState.state = 'fulfilled';
+    });
+    builder.addCase(loginThunk.rejected, (loginQueryState) => {
+      loginQueryState.state = 'rejected';
+    });
+    builder.addCase(loginThunk.pending, (loginQueryState) => {
+      loginQueryState.state = 'pending';
+    });
+  }
 });
 
-export const {} = authSlice.actions;
 export const authReducer = authSlice.reducer;
