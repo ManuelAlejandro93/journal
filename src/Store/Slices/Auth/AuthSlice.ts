@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk } from '@/Store';
+import { loginThunk, logoutThunk } from '@/Store';
 import { logQueryInitialState } from '@/Data';
 
 const authSlice = createSlice({
@@ -14,6 +14,15 @@ const authSlice = createSlice({
       loginQueryState.state = 'rejected';
     });
     builder.addCase(loginThunk.pending, (loginQueryState) => {
+      loginQueryState.state = 'pending';
+    });
+    builder.addCase(logoutThunk.fulfilled, (loginQueryState) => {
+      loginQueryState.state = 'fulfilled';
+    });
+    builder.addCase(logoutThunk.rejected, (loginQueryState) => {
+      loginQueryState.state = 'rejected';
+    });
+    builder.addCase(logoutThunk.pending, (loginQueryState) => {
       loginQueryState.state = 'pending';
     });
   }
