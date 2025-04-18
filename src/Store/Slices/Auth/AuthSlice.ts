@@ -1,7 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  isLogged: false
+interface InitialState {
+  displayName: string | null;
+  email: string | null;
+  errorMessage: string | null;
+  photoURL: string | null;
+  status: 'checking' | 'non-authenticated' | 'authenticated';
+  uuid: string | null;
+}
+
+const initialState: InitialState = {
+  displayName: null,
+  email: null,
+  errorMessage: null,
+  photoURL: null,
+  status: 'checking',
+  uuid: null
 };
 
 const authSlice = createSlice({
