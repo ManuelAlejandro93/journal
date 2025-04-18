@@ -5,6 +5,6 @@ export const logInitalState: LogDataType = {
   email: null,
   errorMessage: null,
   photoURL: null,
-  status: 'checking',
+  dataStatus: 'non-authenticated',
   uuid: null
 };

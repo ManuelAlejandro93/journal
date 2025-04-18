@@ -3,6 +3,6 @@ export interface LogDataType {
   email: string | null;
   errorMessage: string | null;
   photoURL: string | null;
-  status: 'checking' | 'non-authenticated' | 'authenticated';
+  dataStatus: 'checking' | 'non-authenticated' | 'authenticated';
   uuid: string | null;
 }
