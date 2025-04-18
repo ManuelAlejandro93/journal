@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const login = async (): Promise<'Login Ok' | 'Login not Ok'> => {
+export const login = async (): Promise<'Todo bien en la query' | string> => {
   try {
-    let { data } = await axios.get<'Login Ok' | 'Login not Ok'>(
-      'https://rickandmortyapi.com/api/character/2'
-    );
-    return data;
+    let {
+      data: {}
+    } = await axios.get('https://rickandmortyapi.com/api/character/2');
+    return 'Todo bien en la query';
   } catch (error) {
-    return 'Login not Ok';
+    throw error;
   }
 };

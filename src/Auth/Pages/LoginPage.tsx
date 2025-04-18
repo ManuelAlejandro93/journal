@@ -1,48 +1,32 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, TextField, Typography } from '@mui/material';
-import { Google } from '@mui/icons-material';
 
 import { AuthLayout } from '@/Auth';
+import { useLoginForm } from '@/Hooks';
+import { Google } from '@mui/icons-material';
 
 export const LoginPage = () => {
+  const {
+    email,
+    onEmailChange,
+    password,
+    onPasswordChange,
+    onLoginFormSubmit
+  } = useLoginForm();
+
   return (
     <AuthLayout authPageName='login'>
-      {/* <form className='col-span-2 p-8 grid grid-cols-1 gap-4'>
-        <TextField
-          fullWidth
-          placeholder='correo@gmail.com'
-          label='correo'
-          type='email'
-        >
-          Correo
-        </TextField>
-        <TextField
-          fullWidth
-          placeholder='amo-mis-perritos-1998'
-          label='contraseña'
-          type='password'
-        >
-          Contraseña
-        </TextField>
-      </form>
-      <Button variant='contained'>Login</Button>
-      <Button variant='contained'>
-        <Google className='mr-2' />
-        Google
-      </Button>
-      <RouterLink
-        to={'/auth/register'}
-        className={'mt-6 col-start-2'}
+      <form
+        className='p-8 grid space-y-4'
+        onSubmit={onLoginFormSubmit}
       >
-        <Typography fontSize={'0.8rem'}>crear una cuenta</Typography>
-      </RouterLink> */}
-
-      <form className='p-8 grid space-y-4'>
         <TextField
           fullWidth
           placeholder='correo@gmail.com'
           label='correo'
           type='email'
+          value={email}
+          onChange={onEmailChange}
         >
           Correo
         </TextField>
@@ -51,17 +35,26 @@ export const LoginPage = () => {
           placeholder='amo-mis-perritos-1998'
           label='contraseña'
           type='password'
+          value={password}
+          onChange={onPasswordChange}
         >
           Contraseña
         </TextField>
-        <div className='mt-4'>
-          <Button
-            variant='contained'
-            fullWidth
-          >
-            Iniciar Sesión.
-          </Button>
-        </div>
+
+        <Button
+          variant='contained'
+          fullWidth
+          type='submit'
+        >
+          Iniciar Sesión
+        </Button>
+        <Button
+          variant='contained'
+          onClick={() => {}}
+        >
+          Iniciar Sesion con Google
+          <Google className='ml-2' />
+        </Button>
       </form>
       <RouterLink
         to={'/auth/register'}
