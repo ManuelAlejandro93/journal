@@ -1,22 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loginThunk } from '@/Store';
+import { LogDataType, LogQueryType } from '@/Interfaces';
 
-interface LogStatusType {
-  displayName: string | null;
-  email: string | null;
-  errorMessage: string | null;
-  photoURL: string | null;
-  status: 'checking' | 'non-authenticated' | 'authenticated';
-  uuid: string | null;
-}
-
-interface LogQueryType {
-  data: LogStatusType | null;
-  state: 'fulfilled' | 'rejected' | 'pending' | null;
-  errorMessage: 'firebase-error-message.' | null;
-}
-
-const logInitalStatus: LogStatusType = {
+const logInitalStatus: LogDataType = {
   displayName: null,
   email: null,
   errorMessage: null,

@@ -1,1 +1,2 @@
-export * from './User';
+export * from './LogDataType';
+export * from './LogQueryType ';
