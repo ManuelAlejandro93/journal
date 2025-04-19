@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from '@/Store';
+import { loginThunk, googleLoginThunk } from '@/Store';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 type SubmitEvent = React.FormEvent<HTMLFormElement>;
+
+type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export const useLoginForm = () => {
   const [email, setEmail] = useState<string>('');
@@ -24,11 +26,17 @@ export const useLoginForm = () => {
     dispatch<any>(loginThunk());
   };
 
+  const onGoogleLoginFormSubmit = (e: ClickEvent): void => {
+    e.preventDefault();
+    dispatch<any>(googleLoginThunk());
+  };
+
   return {
     email,
     password,
     onEmailChange,
     onPasswordChange,
-    onLoginFormSubmit
+    onLoginFormSubmit,
+    onGoogleLoginFormSubmit
   };
 };

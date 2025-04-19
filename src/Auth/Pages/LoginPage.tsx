@@ -11,7 +11,8 @@ export const LoginPage = () => {
     onEmailChange,
     password,
     onPasswordChange,
-    onLoginFormSubmit
+    onLoginFormSubmit,
+    onGoogleLoginFormSubmit
   } = useLoginForm();
 
   return (
@@ -50,7 +51,7 @@ export const LoginPage = () => {
         </Button>
         <Button
           variant='contained'
-          onClick={() => {}}
+          onClick={onGoogleLoginFormSubmit}
         >
           Iniciar Sesion con Google
           <Google className='ml-2' />

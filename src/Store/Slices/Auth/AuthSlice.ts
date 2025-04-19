@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk, logoutThunk } from '@/Store';
+import { loginThunk, logoutThunk, googleLoginThunk } from '@/Store';
 import { logQueryInitialState } from '@/Data';
 
 const authSlice = createSlice({
@@ -10,7 +10,6 @@ const authSlice = createSlice({
     builder.addCase(loginThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
       logQueryState.data!.dataStatus = 'authenticated';
-      logQueryState.data!.displayName = 'Morty Smith';
     });
     builder.addCase(loginThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
@@ -18,6 +17,19 @@ const authSlice = createSlice({
       logQueryState.errorMessage = action.error.message;
     });
     builder.addCase(loginThunk.pending, (logQueryState) => {
+      logQueryState.state = 'pending';
+      logQueryState.data!.dataStatus = 'checking';
+    });
+    builder.addCase(googleLoginThunk.fulfilled, (logQueryState) => {
+      logQueryState.state = 'fulfilled';
+      logQueryState.data!.dataStatus = 'authenticated';
+    });
+    builder.addCase(googleLoginThunk.rejected, (logQueryState, action) => {
+      logQueryState.state = 'rejected';
+      logQueryState.data!.dataStatus = 'non-authenticated';
+      logQueryState.errorMessage = action.error.message;
+    });
+    builder.addCase(googleLoginThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
       logQueryState.data!.dataStatus = 'checking';
     });
