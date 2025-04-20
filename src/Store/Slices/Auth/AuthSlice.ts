@@ -7,6 +7,39 @@ const authSlice = createSlice({
   initialState: logQueryInitialState,
   reducers: {},
   extraReducers(builder) {
+    //! Google login
+    builder.addCase(googleLoginThunk.fulfilled, (logQueryState, action) => {
+      logQueryState.state = 'fulfilled';
+      logQueryState.errorMessage = null;
+      logQueryState.data!.dataStatus = 'authenticated';
+      logQueryState.data!.displayName = action.payload.name;
+      logQueryState.data!.email = action.payload.email;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = action.payload.photo;
+      logQueryState.data!.uuid = action.payload.uuid;
+    });
+    builder.addCase(googleLoginThunk.rejected, (logQueryState, action) => {
+      logQueryState.state = 'rejected';
+      logQueryState.errorMessage = action.error.message;
+      logQueryState.data!.dataStatus = 'non-authenticated';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
+    });
+    builder.addCase(googleLoginThunk.pending, (logQueryState) => {
+      logQueryState.state = 'pending';
+      logQueryState.errorMessage = null;
+      logQueryState.data!.dataStatus = 'checking';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
+    });
+
+    //! Email login
     builder.addCase(loginThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
       logQueryState.data!.dataStatus = 'authenticated';
@@ -20,19 +53,8 @@ const authSlice = createSlice({
       logQueryState.state = 'pending';
       logQueryState.data!.dataStatus = 'checking';
     });
-    builder.addCase(googleLoginThunk.fulfilled, (logQueryState) => {
-      logQueryState.state = 'fulfilled';
-      logQueryState.data!.dataStatus = 'authenticated';
-    });
-    builder.addCase(googleLoginThunk.rejected, (logQueryState, action) => {
-      logQueryState.state = 'rejected';
-      logQueryState.data!.dataStatus = 'non-authenticated';
-      logQueryState.errorMessage = action.error.message;
-    });
-    builder.addCase(googleLoginThunk.pending, (logQueryState) => {
-      logQueryState.state = 'pending';
-      logQueryState.data!.dataStatus = 'checking';
-    });
+
+    //! All cases logout
     builder.addCase(logoutThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
     });

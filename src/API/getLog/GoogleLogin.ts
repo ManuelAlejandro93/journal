@@ -9,6 +9,7 @@ export const googleLogin = async (): Promise<
     } = await axios.get('https://rickandmortyapi.com/api/character/2');
     return 'Todo bien en el login de google.';
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

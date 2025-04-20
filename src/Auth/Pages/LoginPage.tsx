@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography, CircularProgress } from '@mui/material';
 
 import { AuthLayout } from '@/Auth';
 import { useLoginForm } from '@/Hooks';
 import { Google } from '@mui/icons-material';
+
+import { RootState } from '@/Store';
 
 export const LoginPage = () => {
   const {
@@ -15,54 +18,69 @@ export const LoginPage = () => {
     onGoogleLoginFormSubmit
   } = useLoginForm();
 
+  const authState = useSelector((state: RootState) => state.authReducer.state);
+
   return (
     <AuthLayout authPageName='login'>
-      <form
-        className='p-8 grid space-y-4'
-        onSubmit={onLoginFormSubmit}
-      >
-        <TextField
-          fullWidth
-          placeholder='correo@gmail.com'
-          label='correo'
-          type='email'
-          value={email}
-          onChange={onEmailChange}
+      <div className='credentials-login-view'>
+        <form
+          className='p-8 grid space-y-4 items-center'
+          onSubmit={onLoginFormSubmit}
         >
-          Correo
-        </TextField>
-        <TextField
-          fullWidth
-          placeholder='amo-mis-perritos-1998'
-          label='contraseña'
-          type='password'
-          value={password}
-          onChange={onPasswordChange}
-        >
-          Contraseña
-        </TextField>
+          <TextField
+            fullWidth
+            placeholder='correo@gmail.com'
+            label='correo'
+            type='email'
+            value={email}
+            onChange={onEmailChange}
+          >
+            Correo
+          </TextField>
+          <TextField
+            fullWidth
+            placeholder='amo-mis-perritos-1998'
+            label='contraseña'
+            type='password'
+            value={password}
+            onChange={onPasswordChange}
+          >
+            Contraseña
+          </TextField>
 
-        <Button
-          variant='contained'
-          fullWidth
-          type='submit'
+          {authState === 'pending' ? (
+            ''
+          ) : (
+            <Button
+              variant='contained'
+              fullWidth
+              type='submit'
+            >
+              Iniciar Sesión
+            </Button>
+          )}
+
+          {authState === 'pending' ? (
+            <div className='flex justify-center'>
+              <CircularProgress></CircularProgress>
+            </div>
+          ) : (
+            <Button
+              variant='contained'
+              onClick={onGoogleLoginFormSubmit}
+            >
+              Iniciar Sesion con Google
+              <Google className='ml-2' />
+            </Button>
+          )}
+        </form>
+        <RouterLink
+          to={'/auth/register'}
+          className='text-right'
         >
-          Iniciar Sesión
-        </Button>
-        <Button
-          variant='contained'
-          onClick={onGoogleLoginFormSubmit}
-        >
-          Iniciar Sesion con Google
-          <Google className='ml-2' />
-        </Button>
-      </form>
-      <RouterLink
-        to={'/auth/register'}
-        className='text-right'
-      >
-        <Typography fontSize={'0.8rem'}>crear una cuenta</Typography>
-      </RouterLink>
+          <Typography fontSize={'0.8rem'}>crear una cuenta</Typography>
+        </RouterLink>
+      </div>
     </AuthLayout>
   );
 };

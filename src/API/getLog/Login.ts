@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const login = async (): Promise<'Todo bien en la query' | string> => {
+export const emailLogin = async (): Promise<
+  'Todo bien en la query' | string
+> => {
   try {
     let {
       data: {}

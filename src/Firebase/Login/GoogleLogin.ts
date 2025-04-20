@@ -14,6 +14,6 @@ export const googleLogin = async () => {
       email: signInResult.user.email
     };
   } catch (error) {
-    throw new Error('error en firebase, esto es un error en duro.');
+    throw error;
   }
 };
