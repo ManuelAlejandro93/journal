@@ -1,4 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { logout } from '@/API';
+import { allCasesLogout } from '@/Firebase';
 
-export const logoutThunk = createAsyncThunk('auth/logout-thunk', logout);
+export const allCasesLogoutThunk = createAsyncThunk(
+  'auth/logout-thunk',
+  allCasesLogout
+);

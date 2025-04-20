@@ -1,4 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { emailLogin } from '@/API';
+import { emailLogin } from '@/Firebase';
 
-export const loginThunk = createAsyncThunk('auth/login-thunk', emailLogin);
+export const emailLoginThunk = createAsyncThunk('auth/login-thunk', emailLogin);

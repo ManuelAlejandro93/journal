@@ -8,7 +8,7 @@ type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-export const useLoginForm = () => {
+export const useRegisterForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();

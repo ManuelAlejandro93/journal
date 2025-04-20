@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk, logoutThunk, googleLoginThunk } from '@/Store';
+import {
+  emailLoginThunk,
+  allCasesLogoutThunk,
+  googleLoginThunk
+} from '@/Store';
 import { logQueryInitialState } from '@/Data';
 
 const authSlice = createSlice({
@@ -40,28 +44,28 @@ const authSlice = createSlice({
     });
 
     //! Email login
-    builder.addCase(loginThunk.fulfilled, (logQueryState) => {
+    builder.addCase(emailLoginThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
       logQueryState.data!.dataStatus = 'authenticated';
     });
-    builder.addCase(loginThunk.rejected, (logQueryState, action) => {
+    builder.addCase(emailLoginThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
       logQueryState.data!.dataStatus = 'non-authenticated';
       logQueryState.errorMessage = action.error.message;
     });
-    builder.addCase(loginThunk.pending, (logQueryState) => {
+    builder.addCase(emailLoginThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
       logQueryState.data!.dataStatus = 'checking';
     });
 
     //! All cases logout
-    builder.addCase(logoutThunk.fulfilled, (logQueryState) => {
+    builder.addCase(allCasesLogoutThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
     });
-    builder.addCase(logoutThunk.rejected, (logQueryState) => {
+    builder.addCase(allCasesLogoutThunk.rejected, (logQueryState) => {
       logQueryState.state = 'rejected';
     });
-    builder.addCase(logoutThunk.pending, (logQueryState) => {
+    builder.addCase(allCasesLogoutThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
     });
   }
