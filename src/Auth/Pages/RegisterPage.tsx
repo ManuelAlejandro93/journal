@@ -2,8 +2,6 @@ import { AuthLayout } from '@/Auth';
 import { Button, TextField, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
-// import { Google } from '@mui/icons-material';
-
 export const RegisterPage = () => {
   return (
     <AuthLayout authPageName='regISter'>
