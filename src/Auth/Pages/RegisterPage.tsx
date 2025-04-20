@@ -1,16 +1,34 @@
-import { AuthLayout } from '@/Auth';
-import { Button, TextField, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { Google } from '@mui/icons-material';
+import { Button, TextField, Typography, CircularProgress } from '@mui/material';
+
+import { AuthLayout } from '@/Auth';
+import { useRegisterForm } from '@/Hooks';
+import { RootState } from '@/Store';
 
 export const RegisterPage = () => {
+  const {} = useRegisterForm();
+
+  const authState = useSelector((state: RootState) => state.authReducer.state);
+
   return (
     <AuthLayout authPageName='regISter'>
-      <form className='p-8 grid space-y-4'>
+      <form
+        className='p-8 grid space-y-4'
+        onSubmit={() => {
+          /* Función encargada de manejar el submit */
+        }}
+      >
         <TextField
           fullWidth
           placeholder='tu nombre...'
           label='nombre'
           type='text'
+          value={'controlador de valor'}
+          onChange={() => {
+            /* Función encargada de manejar el change  */
+          }}
         >
           Nombre
         </TextField>
@@ -19,6 +37,10 @@ export const RegisterPage = () => {
           placeholder='correo@gmail.com'
           label='correo'
           type='email'
+          value={'controlador de valor'}
+          onChange={() => {
+            /* Función encargada de manejar el change  */
+          }}
         >
           Correo
         </TextField>
@@ -27,17 +49,38 @@ export const RegisterPage = () => {
           placeholder='amo-mis-perritos-1998'
           label='contraseña'
           type='password'
+          value={'controlador de valor'}
+          onChange={() => {
+            /* Función encargada de manejar el change  */
+          }}
         >
           Contraseña
         </TextField>
-        <div className='mt-4'>
+
+        {authState === 'pending' ? (
+          ''
+        ) : (
           <Button
             variant='contained'
             fullWidth
           >
             Crear cuenta
           </Button>
-        </div>
+        )}
+
+        {authState === 'pending' ? (
+          <div className='flex justify-center'>
+            <CircularProgress></CircularProgress>
+          </div>
+        ) : (
+          <Button
+            variant='contained'
+            onClick={() => {}}
+          >
+            o Crear cuenta con Google
+            <Google className='ml-2' />
+          </Button>
+        )}
       </form>
       <RouterLink
         to={'/auth/login'}
@@ -48,35 +91,3 @@ export const RegisterPage = () => {
     </AuthLayout>
   );
 };
-
-{
-  /* <form className='col-span-2 p-8 grid grid-cols-1 gap-4'>
-        <TextField
-          fullWidth
-          placeholder='correo@gmail.com'
-          label='correo'
-          type='email'
-        >
-          Correo
-        </TextField>
-        <TextField
-          fullWidth
-          placeholder='amo-mis-perritos-1998'
-          label='contraseña'
-          type='password'
-        >
-          Contraseña
-        </TextField>
-      </form>
-      <Button variant='contained'>Login</Button>
-      <Button variant='contained'>
-        <Google className='mr-2' />
-        Google
-      </Button>
-      <RouterLink
-        to={'/auth/register'}
-        className={'mt-6 col-start-2'}
-      >
-        <Typography fontSize={'0.8rem'}>crear una cuenta</Typography>
-      </RouterLink> */
-}

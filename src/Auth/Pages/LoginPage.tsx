@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { Google } from '@mui/icons-material';
 import { Button, TextField, Typography, CircularProgress } from '@mui/material';
 
 import { AuthLayout } from '@/Auth';
 import { useLoginForm } from '@/Hooks';
-import { Google } from '@mui/icons-material';
-
 import { RootState } from '@/Store';
 
 export const LoginPage = () => {
