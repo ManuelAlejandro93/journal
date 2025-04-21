@@ -8,7 +8,14 @@ import { useRegisterForm } from '@/Hooks';
 import { RootState } from '@/Store';
 
 export const RegisterPage = () => {
-  const {} = useRegisterForm();
+  const {
+    name,
+    onNameChange,
+    email,
+    onEmailChange,
+    password,
+    onPasswordChange
+  } = useRegisterForm();
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
@@ -25,10 +32,8 @@ export const RegisterPage = () => {
           placeholder='tu nombre...'
           label='nombre'
           type='text'
-          value={'controlador de valor'}
-          onChange={() => {
-            /* Función encargada de manejar el change  */
-          }}
+          value={name}
+          onChange={onNameChange}
         >
           Nombre
         </TextField>
@@ -37,10 +42,8 @@ export const RegisterPage = () => {
           placeholder='correo@gmail.com'
           label='correo'
           type='email'
-          value={'controlador de valor'}
-          onChange={() => {
-            /* Función encargada de manejar el change  */
-          }}
+          value={email}
+          onChange={onEmailChange}
         >
           Correo
         </TextField>
@@ -49,10 +52,8 @@ export const RegisterPage = () => {
           placeholder='amo-mis-perritos-1998'
           label='contraseña'
           type='password'
-          value={'controlador de valor'}
-          onChange={() => {
-            /* Función encargada de manejar el change  */
-          }}
+          value={password}
+          onChange={onPasswordChange}
         >
           Contraseña
         </TextField>
@@ -62,6 +63,7 @@ export const RegisterPage = () => {
         ) : (
           <Button
             variant='contained'
+            type='submit'
             fullWidth
           >
             Crear cuenta
