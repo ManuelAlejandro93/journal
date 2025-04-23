@@ -14,7 +14,9 @@ export const LoginPage = () => {
     password,
     onPasswordChange,
     onLoginFormSubmit,
-    onGoogleLoginFormSubmit
+    onGoogleLoginFormSubmit,
+    emailError,
+    emailErrorMessage
   } = useLoginForm();
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
@@ -33,6 +35,8 @@ export const LoginPage = () => {
             type='email'
             value={email}
             onChange={onEmailChange}
+            error={emailError}
+            helperText={emailErrorMessage}
           >
             Correo
           </TextField>
