@@ -13,7 +13,7 @@ export const LoginPage = () => {
     onEmailChange,
     password,
     onPasswordChange,
-    onLoginFormSubmit,
+    onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
     emailError,
     emailErrorMessage
@@ -26,7 +26,7 @@ export const LoginPage = () => {
       <div className='credentials-login-view'>
         <form
           className='p-8 grid space-y-4 items-center'
-          onSubmit={onLoginFormSubmit}
+          onSubmit={onRegularLoginFormSubmit}
         >
           <TextField
             fullWidth

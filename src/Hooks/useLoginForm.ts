@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { emailLoginThunk, googleLoginThunk } from '@/Store';
+import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
@@ -29,7 +29,7 @@ export const useLoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const onLoginFormSubmit = (e: SubmitEvent): void => {
+  const onRegularLoginFormSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
 
     if (emailValidation(email)) {
@@ -52,7 +52,7 @@ export const useLoginForm = () => {
     password,
     onEmailChange,
     onPasswordChange,
-    onLoginFormSubmit,
+    onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
     emailError,
     emailErrorMessage
