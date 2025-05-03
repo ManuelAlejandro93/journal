@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { emailLoginThunk, googleLoginThunk } from '@/Store';
-import { formValidations } from '@/Data';
+import { formValidations } from '@/Helpers';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
