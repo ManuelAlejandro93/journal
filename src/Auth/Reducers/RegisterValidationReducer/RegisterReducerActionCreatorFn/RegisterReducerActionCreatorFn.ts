@@ -63,8 +63,8 @@ export const registerValidationReducerActionCreatorFn = ({
   //! Start Caso4
   else if (
     //? caso4:'valid-name|invalid-email|invalid-password'
-    !nameValidationResult &&
-    emailValidationResult &&
+    nameValidationResult &&
+    !emailValidationResult &&
     !passwordValidationResult
   ) {
     //? caso4:'valid-name|invalid-email|invalid-password'
@@ -81,7 +81,7 @@ export const registerValidationReducerActionCreatorFn = ({
   //! Start Caso5
   else if (
     //? caso5:'valid-name|valid-email|invalid-password'
-    !nameValidationResult &&
+    nameValidationResult &&
     emailValidationResult &&
     !passwordValidationResult
   ) {
@@ -99,9 +99,9 @@ export const registerValidationReducerActionCreatorFn = ({
   //! Start Caso6
   else if (
     //? caso6:'valid-name|valid-email|valid-password'
-    !nameValidationResult &&
+    nameValidationResult &&
     emailValidationResult &&
-    !passwordValidationResult
+    passwordValidationResult
   ) {
     //? caso6:'valid-name|valid-email|valid-password'
     return {
@@ -117,9 +117,9 @@ export const registerValidationReducerActionCreatorFn = ({
   //! Start Caso7
   else if (
     //? caso7:'valid-name|invalid-email|valid-password'
-    !nameValidationResult &&
-    emailValidationResult &&
-    !passwordValidationResult
+    nameValidationResult &&
+    !emailValidationResult &&
+    passwordValidationResult
   ) {
     //? caso7:'valid-name|invalid-email|valid-password'
     return {
@@ -137,7 +137,7 @@ export const registerValidationReducerActionCreatorFn = ({
     //? caso8:'invalid-name|valid-email|valid-password'
     !nameValidationResult &&
     emailValidationResult &&
-    !passwordValidationResult
+    passwordValidationResult
   ) {
     //? caso8:'invalid-name|valid-email|valid-password'
     return {
