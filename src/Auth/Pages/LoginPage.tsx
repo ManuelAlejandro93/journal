@@ -10,8 +10,8 @@ import { RootState } from '@/Store';
 export const LoginPage = () => {
   const {
     email,
-    onEmailChange,
     password,
+    onEmailChange,
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,

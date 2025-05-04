@@ -10,14 +10,17 @@ import { RootState } from '@/Store';
 export const RegisterPage = () => {
   const {
     name,
-    onNameChange,
     email,
-    onEmailChange,
     password,
+    onNameChange,
+    onEmailChange,
     onPasswordChange,
     onGoogleRegisterFormSubmit,
-    onRegularRegisterFormSubmit
+    onRegularRegisterFormSubmit,
+    regularRegisterValidationState
   } = useRegisterForm();
+
+  const {} = regularRegisterValidationState;
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
