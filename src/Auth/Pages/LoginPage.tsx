@@ -15,9 +15,15 @@ export const LoginPage = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    hasEmailError,
-    emailErrorMessage
+    loginValidationState
   } = useRegularLoginForm();
+
+  const {
+    hasEmailError,
+    emailErrorMessage,
+    hasPasswordError,
+    passwordErrorMessage
+  } = loginValidationState;
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
@@ -47,6 +53,8 @@ export const LoginPage = () => {
             type='password'
             value={password}
             onChange={onPasswordChange}
+            error={hasPasswordError}
+            helperText={passwordErrorMessage}
           >
             Contraseña
           </TextField>

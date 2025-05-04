@@ -1,32 +1,12 @@
-interface LoginValidationState {
-  hasEmailError: boolean;
-  emailErrorMessage: string;
-  hasPasswordError: boolean;
-  passwordErrorMessage: string;
-}
+import {
+  LoginValidationState,
+  LoginValidationReducerAction
+} from '@/Interfaces';
 
-const initialState: LoginValidationState = {
-  hasEmailError: false,
-  emailErrorMessage: '',
-  hasPasswordError: false,
-  passwordErrorMessage: ''
-};
-
-interface LoginValidationReducerAction {
-  payload: {
-    emailValidationResult: boolean;
-    passwordValidationResult: boolean;
-  };
-  type:
-    | 'invalid-email|invalid-password'
-    | 'invalid-email|valid-password'
-    | 'valid-email|invalid-password'
-    | 'valid-email|valid-password'
-    | 'other cases';
-}
+import { loginValidationInitialState } from '@/Data';
 
 export const loginValidationReducer = (
-  state: LoginValidationState = initialState,
+  state: LoginValidationState = loginValidationInitialState,
   action: LoginValidationReducerAction
 ): LoginValidationState => {
   switch (action.type) {

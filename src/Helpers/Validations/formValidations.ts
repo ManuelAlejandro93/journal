@@ -17,7 +17,13 @@
  */
 const emailRegex = /^[a-zA-Z][a-zA-Z0-9]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
 
-export const formValidations = () => {
+type FormValidations = () => {
+  emailValidation: (email: string) => boolean;
+  nameValidation: (name: string) => boolean;
+  passwordValidation: (password: string) => boolean;
+};
+
+export const formValidations: FormValidations = () => {
   const emailValidation = (email: string): boolean => {
     if (email.match(emailRegex)) {
       return true;
@@ -25,11 +31,11 @@ export const formValidations = () => {
       return false;
     }
   };
-  const nameValidation = (name: string): string => {
+  const nameValidation = (name: string): boolean => {
     if (name.length >= 2) {
-      return 'Has ingresado un nombre correcto.';
+      return true;
     } else {
-      return 'Tu nombre debe tener 2 o más letras.';
+      return false;
     }
   };
   const passwordValidation = (password: string): boolean => {

@@ -1,25 +1,12 @@
-interface LoginValidationReducerAction {
-  payload: {
-    emailValidationResult: boolean;
-    passwordValidationResult: boolean;
-  };
-  type:
-    | 'invalid-email|invalid-password'
-    | 'invalid-email|valid-password'
-    | 'valid-email|invalid-password'
-    | 'valid-email|valid-password'
-    | 'other cases';
-}
-
-interface regularLoginValidationResults {
-  emailValidationResult: boolean;
-  passwordValidationResult: boolean;
-}
+import {
+  LoginValidationReducerAction,
+  RegularLoginValidationProcessResults
+} from '@/Interfaces';
 
 export const LoginValidationReducerActionCreatorFn = ({
   emailValidationResult,
   passwordValidationResult
-}: regularLoginValidationResults): LoginValidationReducerAction => {
+}: RegularLoginValidationProcessResults): LoginValidationReducerAction => {
   if (!emailValidationResult && !passwordValidationResult) {
     return {
       payload: {

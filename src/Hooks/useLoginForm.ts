@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
+import {
+  loginValidationReducer,
+  LoginValidationReducerActionCreatorFn
+} from '@/Auth';
+import { loginValidationInitialState } from '@/Data';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -15,9 +20,10 @@ export const useRegularLoginForm = () => {
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
 
-  //validations controllers
-  const [hasEmailError, setEmailError] = useState<boolean>(false);
-  const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
+  const [loginValidationState, loginValidationReducerDispatch] = useReducer(
+    loginValidationReducer,
+    loginValidationInitialState
+  );
 
   const { emailValidation, passwordValidation } = formValidations();
 
@@ -32,10 +38,15 @@ export const useRegularLoginForm = () => {
   const onRegularLoginFormSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
 
-    const emailValidatioResult: boolean = emailValidation(email);
-    const passwordValidatioResult: boolean = passwordValidation(password);
+    const emailValidationResult: boolean = emailValidation(email);
+    const passwordValidationResult: boolean = passwordValidation(password);
 
-    //! aquí llamo el reducer
+    loginValidationReducerDispatch(
+      LoginValidationReducerActionCreatorFn({
+        emailValidationResult,
+        passwordValidationResult
+      })
+    );
   };
 
   const onGoogleLoginFormSubmit = (e: ClickEvent): void => {
@@ -44,13 +55,15 @@ export const useRegularLoginForm = () => {
   };
 
   return {
+    //? Estados.
     email,
     password,
+    //? Controllers.
     onEmailChange,
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    hasEmailError,
-    emailErrorMessage
+    //? Validators
+    loginValidationState
   };
 };
