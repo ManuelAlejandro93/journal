@@ -51,6 +51,20 @@ export const RegularRegisterValidationReducer = (
       };
     //? end case3
     //? ------------------------------------------------------------
+    //?------------------------------------------------------------
+    //? start case4 - 'valid-name|invalid-email|invalid-password'
+    case 'valid-name|invalid-email|invalid-password':
+      return {
+        hasNameError: !action.payload.nameValidationResult,
+        hasEmailError: !action.payload.emailValidationResult,
+        hasPasswordError: !action.payload.passwordValidationResult,
+        nameErrorMessage: 'Your name looks good',
+        emailErrorMessage:
+          'Check your email. It must look like this "usuario123@server.com"',
+        passwordErrorMessage: 'Your password must have at least 8 characters'
+      };
+    //? end case4
+    //? ------------------------------------------------------------
     default:
       return { ...state };
   }
