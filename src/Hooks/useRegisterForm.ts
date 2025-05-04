@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
-import { registerValidationReducerActionCreatorFn } from '@/Auth';
+import {
+  registerValidationReducerActionCreatorFn,
+  regularRegisterValidationReducer
+} from '@/Auth';
 import { RegularRegisterValidationInitialState } from '@/Data';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
@@ -17,6 +20,15 @@ export const useRegisterForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
+
+  //register validation state
+  const [
+    regularRegisterValidationStates,
+    regularRegisterValidationReducerDispatch
+  ] = useReducer(
+    regularRegisterValidationReducer,
+    RegularRegisterValidationInitialState
+  );
 
   //on Value change event controllers
   const onNameChange = (e: ChangeEvent): void => {

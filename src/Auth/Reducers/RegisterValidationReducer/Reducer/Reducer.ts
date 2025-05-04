@@ -5,7 +5,7 @@ import {
 
 import { RegularRegisterValidationInitialState } from '@/Data';
 
-export const RegularRegisterValidationReducer = (
+export const regularRegisterValidationReducer = (
   state: RegularValidationDataState = RegularRegisterValidationInitialState,
   action: RegularRegisterValidationReducerAction
 ): RegularValidationDataState => {

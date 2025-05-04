@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
 import {
-  RegularRegisterValidationReducer,
+  loginValidationReducer,
   LoginValidationReducerActionCreatorFn
 } from '@/Auth';
-import { RegularRegisterValidationInitialState } from '@/Data';
+import { loginValidationInitialState } from '@/Data';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -23,8 +23,8 @@ export const useRegularLoginForm = () => {
   const { emailValidation, passwordValidation } = formValidations();
 
   const [loginValidationState, loginValidationReducerDispatch] = useReducer(
-    RegularRegisterValidationReducer,
-    RegularRegisterValidationInitialState
+    loginValidationReducer,
+    loginValidationInitialState
   );
 
   const onEmailChange = (e: ChangeEvent): void => {
