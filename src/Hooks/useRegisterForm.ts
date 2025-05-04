@@ -23,7 +23,7 @@ export const useRegisterForm = () => {
 
   //register validation state
   const [
-    regularRegisterValidationStates,
+    regularRegisterValidationState,
     regularRegisterValidationReducerDispatch
   ] = useReducer(
     regularRegisterValidationReducer,
@@ -82,6 +82,7 @@ export const useRegisterForm = () => {
     password,
     onPasswordChange,
     onGoogleRegisterFormSubmit,
-    onRegularRegisterFormSubmit
+    onRegularRegisterFormSubmit,
+    regularRegisterValidationState
   };
 };
