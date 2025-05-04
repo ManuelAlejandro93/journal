@@ -39,18 +39,17 @@ export const RegularRegisterValidationReducer = (
     //? end case2
     //? ------------------------------------------------------------
     //?------------------------------------------------------------
-    //? start case2 - 'invalid-name|invalid-email|valid-password'
-    case 'invalid-name|invalid-email|valid-password':
+    //? start case3 - 'invalid-name|valid-email|invalid-password'
+    case 'invalid-name|valid-email|invalid-password':
       return {
         hasNameError: !action.payload.nameValidationResult,
         hasEmailError: !action.payload.emailValidationResult,
         hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
-        emailErrorMessage:
-          'Check your email. It must look like this "usuario123@server.com"',
-        passwordErrorMessage: 'Your password looks good'
+        emailErrorMessage: 'Your email looks good',
+        passwordErrorMessage: 'Your password must have at least 8 characters'
       };
-    //? end case2
+    //? end case3
     //? ------------------------------------------------------------
     default:
       return { ...state };
