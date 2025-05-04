@@ -59,12 +59,14 @@ export const useRegisterForm = () => {
     nameValidationResult;
     emailValidationResult;
     passwordValidationResult;
-    // todo: despachar esta acción con dispatch de useReducer
-    registerValidationReducerActionCreatorFn({
-      nameValidationResult,
-      emailValidationResult,
-      passwordValidationResult
-    });
+
+    regularRegisterValidationReducerDispatch(
+      registerValidationReducerActionCreatorFn({
+        nameValidationResult,
+        emailValidationResult,
+        passwordValidationResult
+      })
+    );
   };
 
   const onGoogleRegisterFormSubmit = (e: ClickEvent): void => {
