@@ -78,6 +78,19 @@ export const RegularRegisterValidationReducer = (
       };
     //? end case5
     //? ------------------------------------------------------------
+    //?------------------------------------------------------------
+    //? start case6 - 'valid-name|valid-email|valid-password'
+    case 'valid-name|valid-email|valid-password':
+      return {
+        hasNameError: !action.payload.nameValidationResult,
+        hasEmailError: !action.payload.emailValidationResult,
+        hasPasswordError: !action.payload.passwordValidationResult,
+        nameErrorMessage: 'Your name looks good',
+        emailErrorMessage: 'Your email looks good',
+        passwordErrorMessage: 'Your password looks good'
+      };
+    //? end case6
+    //? ------------------------------------------------------------
     default:
       return { ...state };
   }
