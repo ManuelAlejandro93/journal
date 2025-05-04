@@ -14,9 +14,9 @@ export const RegularRegisterValidationReducer = (
     //? start case1 - 'invalid-name|invalid-email|invalid-password'
     case 'invalid-name|invalid-email|invalid-password':
       return {
-        hasNameError: action.payload.nameValidationResult,
-        hasEmailError: action.payload.emailValidationResult,
-        hasPasswordError: action.payload.passwordValidationResult,
+        hasNameError: !action.payload.nameValidationResult,
+        hasEmailError: !action.payload.emailValidationResult,
+        hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
