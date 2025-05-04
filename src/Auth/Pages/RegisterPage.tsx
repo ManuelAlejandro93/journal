@@ -20,7 +20,14 @@ export const RegisterPage = () => {
     regularRegisterValidationState
   } = useRegisterForm();
 
-  const {} = regularRegisterValidationState;
+  const {
+    hasNameError,
+    hasEmailError,
+    hasPasswordError,
+    nameErrorMessage,
+    emailErrorMessage,
+    passwordErrorMessage
+  } = regularRegisterValidationState;
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
@@ -37,6 +44,8 @@ export const RegisterPage = () => {
           type='text'
           value={name}
           onChange={onNameChange}
+          error={hasNameError}
+          helperText={nameErrorMessage}
         >
           Nombre
         </TextField>
@@ -47,6 +56,8 @@ export const RegisterPage = () => {
           type='email'
           value={email}
           onChange={onEmailChange}
+          error={hasEmailError}
+          helperText={emailErrorMessage}
         >
           Correo
         </TextField>
@@ -57,6 +68,8 @@ export const RegisterPage = () => {
           type='password'
           value={password}
           onChange={onPasswordChange}
+          error={hasPasswordError}
+          helperText={passwordErrorMessage}
         >
           Contraseña
         </TextField>
