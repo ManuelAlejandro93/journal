@@ -20,12 +20,12 @@ export const useRegularLoginForm = () => {
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
 
+  const { emailValidation, passwordValidation } = formValidations();
+
   const [loginValidationState, loginValidationReducerDispatch] = useReducer(
     loginValidationReducer,
     loginValidationInitialState
   );
-
-  const { emailValidation, passwordValidation } = formValidations();
 
   const onEmailChange = (e: ChangeEvent): void => {
     setEmail(e.target.value);

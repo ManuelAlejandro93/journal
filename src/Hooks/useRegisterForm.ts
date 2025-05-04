@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { emailLoginThunk, googleLoginThunk } from '@/Store';
+import { googleLoginThunk } from '@/Store';
+import { formValidations } from '@/Helpers';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -9,11 +10,13 @@ type SubmitEvent = React.FormEvent<HTMLFormElement>;
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export const useRegisterForm = () => {
+  //Value controllers
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
 
+  //on Value change event controllers
   const onNameChange = (e: ChangeEvent): void => {
     setName(e.target.value);
   };
@@ -26,9 +29,22 @@ export const useRegisterForm = () => {
     setPassword(e.target.value);
   };
 
+  //validation import
+
+  const { emailValidation, passwordValidation, nameValidation } =
+    formValidations();
+
+  //onsubmit controllers
+
   const onRegularRegisterFormSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
-    dispatch<any>(emailLoginThunk());
+    const nameValidationResult: boolean = nameValidation(name);
+    const emailValidationResult: boolean = emailValidation(email);
+    const passwordValidationResult: boolean = passwordValidation(password);
+
+    nameValidationResult;
+    emailValidationResult;
+    passwordValidationResult;
   };
 
   const onGoogleRegisterFormSubmit = (e: ClickEvent): void => {
@@ -42,6 +58,8 @@ export const useRegisterForm = () => {
     email,
     onEmailChange,
     password,
-    onPasswordChange
+    onPasswordChange,
+    onGoogleRegisterFormSubmit,
+    onRegularRegisterFormSubmit
   };
 };

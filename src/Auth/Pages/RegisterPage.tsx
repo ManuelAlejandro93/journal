@@ -14,7 +14,9 @@ export const RegisterPage = () => {
     email,
     onEmailChange,
     password,
-    onPasswordChange
+    onPasswordChange,
+    onGoogleRegisterFormSubmit,
+    onRegularRegisterFormSubmit
   } = useRegisterForm();
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
@@ -23,9 +25,7 @@ export const RegisterPage = () => {
     <AuthLayout authPageName='regISter'>
       <form
         className='p-8 grid space-y-4'
-        onSubmit={() => {
-          /* Función encargada de manejar el submit */
-        }}
+        onSubmit={onRegularRegisterFormSubmit}
       >
         <TextField
           fullWidth
@@ -77,7 +77,7 @@ export const RegisterPage = () => {
         ) : (
           <Button
             variant='contained'
-            onClick={() => {}}
+            onClick={onGoogleRegisterFormSubmit}
           >
             o Crear cuenta con Google
             <Google className='ml-2' />
