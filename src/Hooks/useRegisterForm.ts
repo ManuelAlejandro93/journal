@@ -53,12 +53,9 @@ export const useRegisterForm = () => {
   const onRegularRegisterFormSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
     const nameValidationResult: boolean = nameValidation(name);
+
     const emailValidationResult: boolean = emailValidation(email);
     const passwordValidationResult: boolean = passwordValidation(password);
-
-    nameValidationResult;
-    emailValidationResult;
-    passwordValidationResult;
 
     regularRegisterValidationReducerDispatch(
       registerValidationReducerActionCreatorFn({
