@@ -91,6 +91,20 @@ export const RegularRegisterValidationReducer = (
       };
     //? end case6
     //? ------------------------------------------------------------
+    //?------------------------------------------------------------
+    //? start case7 - 'valid-name|invalid-email|valid-password'
+    case 'valid-name|invalid-email|valid-password':
+      return {
+        hasNameError: !action.payload.nameValidationResult,
+        hasEmailError: !action.payload.emailValidationResult,
+        hasPasswordError: !action.payload.passwordValidationResult,
+        nameErrorMessage: 'Your name looks good',
+        emailErrorMessage:
+          'Check your email. It must look like this "usuario123@server.com"',
+        passwordErrorMessage: 'Your password looks good'
+      };
+    //? end case7
+    //? ------------------------------------------------------------
     default:
       return { ...state };
   }
