@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
+import { registerValidationReducerActionCreatorFn } from '@/Auth';
+import { RegularRegisterValidationInitialState } from '@/Data';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -45,6 +47,12 @@ export const useRegisterForm = () => {
     nameValidationResult;
     emailValidationResult;
     passwordValidationResult;
+    // todo: despachar esta acción con dispatch de useReducer
+    registerValidationReducerActionCreatorFn({
+      nameValidationResult,
+      emailValidationResult,
+      passwordValidationResult
+    });
   };
 
   const onGoogleRegisterFormSubmit = (e: ClickEvent): void => {

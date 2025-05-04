@@ -1,6 +1,6 @@
 import {
-  LoginValidationState,
-  LoginValidationReducerAction
+  LoginValidationReducerAction,
+  LoginValidationState
 } from '@/Interfaces';
 
 import { loginValidationInitialState } from '@/Data';
