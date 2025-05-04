@@ -15,7 +15,7 @@ export const LoginPage = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    emailError,
+    hasEmailError,
     emailErrorMessage
   } = useLoginForm();
 
@@ -35,7 +35,7 @@ export const LoginPage = () => {
             type='email'
             value={email}
             onChange={onEmailChange}
-            error={emailError}
+            error={hasEmailError}
             helperText={emailErrorMessage}
           >
             Correo

@@ -16,7 +16,7 @@ export const useLoginForm = () => {
   const dispatch = useDispatch();
 
   //validations controllers
-  const [emailError, setEmailError] = useState<boolean>(false);
+  const [hasEmailError, setEmailError] = useState<boolean>(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
 
   const { emailValidation } = formValidations();
@@ -54,7 +54,7 @@ export const useLoginForm = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    emailError,
+    hasEmailError,
     emailErrorMessage
   };
 };
