@@ -131,3 +131,5 @@ export const RegularRegisterValidationReducer = (
 //por lo que uno es el contrario del otro.
 
 //Ejemplo: si una cadena de correo es correcta entonces no tienne errores.
+
+//modificación generica.
