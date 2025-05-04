@@ -32,11 +32,11 @@ export const formValidations = () => {
       return 'Tu nombre debe tener 2 o más letras.';
     }
   };
-  const passwordValidation = (password: string): string => {
+  const passwordValidation = (password: string): boolean => {
     if (password.length >= 8) {
-      return 'tu contraseña es fuerte';
+      return true;
     } else {
-      return 'Tu contraseña debe tener 8 o más caracteres.';
+      return false;
     }
   };
   return { emailValidation, nameValidation, passwordValidation };

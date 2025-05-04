@@ -9,7 +9,7 @@ type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-export const useLoginForm = () => {
+export const useRegularLoginForm = () => {
   //Value controllers
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -19,7 +19,7 @@ export const useLoginForm = () => {
   const [hasEmailError, setEmailError] = useState<boolean>(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState<string>('');
 
-  const { emailValidation } = formValidations();
+  const { emailValidation, passwordValidation } = formValidations();
 
   const onEmailChange = (e: ChangeEvent): void => {
     setEmail(e.target.value);
@@ -32,14 +32,10 @@ export const useLoginForm = () => {
   const onRegularLoginFormSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
 
-    if (emailValidation(email)) {
-      setEmailError(false);
-      setEmailErrorMessage('correo válido');
-    } else {
-      setEmailError(true);
-      setEmailErrorMessage('te falta un símbolo "@"');
-    }
-    // dispatch<any>(emailLoginThunk());
+    const emailValidatioResult: boolean = emailValidation(email);
+    const passwordValidatioResult: boolean = passwordValidation(password);
+
+    //! aquí llamo el reducer
   };
 
   const onGoogleLoginFormSubmit = (e: ClickEvent): void => {

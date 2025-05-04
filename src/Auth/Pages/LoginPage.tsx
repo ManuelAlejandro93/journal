@@ -4,7 +4,7 @@ import { Google } from '@mui/icons-material';
 import { Button, TextField, Typography, CircularProgress } from '@mui/material';
 
 import { AuthLayout } from '@/Auth';
-import { useLoginForm } from '@/Hooks';
+import { useRegularLoginForm } from '@/Hooks';
 import { RootState } from '@/Store';
 
 export const LoginPage = () => {
@@ -17,7 +17,7 @@ export const LoginPage = () => {
     onGoogleLoginFormSubmit,
     hasEmailError,
     emailErrorMessage
-  } = useLoginForm();
+  } = useRegularLoginForm();
 
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
