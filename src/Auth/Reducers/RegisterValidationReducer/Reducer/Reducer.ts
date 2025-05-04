@@ -105,6 +105,19 @@ export const RegularRegisterValidationReducer = (
       };
     //? end case7
     //? ------------------------------------------------------------
+    //?------------------------------------------------------------
+    //? start case8 - 'invalid-name|valid-email|valid-password'
+    case 'invalid-name|valid-email|valid-password':
+      return {
+        hasNameError: !action.payload.nameValidationResult,
+        hasEmailError: !action.payload.emailValidationResult,
+        hasPasswordError: !action.payload.passwordValidationResult,
+        nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
+        emailErrorMessage: 'Your emails looks good',
+        passwordErrorMessage: 'Your password looks good'
+      };
+    //? end case8
+    //? ------------------------------------------------------------
     default:
       return { ...state };
   }
