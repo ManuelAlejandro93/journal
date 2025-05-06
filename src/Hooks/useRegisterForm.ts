@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleLoginThunk } from '@/Store';
+import { googleLoginThunk, regularRegisterThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
 import {
   registerValidationReducerActionCreatorFn,
@@ -88,6 +88,7 @@ export const useRegisterForm = () => {
       };
 
       //enviar a firebase esta información.
+      dispatch<any>(regularRegisterThunk(userDataForFireBase));
     }
   }, [isFormValid]);
 
