@@ -29,7 +29,7 @@ export const RegisterPage = () => {
     passwordErrorMessage
   } = regularRegisterValidationState;
 
-  const authState = useSelector((state: RootState) => state.authReducer.state);
+  const authState = useSelector((state: RootState) => state.authReducer);
 
   return (
     <AuthLayout authPageName='regISter'>
@@ -74,7 +74,16 @@ export const RegisterPage = () => {
           Contraseña
         </TextField>
 
-        {authState === 'pending' ? (
+        {authState.state === 'rejected' ? (
+          <span className='text-red-700'>
+            Error Description:{' '}
+            <i className='underline text-red-500'>{authState.errorMessage}</i>
+          </span>
+        ) : (
+          ''
+        )}
+
+        {authState.state === 'pending' ? (
           ''
         ) : (
           <Button
@@ -86,7 +95,7 @@ export const RegisterPage = () => {
           </Button>
         )}
 
-        {authState === 'pending' ? (
+        {authState.state === 'pending' ? (
           <div className='flex justify-center'>
             <CircularProgress></CircularProgress>
           </div>

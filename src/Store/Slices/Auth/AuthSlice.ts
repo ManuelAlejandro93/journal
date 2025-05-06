@@ -29,7 +29,8 @@ const authSlice = createSlice({
       logQueryState.data!.dataStatus = 'non-authenticated';
       logQueryState.data!.displayName = null;
       logQueryState.data!.email = null;
-      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.errorMessage =
+        action.error.message ?? 'Error en firebase, hable con TI.';
       logQueryState.data!.photoURL = null;
       logQueryState.data!.uuid = null;
     });
