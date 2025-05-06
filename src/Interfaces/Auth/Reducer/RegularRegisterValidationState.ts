@@ -5,4 +5,5 @@ export interface RegularValidationDataState {
   emailErrorMessage: string;
   hasPasswordError: boolean;
   passwordErrorMessage: string;
+  isFormValid: boolean;
 }

@@ -20,7 +20,8 @@ export const regularRegisterValidationReducer = (
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
-        passwordErrorMessage: 'Your password must have at least 8 characters'
+        passwordErrorMessage: 'Your password must have at least 8 characters',
+        isFormValid: false
       };
     //? end case1
     //? ------------------------------------------------------------
@@ -34,7 +35,8 @@ export const regularRegisterValidationReducer = (
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
-        passwordErrorMessage: 'Your password looks good'
+        passwordErrorMessage: 'Your password looks good',
+        isFormValid: false
       };
     //? end case2
     //? ------------------------------------------------------------
@@ -47,7 +49,8 @@ export const regularRegisterValidationReducer = (
         hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
         emailErrorMessage: 'Your email looks good',
-        passwordErrorMessage: 'Your password must have at least 8 characters'
+        passwordErrorMessage: 'Your password must have at least 8 characters',
+        isFormValid: false
       };
     //? end case3
     //? ------------------------------------------------------------
@@ -61,7 +64,8 @@ export const regularRegisterValidationReducer = (
         nameErrorMessage: 'Your name looks good',
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
-        passwordErrorMessage: 'Your password must have at least 8 characters'
+        passwordErrorMessage: 'Your password must have at least 8 characters',
+        isFormValid: false
       };
     //? end case4
     //? ------------------------------------------------------------
@@ -74,7 +78,8 @@ export const regularRegisterValidationReducer = (
         hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name looks good',
         emailErrorMessage: 'Your email looks good',
-        passwordErrorMessage: 'Your password must have at least 8 characters'
+        passwordErrorMessage: 'Your password must have at least 8 characters',
+        isFormValid: false
       };
     //? end case5
     //? ------------------------------------------------------------
@@ -87,7 +92,8 @@ export const regularRegisterValidationReducer = (
         hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name looks good',
         emailErrorMessage: 'Your email looks good',
-        passwordErrorMessage: 'Your password looks good'
+        passwordErrorMessage: 'Your password looks good',
+        isFormValid: true
       };
     //? end case6
     //? ------------------------------------------------------------
@@ -101,7 +107,8 @@ export const regularRegisterValidationReducer = (
         nameErrorMessage: 'Your name looks good',
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
-        passwordErrorMessage: 'Your password looks good'
+        passwordErrorMessage: 'Your password looks good',
+        isFormValid: false
       };
     //? end case7
     //? ------------------------------------------------------------
@@ -114,7 +121,8 @@ export const regularRegisterValidationReducer = (
         hasPasswordError: !action.payload.passwordValidationResult,
         nameErrorMessage: 'Your name must be longer o equal than 2 characters.',
         emailErrorMessage: 'Your emails looks good',
-        passwordErrorMessage: 'Your password looks good'
+        passwordErrorMessage: 'Your password looks good',
+        isFormValid: false
       };
     //? end case8
     //? ------------------------------------------------------------

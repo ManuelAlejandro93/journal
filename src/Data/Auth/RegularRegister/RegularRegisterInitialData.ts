@@ -7,5 +7,6 @@ export const RegularRegisterValidationInitialState: RegularValidationDataState =
     hasEmailError: false,
     emailErrorMessage: '',
     hasPasswordError: false,
-    passwordErrorMessage: ''
+    passwordErrorMessage: '',
+    isFormValid: false
   };
