@@ -1,15 +1,16 @@
 //todo: método para checkear que el usuario existe.
 import {} from 'firebase/auth';
+import { LoginUserInputData } from '@/Interfaces';
 
-export const regularLogin = async () => {
+export const regularLogin = async (loginUserInputData: LoginUserInputData) => {
   try {
-    const regularLoginResult = /* await metodo que checkea si el usuario existe(); */
+    //todo axn asíncrona.
     return {
       ok: true,
-      name: regularLoginResult.user.displayName,
-      uuid: regularLoginResult.user.uid,
-      photo: regularLoginResult.user.photoURL,
-      email: regularLoginResult.user.email
+      name: '',
+      uuid: '',
+      photo: '',
+      email: ''
     };
   } catch (error) {
     throw error;
