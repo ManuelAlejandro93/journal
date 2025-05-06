@@ -86,6 +86,8 @@ export const useRegisterForm = () => {
         email,
         password
       };
+
+      //enviar a firebase esta información.
     }
   }, [isFormValid]);
 
