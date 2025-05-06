@@ -2,19 +2,13 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 //todo
 import { firebaseAuth } from '@/Firebase';
+import { RegisterUserInputData } from '@/Interfaces';
 
 //todo si es necesario
 const googleProvider = new GoogleAuthProvider();
 
-//Props
-type userData = {
-  name: string;
-  email: string;
-  password: string;
-};
-
 //todo: modificar la axn asíncrona.
-export const regularRegister = async (userData: userData) => {
+export const regularRegister = async (userData: RegisterUserInputData) => {
   try {
     const signInResult = await signInWithPopup(firebaseAuth, googleProvider);
     return {
