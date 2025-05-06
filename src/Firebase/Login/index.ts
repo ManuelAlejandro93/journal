@@ -1,2 +1,2 @@
 export * from './GoogleLogin';
-export * from './EmailLogin';
+export * from './RegularLogin';
