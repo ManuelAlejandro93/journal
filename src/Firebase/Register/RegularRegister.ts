@@ -11,7 +11,8 @@ export const regularRegister = async (userData: RegisterUserInputData) => {
     );
     return {
       ok: true,
-      name: registerResult.user.displayName,
+      // name: registerResult.user.displayName,
+      name: userData.name,
       uuid: registerResult.user.uid,
       photo: registerResult.user.photoURL,
       email: registerResult.user.email
