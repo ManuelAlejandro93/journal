@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { googleLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
@@ -29,6 +29,10 @@ export const useRegisterForm = () => {
     regularRegisterValidationReducer,
     RegularRegisterValidationInitialState
   );
+
+  // isFormValid desestructurado desde regularRegisterValidationState
+
+  const { isFormValid } = regularRegisterValidationState;
 
   //on Value change event controllers
   const onNameChange = (e: ChangeEvent): void => {
@@ -70,6 +74,20 @@ export const useRegisterForm = () => {
     e.preventDefault();
     dispatch<any>(googleLoginThunk());
   };
+
+  useEffect(() => {
+    if (isFormValid) {
+      const userDataForFireBase: {
+        name: string;
+        email: string;
+        password: string;
+      } = {
+        name,
+        email,
+        password
+      };
+    }
+  }, [isFormValid]);
 
   return {
     name,
