@@ -74,7 +74,13 @@ const authSlice = createSlice({
     });
     builder.addCase(regularRegisterThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
+      logQueryState.errorMessage = null;
       logQueryState.data!.dataStatus = 'checking';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
     });
 
     //! Regular registration
