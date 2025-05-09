@@ -4,5 +4,6 @@ export const loginValidationInitialState: LoginValidationState = {
   hasEmailError: false,
   emailErrorMessage: '',
   hasPasswordError: false,
-  passwordErrorMessage: ''
+  passwordErrorMessage: '',
+  isFormValid: false
 };

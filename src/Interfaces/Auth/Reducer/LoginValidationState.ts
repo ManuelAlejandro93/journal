@@ -3,4 +3,5 @@ export interface LoginValidationState {
   emailErrorMessage: string;
   hasPasswordError: boolean;
   passwordErrorMessage: string;
+  isFormValid: boolean;
 }
