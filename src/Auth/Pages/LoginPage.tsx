@@ -15,7 +15,8 @@ export const LoginPage = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    loginValidationState
+    loginValidationState,
+    isFormValid
   } = useRegularLoginForm();
 
   const {
@@ -28,7 +29,7 @@ export const LoginPage = () => {
   const authState = useSelector((state: RootState) => state.authReducer.state);
 
   return (
-    <AuthLayout authPageName='login'>
+    <AuthLayout authPageName={`login - ${isFormValid}`}>
       <div className='credentials-login-view'>
         <form
           className='p-8 grid space-y-4 items-center'

@@ -75,6 +75,7 @@ export const useRegularLoginForm = () => {
     //? Estados.
     email,
     password,
+    isFormValid,
     //? Controllers.
     onEmailChange,
     onPasswordChange,

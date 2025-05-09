@@ -17,7 +17,7 @@ export const loginValidationReducer = (
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
         passwordErrorMessage: 'Your password must have at least 8 characters',
-        isFormValid: true
+        isFormValid: false
       };
     case 'invalid-email|valid-password':
       return {
@@ -26,7 +26,7 @@ export const loginValidationReducer = (
         emailErrorMessage:
           'Check your email. It must look like this "usuario123@server.com"',
         passwordErrorMessage: 'Good password. It is strong.',
-        isFormValid: true
+        isFormValid: false
       };
     case 'valid-email|invalid-password':
       return {
@@ -34,7 +34,7 @@ export const loginValidationReducer = (
         hasPasswordError: !action.payload.passwordValidationResult,
         emailErrorMessage: 'Your email looks good, check your password',
         passwordErrorMessage: 'Your password must have at least 8 characters',
-        isFormValid: true
+        isFormValid: false
       };
     case 'valid-email|valid-password':
       return {
