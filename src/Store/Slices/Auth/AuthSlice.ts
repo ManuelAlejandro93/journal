@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  emailLoginThunk,
   allCasesLogoutThunk,
   googleLoginThunk,
   regularRegisterThunk
@@ -46,16 +45,16 @@ const authSlice = createSlice({
     });
 
     //! Email login
-    builder.addCase(emailLoginThunk.fulfilled, (logQueryState) => {
+    builder.addCase(regularRegisterThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
       logQueryState.data!.dataStatus = 'authenticated';
     });
-    builder.addCase(emailLoginThunk.rejected, (logQueryState, action) => {
+    builder.addCase(regularRegisterThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
       logQueryState.data!.dataStatus = 'non-authenticated';
       logQueryState.errorMessage = action.error.message;
     });
-    builder.addCase(emailLoginThunk.pending, (logQueryState) => {
+    builder.addCase(regularRegisterThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
       logQueryState.data!.dataStatus = 'checking';
     });
