@@ -27,7 +27,7 @@ export const useRegularLoginForm = () => {
     loginValidationInitialState
   );
 
-  const { isFormValid } = loginValidationInitialState;
+  const { isFormValid } = loginValidationState;
 
   const onEmailChange = (e: ChangeEvent): void => {
     setEmail(e.target.value);
@@ -57,6 +57,8 @@ export const useRegularLoginForm = () => {
   };
 
   useEffect(() => {
+    console.log('se activo el efecto.');
+
     if (isFormValid) {
       const userDataForFireBase: {
         email: string;
