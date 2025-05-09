@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   allCasesLogoutThunk,
   googleLoginAndRegisterThunk,
-  regularRegisterThunk
+  regularRegisterThunk,
+  regularLoginThunk
 } from '@/Store';
 import { logQueryInitialState } from '@/Data';
 
@@ -51,7 +52,7 @@ const authSlice = createSlice({
     });
 
     //! Email login
-    builder.addCase(regularRegisterThunk.fulfilled, (logQueryState, action) => {
+    builder.addCase(regularLoginThunk.fulfilled, (logQueryState, action) => {
       logQueryState.state = 'fulfilled';
       logQueryState.errorMessage = null;
       logQueryState.data!.dataStatus = 'authenticated';
@@ -61,7 +62,7 @@ const authSlice = createSlice({
       logQueryState.data!.photoURL = action.payload.photo;
       logQueryState.data!.uuid = action.payload.uuid;
     });
-    builder.addCase(regularRegisterThunk.rejected, (logQueryState, action) => {
+    builder.addCase(regularLoginThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
       logQueryState.errorMessage = action.error.message;
       logQueryState.data!.dataStatus = 'non-authenticated';
@@ -69,16 +70,6 @@ const authSlice = createSlice({
       logQueryState.data!.email = null;
       logQueryState.data!.errorMessage =
         action.error.message ?? 'Error en firebase, hable con TI.';
-      logQueryState.data!.photoURL = null;
-      logQueryState.data!.uuid = null;
-    });
-    builder.addCase(regularRegisterThunk.pending, (logQueryState) => {
-      logQueryState.state = 'pending';
-      logQueryState.errorMessage = null;
-      logQueryState.data!.dataStatus = 'checking';
-      logQueryState.data!.displayName = null;
-      logQueryState.data!.email = null;
-      logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = null;
       logQueryState.data!.uuid = null;
     });
