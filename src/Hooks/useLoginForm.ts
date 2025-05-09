@@ -1,6 +1,6 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleLoginAndRegisterThunk } from '@/Store';
+import { googleLoginAndRegisterThunk, regularLoginThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
 import {
   loginValidationReducer,
@@ -26,6 +26,8 @@ export const useRegularLoginForm = () => {
     loginValidationReducer,
     loginValidationInitialState
   );
+
+  const { isFormValid } = loginValidationInitialState;
 
   const onEmailChange = (e: ChangeEvent): void => {
     setEmail(e.target.value);
@@ -53,6 +55,21 @@ export const useRegularLoginForm = () => {
     e.preventDefault();
     dispatch<any>(googleLoginAndRegisterThunk());
   };
+
+  useEffect(() => {
+    if (isFormValid) {
+      const userDataForFireBase: {
+        email: string;
+        password: string;
+      } = {
+        email,
+        password
+      };
+
+      //enviar a firebase esta información.
+      dispatch<any>(regularLoginThunk(userDataForFireBase));
+    }
+  }, [isFormValid]);
 
   return {
     //? Estados.
