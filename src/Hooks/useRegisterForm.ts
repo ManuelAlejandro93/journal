@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleLoginThunk, regularRegisterThunk } from '@/Store';
+import { googleLoginAndRegisterThunk, regularRegisterThunk } from '@/Store';
 import { formValidations } from '@/Helpers';
 import {
   registerValidationReducerActionCreatorFn,
@@ -72,7 +72,7 @@ export const useRegisterForm = () => {
 
   const onGoogleRegisterFormSubmit = (e: ClickEvent): void => {
     e.preventDefault();
-    dispatch<any>(googleLoginThunk());
+    dispatch<any>(googleLoginAndRegisterThunk());
   };
 
   useEffect(() => {
