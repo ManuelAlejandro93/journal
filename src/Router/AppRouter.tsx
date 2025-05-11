@@ -20,7 +20,7 @@ export const AppRouter = () => {
       ) : (
         ''
       )}
-      {authDataState === 'non-authenticated' ? (
+      {authDataState === 'non-authenticated' || authDataState === 'checking' ? (
         <Route
           path='*'
           element={<AuthRoutes />}
@@ -28,10 +28,11 @@ export const AppRouter = () => {
       ) : (
         ''
       )}
-      {authDataState === 'checking' ? (
+      {authDataState === 'local-storage-cheking' ||
+      authDataState === 'checking' ? (
         <Route
           path='*'
-          element={<h1>Revisando Autenticación.</h1>}
+          element={<h1>Local Storage Checking</h1>}
         />
       ) : (
         ''
