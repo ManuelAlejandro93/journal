@@ -5,6 +5,8 @@ import { RootState } from '@/Store';
 
 import { JournalRoutes } from '@/Journal';
 import { AuthRoutes } from '@/Auth';
+import { LSCheckingView } from '@/UI';
+
 export const AppRouter = () => {
   const authDataState = useSelector(
     (state: RootState) => state.authReducer.data?.dataStatus
@@ -28,11 +30,10 @@ export const AppRouter = () => {
       ) : (
         ''
       )}
-      {authDataState === 'local-storage-cheking' ||
-      authDataState === 'checking' ? (
+      {authDataState === 'local-storage-checking' ? (
         <Route
           path='*'
-          element={<h1>Local Storage Checking</h1>}
+          element={<LSCheckingView></LSCheckingView>}
         />
       ) : (
         ''

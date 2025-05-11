@@ -7,6 +7,6 @@ export interface LogDataType {
     | 'checking'
     | 'non-authenticated'
     | 'authenticated'
-    | 'local-storage-cheking';
+    | 'local-storage-checking';
   uuid: string | null;
 }

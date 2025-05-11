@@ -8,6 +8,6 @@ export const logInitalState: LogDataType = {
   // dataStatus: 'authenticated',
   // dataStatus: 'non-authenticated',
   // dataStatus: 'checking',
-  dataStatus: 'local-storage-cheking',
+  dataStatus: 'local-storage-checking',
   uuid: null
 };
