@@ -15,8 +15,7 @@ export const LoginPage = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    loginValidationState,
-    isFormValid
+    loginValidationState
   } = useRegularLoginForm();
 
   const {
