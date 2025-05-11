@@ -108,7 +108,7 @@ export const RegisterPage = () => {
         )}
       </form>
       <RouterLink
-        to={'/auth/login'}
+        to={'/login'}
         className='text-right'
       >
         <Typography fontSize={'0.8rem'}>¿Ya tienes una cuenta?</Typography>
