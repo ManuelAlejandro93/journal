@@ -26,7 +26,9 @@ export const LoginPage = () => {
     passwordErrorMessage
   } = loginValidationState;
 
-  const authState = useSelector((state: RootState) => state.authReducer);
+  const authDataState = useSelector(
+    (state: RootState) => state.authReducer.data
+  );
 
   return (
     <AuthLayout authPageName={`login - ${isFormValid}`}>
@@ -60,16 +62,18 @@ export const LoginPage = () => {
             Contraseña
           </TextField>
 
-          {authState.state === 'rejected' ? (
+          {authDataState?.dataStatus === 'non-authenticated' ? (
             <span className='text-red-700'>
               Error Description:{' '}
-              <i className='underline text-red-500'>{authState.errorMessage}</i>
+              <i className='underline text-red-500'>
+                {authDataState.errorMessage}
+              </i>
             </span>
           ) : (
             ''
           )}
 
-          {authState.state === 'pending' ? (
+          {authDataState?.dataStatus === 'checking' ? (
             ''
           ) : (
             <Button
@@ -81,7 +85,7 @@ export const LoginPage = () => {
             </Button>
           )}
 
-          {authState.state === 'pending' ? (
+          {authDataState?.dataStatus === 'checking' ? (
             <div className='flex justify-center'>
               <CircularProgress></CircularProgress>
             </div>
