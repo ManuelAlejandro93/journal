@@ -30,7 +30,7 @@ export const RegisterPage = () => {
   const authState = useSelector((state: RootState) => state.authReducer);
 
   return (
-    <AuthLayout authPageName='regISter'>
+    <AuthLayout authPageName='register'>
       <form
         className='p-8 grid space-y-4'
         onSubmit={onRegularRegisterFormSubmit}
@@ -81,7 +81,7 @@ export const RegisterPage = () => {
           ''
         )}
 
-        {authState.state === 'pending' ? (
+        {authState.data?.dataStatus === 'checking' ? (
           ''
         ) : (
           <Button
@@ -93,7 +93,7 @@ export const RegisterPage = () => {
           </Button>
         )}
 
-        {authState.state === 'pending' ? (
+        {authState.data?.dataStatus === 'checking' ? (
           <div className='flex justify-center'>
             <CircularProgress></CircularProgress>
           </div>
