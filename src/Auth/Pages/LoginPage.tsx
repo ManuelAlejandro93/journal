@@ -15,15 +15,13 @@ export const LoginPage = () => {
     onPasswordChange,
     onRegularLoginFormSubmit,
     onGoogleLoginFormSubmit,
-    loginValidationState
+    loginValidationState: {
+      hasEmailError,
+      emailErrorMessage,
+      hasPasswordError,
+      passwordErrorMessage
+    }
   } = useRegularLoginForm();
-
-  const {
-    hasEmailError,
-    emailErrorMessage,
-    hasPasswordError,
-    passwordErrorMessage
-  } = loginValidationState;
 
   const authState = useSelector((state: RootState) => state.authReducer);
 

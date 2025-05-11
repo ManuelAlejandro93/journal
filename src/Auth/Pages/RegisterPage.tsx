@@ -17,17 +17,15 @@ export const RegisterPage = () => {
     onPasswordChange,
     onGoogleRegisterFormSubmit,
     onRegularRegisterFormSubmit,
-    regularRegisterValidationState
+    regularRegisterValidationState: {
+      hasNameError,
+      hasEmailError,
+      hasPasswordError,
+      nameErrorMessage,
+      emailErrorMessage,
+      passwordErrorMessage
+    }
   } = useRegisterForm();
-
-  const {
-    hasNameError,
-    hasEmailError,
-    hasPasswordError,
-    nameErrorMessage,
-    emailErrorMessage,
-    passwordErrorMessage
-  } = regularRegisterValidationState;
 
   const authState = useSelector((state: RootState) => state.authReducer);
 
