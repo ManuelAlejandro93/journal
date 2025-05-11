@@ -5,6 +5,10 @@ export const AuthRoutes = () => {
   return (
     <Routes>
       <Route
+        path='/'
+        element={<LoginPage />}
+      />
+      <Route
         path='login'
         element={<LoginPage />}
       />
@@ -14,7 +18,7 @@ export const AuthRoutes = () => {
       />
       <Route
         path='/*'
-        element={<Navigate to={'/auth/login'} />}
+        element={<Navigate to={'/'} />}
       />
     </Routes>
   );
