@@ -1,7 +1,11 @@
-export const allCasesLogout = () => {
+import { signOut } from 'firebase/auth';
+import { firebaseAuth } from '@/Firebase';
+
+export const allCasesLogout = async () => {
   try {
-    return 'Todo bien en el logout';
+    await signOut(firebaseAuth);
+    return;
   } catch (error) {
-    throw Error('Todo mal en el logout');
+    throw error;
   }
 };
