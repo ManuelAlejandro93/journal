@@ -57,8 +57,6 @@ export const useRegularLoginForm = () => {
   };
 
   useEffect(() => {
-    console.log('se activo el efecto.');
-
     if (isFormValid) {
       const userDataForFireBase: {
         email: string;
