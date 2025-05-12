@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { drawerWidthSizePx } from '@/PseudoStore';
 import { TurnedInNot } from '@mui/icons-material';
 import {
@@ -13,7 +14,12 @@ import {
   Typography
 } from '@mui/material';
 
+import { RootState } from '@/Store';
+
 export const SideBar = () => {
+  const userName = useSelector(
+    (state: RootState) => state.authReducer.data?.displayName
+  );
   return (
     <Box
       component={'nav'}
@@ -34,9 +40,7 @@ export const SideBar = () => {
         }}
       >
         <Toolbar>
-          <Typography sx={{ color: 'primary.main' }}>
-            Manuel Alejandro
-          </Typography>
+          <Typography sx={{ color: 'primary.main' }}>{userName}</Typography>
         </Toolbar>
         <Divider />
         <Divider />
