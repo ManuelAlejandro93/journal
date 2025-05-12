@@ -168,4 +168,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { onUserExistsOnLS, onUserNotExistsOnLS } = authSlice.caseReducers;
+export const { onUserExistsOnLS, onUserNotExistsOnLS } = authSlice.actions;
