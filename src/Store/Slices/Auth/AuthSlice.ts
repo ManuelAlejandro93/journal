@@ -9,7 +9,7 @@ import {
 
 import { logQueryInitialState } from '@/Data';
 
-import { saveUserOnLS } from '@/Helpers';
+import { saveUserOnLS, deleteUserOnLS } from '@/Helpers';
 import { LogDataType } from '@/Interfaces';
 
 const authSlice = createSlice({
@@ -164,6 +164,7 @@ const authSlice = createSlice({
       logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = null;
       logQueryState.data!.uuid = null;
+      deleteUserOnLS();
     });
     builder.addCase(allCasesLogoutThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
@@ -174,6 +175,7 @@ const authSlice = createSlice({
       logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = null;
       logQueryState.data!.uuid = null;
+      deleteUserOnLS();
     });
     builder.addCase(allCasesLogoutThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
@@ -184,6 +186,7 @@ const authSlice = createSlice({
       logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = null;
       logQueryState.data!.uuid = null;
+      deleteUserOnLS();
     });
   }
 });

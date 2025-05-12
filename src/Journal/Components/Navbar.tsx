@@ -1,9 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar } from '@mui/material';
 
+import { allCasesLogoutThunk } from '@/Store';
 import { drawerWidthSizePx } from '@/PseudoStore';
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <AppBar
       position='fixed'
@@ -25,7 +28,7 @@ export const Navbar = () => {
           <p>opcion n</p>
           <p>opcion n</p>
           <p>opcion n</p>
-          <IconButton>
+          <IconButton onClick={() => dispatch<any>(allCasesLogoutThunk())}>
             <LogoutOutlined sx={{ color: 'white' }}></LogoutOutlined>
           </IconButton>
         </div>
