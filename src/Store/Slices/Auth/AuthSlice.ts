@@ -157,12 +157,33 @@ const authSlice = createSlice({
 
     builder.addCase(allCasesLogoutThunk.fulfilled, (logQueryState) => {
       logQueryState.state = 'fulfilled';
+      logQueryState.errorMessage = null;
+      logQueryState.data!.dataStatus = 'non-authenticated';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
     });
-    builder.addCase(allCasesLogoutThunk.rejected, (logQueryState) => {
+    builder.addCase(allCasesLogoutThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
+      logQueryState.errorMessage = action.error.message;
+      logQueryState.data!.dataStatus = 'non-authenticated';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
     });
     builder.addCase(allCasesLogoutThunk.pending, (logQueryState) => {
       logQueryState.state = 'pending';
+      logQueryState.errorMessage = null;
+      logQueryState.data!.dataStatus = 'checking';
+      logQueryState.data!.displayName = null;
+      logQueryState.data!.email = null;
+      logQueryState.data!.errorMessage = null;
+      logQueryState.data!.photoURL = null;
+      logQueryState.data!.uuid = null;
     });
   }
 });
