@@ -1,11 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   allCasesLogoutThunk,
   googleLoginAndRegisterThunk,
   regularRegisterThunk,
   regularLoginThunk
 } from '@/Store';
+
 import { logQueryInitialState } from '@/Data';
+
+import { saveUserOnLS } from '@/Helpers';
 
 const authSlice = createSlice({
   name: 'auth-state',
@@ -24,6 +28,14 @@ const authSlice = createSlice({
         logQueryState.data!.errorMessage = null;
         logQueryState.data!.photoURL = action.payload.photo;
         logQueryState.data!.uuid = action.payload.uuid;
+        saveUserOnLS({
+          dataStatus: logQueryState.data!.dataStatus,
+          displayName: logQueryState.data!.displayName,
+          email: logQueryState.data!.email,
+          errorMessage: logQueryState.data!.errorMessage,
+          photoURL: logQueryState.data!.photoURL,
+          uuid: logQueryState.data!.uuid
+        });
       }
     );
     builder.addCase(
