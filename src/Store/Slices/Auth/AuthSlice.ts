@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import {
   allCasesLogoutThunk,
@@ -10,11 +10,22 @@ import {
 import { logQueryInitialState } from '@/Data';
 
 import { saveUserOnLS } from '@/Helpers';
+import { LogDataType } from '@/Interfaces';
 
 const authSlice = createSlice({
   name: 'auth-state',
   initialState: logQueryInitialState,
-  reducers: {},
+  reducers: {
+    onUserExistsOnLS(state, action: PayloadAction<LogDataType>) {
+      state.state = 'fulfilled';
+      state.errorMessage = null;
+      state.data = { ...action.payload };
+    },
+    onUserNotExistsOnLS(state) {
+      //? solo es necesario cambiar un valor respecto al valor inicial de arranque.
+      state.data!.dataStatus = 'non-authenticated';
+    }
+  },
   extraReducers(builder) {
     //! Google login and register
     builder.addCase(
@@ -157,3 +168,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { onUserExistsOnLS, onUserNotExistsOnLS } = authSlice.caseReducers;
