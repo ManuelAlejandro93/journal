@@ -73,6 +73,14 @@ const authSlice = createSlice({
       logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = action.payload.photo;
       logQueryState.data!.uuid = action.payload.uuid;
+      saveUserOnLS({
+        dataStatus: logQueryState.data!.dataStatus,
+        displayName: logQueryState.data!.displayName,
+        email: logQueryState.data!.email,
+        errorMessage: logQueryState.data!.errorMessage,
+        photoURL: logQueryState.data!.photoURL,
+        uuid: logQueryState.data!.uuid
+      });
     });
     builder.addCase(regularLoginThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
@@ -106,6 +114,14 @@ const authSlice = createSlice({
       logQueryState.data!.errorMessage = null;
       logQueryState.data!.photoURL = action.payload.photo;
       logQueryState.data!.uuid = action.payload.uuid;
+      saveUserOnLS({
+        dataStatus: logQueryState.data!.dataStatus,
+        displayName: logQueryState.data!.displayName,
+        email: logQueryState.data!.email,
+        errorMessage: logQueryState.data!.errorMessage,
+        photoURL: logQueryState.data!.photoURL,
+        uuid: logQueryState.data!.uuid
+      });
     });
     builder.addCase(regularRegisterThunk.rejected, (logQueryState, action) => {
       logQueryState.state = 'rejected';
