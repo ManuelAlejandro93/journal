@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <ImageGallery/> Debe existir un elemento img que contenga los siguientes atributos alt="bike" y src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6" 1`] = `
+<div>
+  <ul
+    class="MuiImageList-root MuiImageList-masonry css-1agc8on-MuiImageList-root"
+    style="column-count: 5; column-gap: 4px;"
+  >
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Breakfast"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Burger"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Camera"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Coffee"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Hats"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Honey"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Basketball"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Fern"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Mushrooms"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Tomato basil"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Sea star"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Bike"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pruebas en <ImageGallery/> Debe existir un elemento img que contenga los siguientes atributos alt=bike y src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6" 1`] = `
+<div>
+  <ul
+    class="MuiImageList-root MuiImageList-masonry css-1agc8on-MuiImageList-root"
+    style="column-count: 5; column-gap: 4px;"
+  >
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Breakfast"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Burger"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Camera"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Coffee"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Hats"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Honey"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Basketball"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Fern"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Mushrooms"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Tomato basil"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Sea star"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Bike"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Pruebas en <ImageGallery/> Debe ser igual al snapshot 1`] = `
+<div>
+  <ul
+    class="MuiImageList-root MuiImageList-masonry css-1agc8on-MuiImageList-root"
+    style="column-count: 5; column-gap: 4px;"
+  >
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Breakfast"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Burger"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Camera"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Coffee"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Hats"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Honey"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Basketball"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Fern"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Mushrooms"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Tomato basil"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Sea star"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+    <li
+      class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+      style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+    >
+      <img
+        alt="Bike"
+        class="MuiImageListItem-img"
+        loading="lazy"
+        src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format"
+        srcset="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+      />
+    </li>
+  </ul>
+</div>
+`;

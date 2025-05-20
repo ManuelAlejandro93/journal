@@ -1,5 +1,5 @@
 import { Navbar, SideBar } from '@/Journal';
-import { Toolbar } from '@mui/material';
+// import { Toolbar } from '@mui/material';
 
 interface Props {
   children: React.ReactElement[] | React.ReactElement;
