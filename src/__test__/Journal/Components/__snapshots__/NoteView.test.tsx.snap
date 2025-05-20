@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <NoteView/> Debe ser igual al snapshot 1`] = `
+<div>
+  <div
+    class="w-full grid grid-cols-2 justify-evenly content-center gap-8"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-lni8gc-MuiTypography-root"
+    >
+      28 de agosto de 2023
+    </p>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-l41sta-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-145h4gc-MuiSvgIcon-root"
+        data-testid="SaveOutlinedIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7zm2 16H5V5h11.17L19 7.83zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M6 6h9v4H6z"
+        />
+      </svg>
+      Guardar
+    </button>
+    <div
+      class="w-full col-span-2 grid space-y-6"
+    >
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-fhpr02-MuiFormControl-root-MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled css-1u43uf3-MuiFormLabel-root-MuiInputLabel-root"
+          data-shrink="false"
+          for=":r4:"
+          id=":r4:-label"
+        >
+          titulo
+        </label>
+        <div
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1mb1do-MuiInputBase-root-MuiFilledInput-root"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiFilledInput-input css-voecp4-MuiInputBase-input-MuiFilledInput-input"
+            id=":r4:"
+            placeholder="Ingresa un nuevo título"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1tt8tml-MuiFormControl-root-MuiTextField-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled css-1u43uf3-MuiFormLabel-root-MuiInputLabel-root"
+          data-shrink="false"
+          for=":r5:"
+          id=":r5:-label"
+        >
+          Texto de la nota
+        </label>
+        <div
+          class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiFilledInput-multiline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-tigmpx-MuiInputBase-root-MuiFilledInput-root"
+        >
+          <textarea
+            aria-invalid="false"
+            class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-r84nrn-MuiInputBase-input-MuiFilledInput-input"
+            id=":r5:"
+            placeholder="Escribe aquí tu nueva nota"
+            style="height: 0px; overflow: hidden;"
+          />
+          <textarea
+            aria-hidden="true"
+            class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-r84nrn-MuiInputBase-input-MuiFilledInput-input"
+            readonly=""
+            style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+    <ul
+      class="MuiImageList-root MuiImageList-masonry css-1agc8on-MuiImageList-root"
+      style="column-count: 5; column-gap: 4px;"
+    >
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Breakfast"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Burger"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Camera"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1522770179533-24471fcdba45?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Coffee"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Hats"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1533827432537-70133748f5c8?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Honey"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Basketball"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Fern"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 246px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Mushrooms"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25?w=242&h=242&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Tomato basil"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Sea star"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1471357674240-e1a485acb3e1?w=121&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+      <li
+        class="MuiImageListItem-root MuiImageListItem-masonry css-1row2ej-MuiImageListItem-root"
+        style="height: 121px; margin-bottom: 4px; break-inside: avoid;"
+      >
+        <img
+          alt="Bike"
+          class="MuiImageListItem-img"
+          loading="lazy"
+          src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format"
+          srcset="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?w=242&h=121&fit=crop&auto=format&dpr=2 2x"
+        />
+      </li>
+    </ul>
+  </div>
+</div>
+`;
