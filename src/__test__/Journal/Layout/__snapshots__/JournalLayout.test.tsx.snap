@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <JournalLayout/> Debe ser igual al snapshot 1`] = `
+<div>
+  <div
+    class="flex animate-jump-in animate-duration-500"
+  >
+    <main
+      class="p-4 mt-20"
+    />
+  </div>
+</div>
+`;

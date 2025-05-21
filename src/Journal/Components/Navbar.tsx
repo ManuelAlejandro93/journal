@@ -2,8 +2,10 @@ import { useDispatch } from 'react-redux';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar } from '@mui/material';
 
-import { allCasesLogoutThunk } from '@/Store';
-import { drawerWidthSizePx } from '@/PseudoStore';
+// import { allCasesLogoutThunk } from '@/Store';
+import { allCasesLogoutThunk } from '../../Store/Slices/Auth/Thunks/LogoutThunk';
+// import { drawerWidthSizePx } from '@/PseudoStore';
+import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
 
 export const Navbar = () => {
   const dispatch = useDispatch();

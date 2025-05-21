@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { drawerWidthSizePx } from '@/PseudoStore';
+// import { drawerWidthSizePx } from '@/PseudoStore';
+import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
 import { TurnedInNot } from '@mui/icons-material';
 import {
   Box,
@@ -14,7 +15,8 @@ import {
   Typography
 } from '@mui/material';
 
-import { RootState } from '@/Store';
+// import { RootState } from '@/Store';
+import { RootState } from '../../Store/Store/Store';
 
 export const SideBar = () => {
   const userName = useSelector(
