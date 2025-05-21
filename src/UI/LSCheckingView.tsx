@@ -1,5 +1,6 @@
 import { CircularProgress, Typography } from '@mui/material';
-import { AuthLayout } from '@/Auth';
+// import { AuthLayout } from '@/Auth';
+import { AuthLayout } from '../Auth/Layout/AuthLayout';
 
 export const LSCheckingView = () => {
   return (

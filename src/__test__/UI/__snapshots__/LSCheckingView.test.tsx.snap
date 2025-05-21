@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <LSCheckingView/> Debe ser igual al snapshot 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column css-48qvd7-MuiGrid-root"
+  >
+    <div
+      class="grid shadow-2xl shadow-black grid-cols-1 rounded-md bg-white p-4 space-x-4 animate-fade-up"
+    >
+      <div
+        class="text-center"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1wj8ty9-MuiTypography-root"
+        />
+      </div>
+      <div
+        class="flex flex-col items-center"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-et5mm8-MuiTypography-root"
+        >
+          Checking your credentials, plase wait.
+        </p>
+        <span
+          class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-1wxecgq-MuiCircularProgress-root"
+          role="progressbar"
+          style="width: 50px; height: 50px;"
+        >
+          <svg
+            class="MuiCircularProgress-svg css-54pwck-MuiCircularProgress-svg"
+            viewBox="22 22 44 44"
+          >
+            <circle
+              class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-19t5dcl-MuiCircularProgress-circle"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-width="3.6"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
