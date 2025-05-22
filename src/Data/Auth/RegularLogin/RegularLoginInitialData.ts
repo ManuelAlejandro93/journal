@@ -1,4 +1,5 @@
-import { LoginValidationState } from '@/Interfaces';
+// import { LoginValidationState } from '@/Interfaces';
+import { LoginValidationState } from '../../../Interfaces/Auth/Reducer/LoginValidationState';
 
 export const loginValidationInitialState: LoginValidationState = {
   hasEmailError: false,

@@ -1,9 +1,13 @@
-import {
-  LoginValidationReducerAction,
-  LoginValidationState
-} from '@/Interfaces';
+// import {
+//   LoginValidationReducerAction,
+//   LoginValidationState
+// } from '@/Interfaces';
 
-import { loginValidationInitialState } from '@/Data';
+import { LoginValidationReducerAction } from '../../../Interfaces/Auth/Reducer/LoginValidationReducerAction';
+import { LoginValidationState } from '../../../Interfaces/Auth/Reducer/LoginValidationState';
+
+// import { loginValidationInitialState } from '@/Data';
+import { loginValidationInitialState } from '../../../Data/Auth/RegularLogin/RegularLoginInitialData';
 
 export const loginValidationReducer = (
   state: LoginValidationState = loginValidationInitialState,

@@ -1,5 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { firebaseAuth } from '@/Firebase';
+// import { firebaseAuth } from '@/Firebase';
+import { firebaseAuth } from '..//MainTools/MainTools';
 
 const googleProvider = new GoogleAuthProvider();
 

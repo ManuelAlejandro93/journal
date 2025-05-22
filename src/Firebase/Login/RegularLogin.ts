@@ -1,6 +1,8 @@
 import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
-import { LoginUserInputData } from '@/Interfaces';
-import { firebaseAuth } from '@/Firebase';
+// import { LoginUserInputData } from '@/Interfaces';
+import { LoginUserInputData } from '../../Interfaces/Auth/LoginUserInputData';
+// import { firebaseAuth } from '@/Firebase';
+import { firebaseAuth } from '../../Firebase/MainTools/MainTools';
 
 export const regularLogin = async (userLoginInputData: LoginUserInputData) => {
   try {

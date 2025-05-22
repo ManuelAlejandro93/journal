@@ -1,7 +1,10 @@
-import {
-  LoginValidationReducerAction,
-  RegularLoginValidationProcessResults
-} from '@/Interfaces';
+// import {
+//   LoginValidationReducerAction,
+//   RegularLoginValidationProcessResults
+// } from '@/Interfaces';
+
+import { LoginValidationReducerAction } from '../../../../Interfaces/Auth/Reducer/LoginValidationReducerAction';
+import { RegularLoginValidationProcessResults } from '../../../../Interfaces/Auth/Reducer/RegularLoginValidationProcessResults';
 
 export const LoginValidationReducerActionCreatorFn = ({
   emailValidationResult,

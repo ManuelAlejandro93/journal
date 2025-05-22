@@ -1,12 +1,19 @@
 import { useEffect, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleLoginAndRegisterThunk, regularLoginThunk } from '@/Store';
-import { formValidations } from '@/Helpers';
-import {
-  loginValidationReducer,
-  LoginValidationReducerActionCreatorFn
-} from '@/Auth';
-import { loginValidationInitialState } from '@/Data';
+// import { googleLoginAndRegisterThunk, regularLoginThunk } from '@/Store';
+import { googleLoginAndRegisterThunk } from '../Store/Slices/Auth/Thunks/GoogleLoginAndRegisterThunk';
+import { regularLoginThunk } from '../Store/Slices/Auth/Thunks/regularLoginThunk';
+// import { formValidations } from '@/Helpers';
+import { formValidations } from '../Helpers/Validations/formValidations';
+// import {
+//   loginValidationReducer,
+//   LoginValidationReducerActionCreatorFn
+// } from '@/Auth';
+
+import { loginValidationReducer } from '../Auth/Reducers/LoginValidationReducer/LoginValidationReducer';
+import { LoginValidationReducerActionCreatorFn } from '../Auth/Reducers/LoginValidationReducer/actionCreatorFn/actionCreatorFn';
+// import { loginValidationInitialState } from '@/Data';
+import { loginValidationInitialState } from '../Data/Auth/RegularLogin/RegularLoginInitialData';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
