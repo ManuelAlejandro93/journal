@@ -1,4 +1,9 @@
-export type JournalInitialData = {
+export type NoteInitialData = {
+  httpInfo: {
+    isFetching: boolean;
+    hasError: boolean;
+    errorMessage: String | null;
+  };
   isSaving: boolean;
   messageSaved: string;
   notes: string[];
@@ -9,4 +14,4 @@ export type JournalInitialData = {
     date: null;
     imageURL: string[];
   };
-} | null;
+};
