@@ -5,22 +5,8 @@ import { journalInitialData } from '@/Data';
 const journalSlice = createSlice({
   name: 'journal-state',
   initialState: journalInitialData,
-  reducers: {
-    addEmptyNote() {},
-    setActiveNoteNote() {},
-    setNotes() {},
-    setSaving() {},
-    updateNote() {},
-    deleteNoteById() {}
-  }
+  reducers: {}
 });
 
 export const journalReducer = journalSlice.reducer;
-export const {
-  addEmptyNote,
-  setActiveNoteNote,
-  setNotes,
-  setSaving,
-  updateNote,
-  deleteNoteById
-} = journalSlice.actions;
+export const {} = journalSlice.actions;
