@@ -1,1 +1,1 @@
-export * from './newJournalThunk';
+export * from './addNewNoteThunk';

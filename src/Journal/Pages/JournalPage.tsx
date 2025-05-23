@@ -1,11 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { JournalLayout, NothingSelectedView, NoteView } from '@/Journal';
 import { AddOutlined } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { addNewEmptyNoteThunk } from '@/Store';
+import { addNewEmptyNoteThunk, RootState } from '@/Store';
 
 export const JournalPage = () => {
   const dispatch = useDispatch();
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
   return (
     <JournalLayout>
       {/* <NoteView></NoteView> */}
@@ -24,7 +25,7 @@ export const JournalPage = () => {
             opacity: 0.8
           }
         }}
-        onClick={() => dispatch<any>(addNewEmptyNoteThunk())}
+        onClick={() => dispatch<any>(addNewEmptyNoteThunk(uuid!))}
       >
         <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
       </IconButton>
