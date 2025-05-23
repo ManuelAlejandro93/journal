@@ -1,13 +1,13 @@
-import { JournalLayout, /* NothingSelectedView */ NoteView } from '@/Journal';
-// import { AddOutlined } from '@mui/icons-material';
-// import { IconButton } from '@mui/material';
+import { JournalLayout, NothingSelectedView, NoteView } from '@/Journal';
+import { AddOutlined } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 export const JournalPage = () => {
   return (
     <JournalLayout>
-      <NoteView></NoteView>
-      {/* <NothingSelectedView></NothingSelectedView> */}
-      {/* <IconButton
+      {/* <NoteView></NoteView> */}
+      <NothingSelectedView></NothingSelectedView>
+      <IconButton
         size='large'
         sx={{
           backgroundColor: 'secondary.main',
@@ -23,7 +23,7 @@ export const JournalPage = () => {
         }}
       >
         <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
-      </IconButton> */}
+      </IconButton>
     </JournalLayout>
   );
 };

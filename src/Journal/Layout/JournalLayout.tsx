@@ -1,4 +1,4 @@
-// import { Navbar, SideBar } from '@/Journal';
+import { Navbar, SideBar } from '@/Journal';
 // import { Navbar } from '../Components/Navbar';
 // import { SideBar } from '../Components/SideBar';
 // import { Toolbar } from '@mui/material';
@@ -10,8 +10,8 @@ interface Props {
 export const JournalLayout = ({ children }: Props) => {
   return (
     <div className='flex animate-jump-in animate-duration-500'>
-      {/* <SideBar />
-      <Navbar /> */}
+      <SideBar />
+      <Navbar />
       <main className='p-4 mt-20'>{children}</main>
     </div>
   );
