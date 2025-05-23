@@ -12,7 +12,6 @@ export const regularRegister = async (userData: RegisterUserInputData) => {
 
     return {
       ok: true,
-      // name: registerResult.user.displayName,
       name: userData.name.trim(),
       uuid: firstRegisterResult.user.uid,
       photo: firstRegisterResult.user.photoURL ?? '',
