@@ -7,6 +7,11 @@ interface data {
 export const addNewEmptyNote = async (uuid: string): Promise<data> => {
   //todo: debo enviar este uid desde Journalpage
   uuid.at(0);
+  const newNote = {
+    title: '',
+    body: '',
+    date: new Date().getTime()
+  };
   try {
     let { data } = await axios.get<data>('https://rickandmortyapi.com/api');
     return data;
