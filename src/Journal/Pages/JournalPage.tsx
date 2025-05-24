@@ -7,6 +7,9 @@ import { addNewEmptyNoteThunk, RootState } from '@/Store';
 export const JournalPage = () => {
   const dispatch = useDispatch();
   const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+  const isFetching = useSelector(
+    (state: RootState) => state.journalReducer.httpInfo.isFetching
+  );
   return (
     <JournalLayout>
       {/* <NoteView></NoteView> */}
@@ -26,6 +29,7 @@ export const JournalPage = () => {
           }
         }}
         onClick={() => dispatch<any>(addNewEmptyNoteThunk(uuid!))}
+        disabled={isFetching}
       >
         <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
       </IconButton>
