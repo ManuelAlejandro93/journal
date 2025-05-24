@@ -1,21 +1,18 @@
-import axios from 'axios';
+import { doc, collection, setDoc } from 'firebase/firestore/lite';
+import { firebaseDB } from '@/Firebase';
 
-interface data {
-  name: 'generic name';
-}
+export const addNewEmptyNote = async (uuid: string): Promise<undefined> => {
+  const newDoc = doc(collection(firebaseDB, `${uuid}/journal/notes`));
 
-export const addNewEmptyNote = async (uuid: string): Promise<data> => {
-  //todo: debo enviar este uid desde Journalpage
-  uuid.at(0);
   const newNote = {
     title: '',
     body: '',
     date: new Date().getTime()
   };
-  newNote;
+
   try {
-    let { data } = await axios.get<data>('https://rickandmortyapi.com/api');
-    return data;
+    await setDoc(newDoc, newNote);
+    return;
   } catch (error) {
     throw error;
   }
