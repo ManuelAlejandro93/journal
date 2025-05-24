@@ -5,7 +5,7 @@ import { JournalApp } from './JournalApp';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <>
     <JournalApp />
-  </StrictMode>
+  </>
 );

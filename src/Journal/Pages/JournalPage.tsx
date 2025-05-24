@@ -13,6 +13,7 @@ export const JournalPage = () => {
   const isThereActiveNote = useSelector(
     (state: RootState) => state.journalReducer.isThereActiveNote
   );
+
   return (
     <JournalLayout>
       {isThereActiveNote ? (

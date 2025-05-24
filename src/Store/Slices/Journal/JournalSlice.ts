@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
-import { addNewEmptyNoteThunk } from '@/Store';
+import { addNewEmptyNoteThunk, getAllNotesThunk } from '@/Store';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -28,6 +28,25 @@ const journalSlice = createSlice({
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = true;
       noteState.isSavingInDB = false;
+    });
+    builder.addCase(getAllNotesThunk.fulfilled, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = false;
+      noteState.isSavingInDB = false;
+      noteState.isThereActiveNote = true;
+    });
+
+    builder.addCase(getAllNotesThunk.rejected, (noteState, action) => {
+      noteState!.httpInfo.hasError = true;
+      noteState!.httpInfo.errorMessage = action.error.message!;
+      noteState!.httpInfo.isFetching = false;
+    });
+
+    builder.addCase(getAllNotesThunk.pending, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = true;
     });
   }
 });
