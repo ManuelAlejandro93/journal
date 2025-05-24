@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { JournalLayout, NoteView, NothingSelectedView } from '@/Journal';
 import { AddOutlined } from '@mui/icons-material';
-import { IconButton, CircularProgress } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import { addNewEmptyNoteThunk, RootState } from '@/Store';
 
 export const JournalPage = () => {
@@ -16,20 +16,20 @@ export const JournalPage = () => {
   return (
     <JournalLayout>
       {isThereActiveNote ? (
-        <>
-          <NoteView></NoteView>
-        </>
+        <NoteView></NoteView>
       ) : (
         <>
           <NothingSelectedView></NothingSelectedView>
+
           {isFetching ? (
             <CircularProgress
               sx={{
                 position: 'fixed',
                 right: 50,
-                bottom: 60
+                bottom: 60,
+                color: 'red'
               }}
-              color='error'
+              size={80}
             ></CircularProgress>
           ) : (
             <>
@@ -50,7 +50,6 @@ export const JournalPage = () => {
                   }
                 }}
                 onClick={() => dispatch<any>(addNewEmptyNoteThunk(uuid!))}
-                disabled={isFetching}
               >
                 <AddOutlined
                   sx={{ color: 'white', fontSize: 50 }}
