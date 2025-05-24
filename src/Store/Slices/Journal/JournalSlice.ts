@@ -29,12 +29,18 @@ const journalSlice = createSlice({
       noteState!.httpInfo.isFetching = true;
       noteState.isSavingInDB = false;
     });
-    builder.addCase(getAllNotesThunk.fulfilled, (noteState) => {
+    builder.addCase(getAllNotesThunk.fulfilled, (noteState, action) => {
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = false;
       noteState.isSavingInDB = false;
       noteState.isThereActiveNote = true;
+      noteState.allNotes = action.payload;
+      noteState.activeNote.body = action.payload[0].body;
+      noteState.activeNote.date = action.payload[0].date;
+      noteState.activeNote.noteId = action.payload[0].noteId;
+      noteState.activeNote.noteId = action.payload[0].noteId;
+      noteState.activeNote.title = action.payload[0].title;
     });
 
     builder.addCase(getAllNotesThunk.rejected, (noteState, action) => {
