@@ -12,6 +12,7 @@ export const addNewEmptyNote = async (uuid: string): Promise<data> => {
     body: '',
     date: new Date().getTime()
   };
+  newNote;
   try {
     let { data } = await axios.get<data>('https://rickandmortyapi.com/api');
     return data;

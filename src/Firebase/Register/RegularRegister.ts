@@ -1,6 +1,6 @@
 import {
-  createUserWithEmailAndPassword,
-  updateCurrentUser
+  createUserWithEmailAndPassword
+  /* updateCurrentUser */
 } from 'firebase/auth';
 import { firebaseAuth } from '@/Firebase';
 import { RegisterUserInputData } from '@/Interfaces';
