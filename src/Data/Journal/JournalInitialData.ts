@@ -7,5 +7,6 @@ export const noteInitialData: NoteInitialData = {
   },
   isSavingInDB: false,
   allNotes: [],
-  activeNote: { body: null, date: null, noteId: null, title: null }
+  activeNote: { body: null, date: null, noteId: null, title: null },
+  isThereActiveNote: false
 };

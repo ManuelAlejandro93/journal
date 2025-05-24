@@ -5,7 +5,7 @@ import { ImageGallery } from '../Components/ImageGallery';
 
 export const NoteView = () => {
   return (
-    <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8'>
+    <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
         28 de agosto de 2023
       </Typography>

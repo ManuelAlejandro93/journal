@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import { drawerWidthSizePx } from '@/PseudoStore';
 import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
-import { TurnedInNot } from '@mui/icons-material';
+import { AddOutlined, TurnedInNot } from '@mui/icons-material';
 import {
   Box,
+  Button,
+  CircularProgress,
   Divider,
   Drawer,
   List,
@@ -12,16 +14,25 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography
+  Typography,
+  LinearProgress
 } from '@mui/material';
 
 // import { RootState } from '@/Store';
-import { RootState } from '../../Store/Store/Store';
+
+import { addNewEmptyNoteThunk, RootState } from '@/Store';
 
 export const SideBar = () => {
   const userName = useSelector(
     (state: RootState) => state.authReducer.data?.displayName
   );
+
+  const isFetching = useSelector(
+    (state: RootState) => state.journalReducer.httpInfo.isFetching
+  );
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
+  const dispatch = useDispatch();
   return (
     <Box
       component={'nav'}
@@ -49,6 +60,29 @@ export const SideBar = () => {
         <Divider />
         <Divider />
         <Divider />
+
+        {isFetching ? (
+          <LinearProgress
+            color='error'
+            sx={{ height: 50, backgroundColor: 'primary.main' }}
+          ></LinearProgress>
+        ) : (
+          <Button
+            onClick={() => dispatch<any>(addNewEmptyNoteThunk(uuid!))}
+            sx={{
+              backgroundColor: 'primary.main',
+              color: 'white',
+              ':hover': {
+                backgroundColor: 'secondary.main',
+                opacity: 0.8
+              }
+            }}
+          >
+            Añadir Nueva Nota
+            <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
+          </Button>
+        )}
+
         <List>
           {['Enero', 'Febrero'].map((month) => (
             <ListItem

@@ -9,4 +9,5 @@ export type NoteInitialData = {
   isSavingInDB: boolean;
   allNotes: Note[];
   activeNote: Note;
+  isThereActiveNote: boolean;
 };
