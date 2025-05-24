@@ -8,21 +8,25 @@ const journalSlice = createSlice({
   initialState: noteInitialData,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(addNewEmptyNoteThunk.fulfilled, (noteState) => {
+    builder.addCase(addNewEmptyNoteThunk.fulfilled, (noteState, action) => {
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = false;
+      noteState.isSavingInDB = false;
+      noteState.allNotes.unshift(action.payload);
+      noteState.activeNote = { ...action.payload };
     });
-    builder.addCase(addNewEmptyNoteThunk.rejected, (noteState) => {
+    builder.addCase(addNewEmptyNoteThunk.rejected, (noteState, action) => {
       noteState!.httpInfo.hasError = true;
-      //todo cambiar el error por el error del action.
-      noteState!.httpInfo.errorMessage = 'error del action';
+      noteState!.httpInfo.errorMessage = action.error.message!;
       noteState!.httpInfo.isFetching = false;
+      noteState.isSavingInDB = false;
     });
     builder.addCase(addNewEmptyNoteThunk.pending, (noteState) => {
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = true;
+      noteState.isSavingInDB = false;
     });
   }
 });
