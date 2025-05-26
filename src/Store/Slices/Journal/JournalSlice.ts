@@ -1,12 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
 import { addNewEmptyNoteThunk, getAllNotesThunk } from '@/Store';
+import { Note } from '@/Interfaces';
 
 const journalSlice = createSlice({
   name: 'journal-state',
   initialState: noteInitialData,
-  reducers: {},
+  reducers: {
+    setActiveNote(state, action: PayloadAction<Note>) {
+      state.activeNote.body = action.payload.body;
+      state.activeNote.date = action.payload.date;
+      state.activeNote.noteId = action.payload.noteId;
+      state.activeNote.title = action.payload.title;
+    }
+  },
   extraReducers(builder) {
     builder.addCase(addNewEmptyNoteThunk.fulfilled, (noteState, action) => {
       noteState!.httpInfo.hasError = false;
@@ -60,4 +68,4 @@ const journalSlice = createSlice({
 });
 
 export const journalReducer = journalSlice.reducer;
-export const {} = journalSlice.actions;
+export const { setActiveNote } = journalSlice.actions;

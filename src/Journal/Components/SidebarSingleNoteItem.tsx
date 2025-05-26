@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { TurnedInNot } from '@mui/icons-material';
 import {
   ListItem,
@@ -7,11 +8,14 @@ import {
 } from '@mui/material';
 
 import { Note } from '@/Interfaces';
+import { setActiveNote } from '@/Store';
 export const SidebarSingleNoteItem = (note: Note) => {
+  const dispatch = useDispatch();
   return (
     <ListItem
       key={note.noteId}
       sx={{ color: 'primary.main' }}
+      onClick={() => dispatch(setActiveNote(note))}
     >
       <ListItemButton>
         <ListItemIcon>
