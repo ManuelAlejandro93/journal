@@ -30,7 +30,7 @@ export const JournalPage = () => {
                 bottom: 60,
                 color: 'red'
               }}
-              size={80}
+              size={50}
             ></CircularProgress>
           ) : (
             <>

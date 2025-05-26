@@ -85,31 +85,36 @@ export const SideBar = () => {
             <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
           </Button>
         )}
-
-        <List>
-          {notes.length <= 0 ? (
-            <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-              "No hay notas escritas."
-            </Typography>
-          ) : (
-            notes.map((note) => (
-              <ListItem
-                key={note.noteId}
-                sx={{ color: 'primary.main' }}
-              >
-                <ListItemButton>
-                  <ListItemIcon>
-                    <TurnedInNot />
-                  </ListItemIcon>
-                  <div>
-                    <b>{note.title}</b>
-                    <ListItemText>{note.date}</ListItemText>
-                  </div>
-                </ListItemButton>
-              </ListItem>
-            ))
-          )}
-        </List>
+        {isFetching ? (
+          <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
+            Trayendo notas...
+          </Typography>
+        ) : (
+          <List>
+            {notes.length <= 0 ? (
+              <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
+                No hay notas escritas
+              </Typography>
+            ) : (
+              notes.map((note) => (
+                <ListItem
+                  key={note.noteId}
+                  sx={{ color: 'primary.main' }}
+                >
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <TurnedInNot />
+                    </ListItemIcon>
+                    <div>
+                      <b>{note.title}</b>
+                      <ListItemText>{note.date}</ListItemText>
+                    </div>
+                  </ListItemButton>
+                </ListItem>
+              ))
+            )}
+          </List>
+        )}
       </Drawer>
     </Box>
   );
