@@ -1,23 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { drawerWidthSizePx } from '@/PseudoStore';
 // import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
-import { AddOutlined, TurnedInNot } from '@mui/icons-material';
+import { AddOutlined } from '@mui/icons-material';
 import {
   Box,
   Button,
   Divider,
   Drawer,
   List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   Typography,
   LinearProgress
 } from '@mui/material';
 
 import { addNewEmptyNoteThunk, RootState } from '@/Store';
+import { SidebarSingleNoteItem } from '@/Journal';
 
 // const meses = ['Enero', 'Febrero'];
 
@@ -97,20 +94,7 @@ export const SideBar = () => {
               </Typography>
             ) : (
               notes.map((note) => (
-                <ListItem
-                  key={note.noteId}
-                  sx={{ color: 'primary.main' }}
-                >
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <TurnedInNot />
-                    </ListItemIcon>
-                    <div>
-                      <b>{note.title}</b>
-                      <ListItemText>{note.date}</ListItemText>
-                    </div>
-                  </ListItemButton>
-                </ListItem>
+                <SidebarSingleNoteItem {...note}></SidebarSingleNoteItem>
               ))
             )}
           </List>
