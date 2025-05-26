@@ -2,12 +2,14 @@ import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
 // import { ImageGallery } from '@/Journal';
 import { ImageGallery } from '../Components/ImageGallery';
+import { useNote } from '@/Hooks';
 
 export const NoteView = () => {
+  const { title, body, onTitleChange, onBodyChange } = useNote();
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-        28 de agosto de 2023
+        {title}
       </Typography>
       <Button
         variant='outlined'
@@ -24,6 +26,8 @@ export const NoteView = () => {
           type='text'
           label='titulo'
           variant='filled'
+          value={title}
+          onChange={onTitleChange}
         />
         <TextField
           sx={{ color: 'primary.main', gridRow: 2 }}
@@ -34,6 +38,8 @@ export const NoteView = () => {
           variant='filled'
           multiline
           minRows={3}
+          value={body}
+          onChange={onBodyChange}
         />
       </div>
       <ImageGallery />

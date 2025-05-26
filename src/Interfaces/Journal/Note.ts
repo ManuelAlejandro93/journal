@@ -3,4 +3,5 @@ export interface Note {
   title: string | null;
   body: string | null;
   date: number | null;
+  imgUrls: string[];
 }
