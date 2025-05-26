@@ -47,6 +47,8 @@ const journalSlice = createSlice({
       noteState!.httpInfo.hasError = true;
       noteState!.httpInfo.errorMessage = action.error.message!;
       noteState!.httpInfo.isFetching = false;
+      //!no hay notas.
+      noteState!.allNotes = [];
     });
 
     builder.addCase(getAllNotesThunk.pending, (noteState) => {

@@ -1,11 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import { drawerWidthSizePx } from '@/PseudoStore';
-import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
+import { drawerWidthSizePx } from '@/PseudoStore';
+// import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
 import { AddOutlined, TurnedInNot } from '@mui/icons-material';
 import {
   Box,
   Button,
-  CircularProgress,
   Divider,
   Drawer,
   List,
@@ -18,9 +17,9 @@ import {
   LinearProgress
 } from '@mui/material';
 
-// import { RootState } from '@/Store';
-
 import { addNewEmptyNoteThunk, RootState } from '@/Store';
+
+// const meses = ['Enero', 'Febrero'];
 
 export const SideBar = () => {
   const userName = useSelector(
@@ -31,6 +30,10 @@ export const SideBar = () => {
     (state: RootState) => state.journalReducer.httpInfo.isFetching
   );
   const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
+  const notes = useSelector(
+    (state: RootState) => state.journalReducer.allNotes
+  );
 
   const dispatch = useDispatch();
   return (
@@ -84,25 +87,28 @@ export const SideBar = () => {
         )}
 
         <List>
-          {['Enero', 'Febrero'].map((month) => (
-            <ListItem
-              key={month}
-              sx={{ color: 'primary.main' }}
-            >
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                </ListItemIcon>
-                <div>
-                  <b>{month}</b>
-
-                  <ListItemText>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </ListItemText>
-                </div>
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {notes.length <= 0 ? (
+            <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
+              "No hay notas escritas."
+            </Typography>
+          ) : (
+            notes.map((note) => (
+              <ListItem
+                key={note.noteId}
+                sx={{ color: 'primary.main' }}
+              >
+                <ListItemButton>
+                  <ListItemIcon>
+                    <TurnedInNot />
+                  </ListItemIcon>
+                  <div>
+                    <b>{note.title}</b>
+                    <ListItemText>{note.date}</ListItemText>
+                  </div>
+                </ListItemButton>
+              </ListItem>
+            ))
+          )}
         </List>
       </Drawer>
     </Box>
