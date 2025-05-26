@@ -5,11 +5,11 @@ import { ImageGallery } from '../Components/ImageGallery';
 import { useNote } from '@/Hooks';
 
 export const NoteView = () => {
-  const { title, body, onTitleChange, onBodyChange } = useNote();
+  const { title, body, formatedDate, onTitleChange, onBodyChange } = useNote();
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-        {title}
+        {formatedDate}
       </Typography>
       <Button
         variant='outlined'

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { RootState } from '@/Store';
 import { Note } from '@/Interfaces';
 
@@ -10,33 +10,25 @@ type SubmitEvent = React.FormEvent<HTMLFormElement>;
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export const useNote = () => {
-  const activeNote = useSelector(
+  const storeActiveNote = useSelector(
     (state: RootState) => state.journalReducer.activeNote
   );
 
-  const [title, setTitle] = useState<string>(activeNote.title!);
-  const [body, setBody] = useState<string>(activeNote.body!);
-  const [date] = useState<number>(activeNote.date!);
-  const [imgUrls] = useState<string[]>(activeNote.imgUrls!);
-  const [noteId] = useState<string>(activeNote.noteId!);
+  const formatedDate = useMemo(
+    () => new Date(storeActiveNote.date!).toUTCString(),
+    [storeActiveNote]
+  );
 
-  const onTitleChange = (e: ChangeEvent): void => {
-    setTitle(e.target.value);
-  };
+  const [activeNoteState, setActiveNoteState] = useState<Note>(storeActiveNote);
 
-  const onBodyChange = (e: ChangeEvent): void => {
-    setBody(e.target.value);
-  };
+  useEffect(() => {
+    setActiveNoteState(storeActiveNote);
+  }, [storeActiveNote]);
 
   return {
     //? Estados.
-    title,
-    body,
-    date,
-    imgUrls,
-    noteId,
+    formatedDate,
+    activeNoteState
     //? Controllers.
-    onTitleChange,
-    onBodyChange
   };
 };
