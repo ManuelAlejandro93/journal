@@ -24,7 +24,7 @@ export const SidebarSingleNoteItem = (note: Note) => {
         <div>
           <b>{note.date}</b>
           <ListItemText>{note.date}</ListItemText>
-          <ListItemText>{note.date}</ListItemText>
+          <ListItemText>{note.date + '2222'}</ListItemText>
         </div>
       </ListItemButton>
     </ListItem>

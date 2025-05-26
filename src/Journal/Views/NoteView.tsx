@@ -2,14 +2,15 @@ import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
 // import { ImageGallery } from '@/Journal';
 import { ImageGallery } from '../Components/ImageGallery';
-import { useNote } from '@/Hooks';
+import { useNoteForm } from '@/Hooks';
 
 export const NoteView = () => {
-  const { title, body, formatedDate, onTitleChange, onBodyChange } = useNote();
+  const { body, title, onBodyChange, onTitleChange, formattedDate } =
+    useNoteForm();
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-        {formatedDate}
+        {formattedDate}
       </Typography>
       <Button
         variant='outlined'

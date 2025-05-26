@@ -15,6 +15,7 @@ import {
 
 import { addNewEmptyNoteThunk, RootState } from '@/Store';
 import { SidebarSingleNoteItem } from '@/Journal';
+import { useEffect, useMemo } from 'react';
 
 // const meses = ['Enero', 'Febrero'];
 
@@ -31,6 +32,10 @@ export const SideBar = () => {
   const notes = useSelector(
     (state: RootState) => state.journalReducer.allNotes
   );
+
+  const updatedNotes = useMemo(() => notes, [notes]);
+
+  useEffect(() => {}, [notes]);
 
   const dispatch = useDispatch();
   return (
@@ -88,7 +93,7 @@ export const SideBar = () => {
           </Typography>
         ) : (
           <List>
-            {notes.length <= 0 ? (
+            {updatedNotes.length <= 0 ? (
               <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
                 No hay notas escritas
               </Typography>

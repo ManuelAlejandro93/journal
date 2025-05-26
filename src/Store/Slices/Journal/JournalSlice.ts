@@ -4,6 +4,8 @@ import { noteInitialData } from '@/Data';
 import { addNewEmptyNoteThunk, getAllNotesThunk } from '@/Store';
 import { Note } from '@/Interfaces';
 
+type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+
 const journalSlice = createSlice({
   name: 'journal-state',
   initialState: noteInitialData,
@@ -13,6 +15,26 @@ const journalSlice = createSlice({
       state.activeNote.date = action.payload.date;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
+    },
+    onChangeActiveNoteTitle(state, action: PayloadAction<string>) {
+      //actualizo el body activa
+      state.activeNote.title = action.payload;
+      //actualizo todas los body
+      state.allNotes = state.allNotes.map((note) => {
+        if (note.noteId === action.payload) {
+          return { ...note, title: action.payload };
+        } else return note;
+      });
+    },
+    onChangeActiveNoteBody(state, action: PayloadAction<string>) {
+      //actualizo el titulo activo
+      state.activeNote.body = action.payload;
+      //actualizo todos los titulos
+      state.allNotes = state.allNotes.map((note) => {
+        if (note.noteId === action.payload) {
+          return { ...note, body: action.payload };
+        } else return note;
+      });
     }
   },
   extraReducers(builder) {
@@ -68,4 +90,8 @@ const journalSlice = createSlice({
 });
 
 export const journalReducer = journalSlice.reducer;
-export const { setActiveNote } = journalSlice.actions;
+export const {
+  setActiveNote,
+  onChangeActiveNoteBody,
+  onChangeActiveNoteTitle
+} = journalSlice.actions;
