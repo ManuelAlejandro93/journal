@@ -8,7 +8,8 @@ export const addNewEmptyNote = async (uuid: string): Promise<Note> => {
   const newNoteTemp = {
     title: '',
     body: '',
-    date: new Date().getTime()
+    date: new Date().getTime(),
+    imgUrls: ['']
   };
 
   try {

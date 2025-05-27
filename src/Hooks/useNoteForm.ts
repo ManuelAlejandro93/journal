@@ -16,6 +16,7 @@ interface useNoteFormOutput extends Note {
   onTitleChange: (e: ChangeEvent, uuid: string) => void;
   onBodyChange: (e: ChangeEvent, uuid: string) => void;
   formattedDate: string;
+  storeActiveNote: Note;
 }
 
 export const useNoteForm = (): useNoteFormOutput => {
@@ -52,6 +53,7 @@ export const useNoteForm = (): useNoteFormOutput => {
     title: storeActiveNote.title,
     formattedDate,
     onBodyChange,
-    onTitleChange
+    onTitleChange,
+    storeActiveNote
   };
 };

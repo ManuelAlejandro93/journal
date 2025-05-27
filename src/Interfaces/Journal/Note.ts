@@ -1,5 +1,5 @@
 export interface Note {
-  noteId: string | null;
+  noteId?: string | null;
   title: string | null;
   body: string | null;
   date: number | null;

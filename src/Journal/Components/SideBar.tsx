@@ -85,7 +85,7 @@ export const SideBar = () => {
         )}
         {isFetching ? (
           <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-            Trayendo notas...
+            Sincronizando notas...
           </Typography>
         ) : (
           <List>

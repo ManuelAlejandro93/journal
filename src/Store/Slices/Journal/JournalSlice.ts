@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
-import { addNewEmptyNoteThunk, getAllNotesThunk } from '@/Store';
+import {
+  addNewEmptyNoteThunk,
+  getAllNotesThunk,
+  updateSingleNoteByIDThunk
+} from '@/Store';
 import { Note } from '@/Interfaces';
-
-type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -88,6 +90,24 @@ const journalSlice = createSlice({
     });
 
     builder.addCase(getAllNotesThunk.pending, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = true;
+    });
+    builder.addCase(updateSingleNoteByIDThunk.fulfilled, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = false;
+      noteState.isSavingInDB = false;
+    });
+
+    builder.addCase(updateSingleNoteByIDThunk.rejected, (noteState, action) => {
+      noteState!.httpInfo.hasError = true;
+      noteState!.httpInfo.errorMessage = action.error.message!;
+      noteState!.httpInfo.isFetching = false;
+    });
+
+    builder.addCase(updateSingleNoteByIDThunk.pending, (noteState) => {
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = true;

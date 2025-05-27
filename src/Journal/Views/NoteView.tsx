@@ -3,10 +3,23 @@ import { SaveOutlined } from '@mui/icons-material';
 // import { ImageGallery } from '@/Journal';
 import { ImageGallery } from '../Components/ImageGallery';
 import { useNoteForm } from '@/Hooks';
+import { updateSingleNoteByIDThunk } from '@/Store';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/Store';
 
 export const NoteView = () => {
-  const { body, title, noteId, onBodyChange, onTitleChange, formattedDate } =
-    useNoteForm();
+  const {
+    body,
+    title,
+    noteId,
+    onBodyChange,
+    onTitleChange,
+    formattedDate,
+    storeActiveNote
+  } = useNoteForm();
+  const dispatch = useDispatch();
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
@@ -15,6 +28,14 @@ export const NoteView = () => {
       <Button
         variant='outlined'
         sx={{ color: 'primary.main' }}
+        onClick={() =>
+          dispatch<any>(
+            updateSingleNoteByIDThunk({
+              note: storeActiveNote,
+              uuid: uuid as string
+            })
+          )
+        }
       >
         <SaveOutlined sx={{ mr: 2 }}></SaveOutlined>
         Guardar
