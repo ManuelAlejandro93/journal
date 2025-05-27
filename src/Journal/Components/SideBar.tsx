@@ -15,7 +15,6 @@ import {
 
 import { addNewEmptyNoteThunk, RootState } from '@/Store';
 import { SidebarSingleNoteItem } from '@/Journal';
-import { useEffect, useMemo } from 'react';
 
 // const meses = ['Enero', 'Febrero'];
 
@@ -33,11 +32,8 @@ export const SideBar = () => {
     (state: RootState) => state.journalReducer.allNotes
   );
 
-  const updatedNotes = useMemo(() => notes, [notes]);
-
-  useEffect(() => {}, [notes]);
-
   const dispatch = useDispatch();
+
   return (
     <Box
       component={'nav'}
@@ -93,13 +89,16 @@ export const SideBar = () => {
           </Typography>
         ) : (
           <List>
-            {updatedNotes.length <= 0 ? (
+            {notes.length <= 0 ? (
               <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
                 No hay notas escritas
               </Typography>
             ) : (
               notes.map((note) => (
-                <SidebarSingleNoteItem {...note}></SidebarSingleNoteItem>
+                <SidebarSingleNoteItem
+                  key={note.noteId}
+                  {...note}
+                ></SidebarSingleNoteItem>
               ))
             )}
           </List>

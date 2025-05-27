@@ -13,7 +13,6 @@ export const SidebarSingleNoteItem = (note: Note) => {
   const dispatch = useDispatch();
   return (
     <ListItem
-      key={note.noteId}
       sx={{ color: 'primary.main' }}
       onClick={() => dispatch(setActiveNote(note))}
     >
@@ -22,9 +21,9 @@ export const SidebarSingleNoteItem = (note: Note) => {
           <TurnedInNot />
         </ListItemIcon>
         <div>
-          <b>{note.date}</b>
-          <ListItemText>{note.date}</ListItemText>
-          <ListItemText>{note.date + '2222'}</ListItemText>
+          <b>{note.title}</b>
+          <ListItemText>{note.title}</ListItemText>
+          <ListItemText>{note.title}</ListItemText>
         </div>
       </ListItemButton>
     </ListItem>
