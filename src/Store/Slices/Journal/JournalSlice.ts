@@ -16,23 +16,29 @@ const journalSlice = createSlice({
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
     },
-    onChangeActiveNoteTitle(state, action: PayloadAction<string>) {
+    onChangeActiveNoteTitle(
+      state,
+      action: PayloadAction<{ newString: string; uuid: string }>
+    ) {
       //actualizo el body activa
-      state.activeNote.title = action.payload;
+      state.activeNote.title = action.payload.newString;
       //actualizo todas los body
       state.allNotes = state.allNotes.map((note) => {
-        if (note.noteId === action.payload) {
-          return { ...note, title: action.payload };
+        if (note.noteId === action.payload.uuid) {
+          return { ...note, title: action.payload.newString };
         } else return note;
       });
     },
-    onChangeActiveNoteBody(state, action: PayloadAction<string>) {
-      //actualizo el titulo activo
-      state.activeNote.body = action.payload;
-      //actualizo todos los titulos
+    onChangeActiveNoteBody(
+      state,
+      action: PayloadAction<{ newString: string; uuid: string }>
+    ) {
+      //actualizo el body activa
+      state.activeNote.body = action.payload.newString;
+      //actualizo todas los body
       state.allNotes = state.allNotes.map((note) => {
-        if (note.noteId === action.payload) {
-          return { ...note, body: action.payload };
+        if (note.noteId === action.payload.uuid) {
+          return { ...note, body: action.payload.newString };
         } else return note;
       });
     }

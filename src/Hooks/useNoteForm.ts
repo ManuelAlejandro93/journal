@@ -13,8 +13,8 @@ type SubmitEvent = React.FormEvent<HTMLFormElement>;
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 interface useNoteFormOutput extends Note {
-  onTitleChange: (e: ChangeEvent) => void;
-  onBodyChange: (e: ChangeEvent) => void;
+  onTitleChange: (e: ChangeEvent, uuid: string) => void;
+  onBodyChange: (e: ChangeEvent, uuid: string) => void;
   formattedDate: string;
 }
 
@@ -34,12 +34,14 @@ export const useNoteForm = (): useNoteFormOutput => {
     [storeActiveNote.date]
   );
 
-  //controllers
-  const onTitleChange = (e: ChangeEvent): void => {
-    dispatch(onChangeActiveNoteTitle(e.target.value));
+  //controllerss
+  const onTitleChange = (e: ChangeEvent, uuid: string): void => {
+    dispatch(
+      onChangeActiveNoteTitle({ newString: e.target.value, uuid: uuid })
+    );
   };
-  const onBodyChange = (e: ChangeEvent): void => {
-    dispatch(onChangeActiveNoteBody(e.target.value));
+  const onBodyChange = (e: ChangeEvent, uuid: string): void => {
+    dispatch(onChangeActiveNoteBody({ newString: e.target.value, uuid: uuid }));
   };
 
   return {

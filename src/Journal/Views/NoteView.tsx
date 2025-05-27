@@ -5,7 +5,7 @@ import { ImageGallery } from '../Components/ImageGallery';
 import { useNoteForm } from '@/Hooks';
 
 export const NoteView = () => {
-  const { body, title, onBodyChange, onTitleChange, formattedDate } =
+  const { body, title, noteId, onBodyChange, onTitleChange, formattedDate } =
     useNoteForm();
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
@@ -28,7 +28,7 @@ export const NoteView = () => {
           label='titulo'
           variant='filled'
           value={title}
-          onChange={onTitleChange}
+          onChange={(e) => onTitleChange(e, noteId as string)}
         />
         <TextField
           sx={{ color: 'primary.main', gridRow: 2 }}
@@ -40,7 +40,7 @@ export const NoteView = () => {
           multiline
           minRows={3}
           value={body}
-          onChange={onBodyChange}
+          onChange={(e) => onBodyChange(e, noteId as string)}
         />
       </div>
       <ImageGallery />
