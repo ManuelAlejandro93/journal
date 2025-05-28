@@ -15,7 +15,8 @@ export const NoteView = () => {
     onBodyChange,
     onTitleChange,
     formattedDate,
-    storeActiveNote
+    storeActiveNote,
+    isFetching
   } = useNoteForm();
   const dispatch = useDispatch();
   const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
@@ -26,6 +27,7 @@ export const NoteView = () => {
         {formattedDate}
       </Typography>
       <Button
+        disabled={isFetching}
         variant='outlined'
         sx={{ color: 'primary.main' }}
         onClick={() =>

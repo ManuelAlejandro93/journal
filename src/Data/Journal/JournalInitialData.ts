@@ -5,6 +5,7 @@ export const noteInitialData: NoteInitialData = {
     hasError: false,
     errorMessage: null
   },
+  dbSavingMessage: '',
   isSavingInDB: false,
   allNotes: [],
   activeNote: {

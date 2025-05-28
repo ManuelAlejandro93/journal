@@ -99,18 +99,21 @@ const journalSlice = createSlice({
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = false;
       noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = 'ok-on-updating-single-note-by-id';
     });
 
     builder.addCase(updateSingleNoteByIDThunk.rejected, (noteState, action) => {
       noteState!.httpInfo.hasError = true;
       noteState!.httpInfo.errorMessage = action.error.message!;
       noteState!.httpInfo.isFetching = false;
+      noteState.dbSavingMessage = 'error-on-updating-single-note-by-id';
     });
 
     builder.addCase(updateSingleNoteByIDThunk.pending, (noteState) => {
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = true;
+      noteState.dbSavingMessage = 'pending-on-updating-single-note-by-id';
     });
   }
 });

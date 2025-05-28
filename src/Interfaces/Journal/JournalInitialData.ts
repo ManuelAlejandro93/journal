@@ -2,7 +2,7 @@ import { Note } from '@/Interfaces';
 
 export type NoteInitialData = {
   httpInfo: {
-    isFetching: boolean;
+    isFetching: boolean | null;
     hasError: boolean;
     errorMessage: String | null;
   };
@@ -10,4 +10,5 @@ export type NoteInitialData = {
   allNotes: Note[];
   activeNote: Note;
   isThereActiveNote: boolean;
+  dbSavingMessage: string;
 };
