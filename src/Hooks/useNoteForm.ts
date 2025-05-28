@@ -8,9 +8,9 @@ import { Note } from '@/Interfaces';
 import { useMemo } from 'react';
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
-type SubmitEvent = React.FormEvent<HTMLFormElement>;
+// type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
-type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+// type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 interface useNoteFormOutput extends Note {
   onTitleChange: (e: ChangeEvent, uuid: string) => void;
