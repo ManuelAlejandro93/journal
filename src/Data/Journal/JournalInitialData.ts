@@ -5,14 +5,14 @@ export const noteInitialData: NoteInitialData = {
     hasError: false,
     errorMessage: null
   },
-  isSaving: false,
-  messageSaved: '',
-  notes: [],
-  active: {
-    id: null,
-    tittle: '',
-    body: '',
+  isSavingInDB: false,
+  allNotes: [],
+  activeNote: {
+    body: null,
     date: null,
-    imageURL: []
-  }
+    noteId: null,
+    title: null,
+    imgUrls: []
+  },
+  isThereActiveNote: false
 };

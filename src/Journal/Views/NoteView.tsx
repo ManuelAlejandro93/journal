@@ -2,16 +2,40 @@ import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
 // import { ImageGallery } from '@/Journal';
 import { ImageGallery } from '../Components/ImageGallery';
+import { useNoteForm } from '@/Hooks';
+import { updateSingleNoteByIDThunk } from '@/Store';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/Store';
 
 export const NoteView = () => {
+  const {
+    body,
+    title,
+    noteId,
+    onBodyChange,
+    onTitleChange,
+    formattedDate,
+    storeActiveNote
+  } = useNoteForm();
+  const dispatch = useDispatch();
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
   return (
-    <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8'>
+    <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-        28 de agosto de 2023
+        {formattedDate}
       </Typography>
       <Button
         variant='outlined'
         sx={{ color: 'primary.main' }}
+        onClick={() =>
+          dispatch<any>(
+            updateSingleNoteByIDThunk({
+              note: storeActiveNote,
+              uuid: uuid as string
+            })
+          )
+        }
       >
         <SaveOutlined sx={{ mr: 2 }}></SaveOutlined>
         Guardar
@@ -24,6 +48,8 @@ export const NoteView = () => {
           type='text'
           label='titulo'
           variant='filled'
+          value={title}
+          onChange={(e) => onTitleChange(e, noteId as string)}
         />
         <TextField
           sx={{ color: 'primary.main', gridRow: 2 }}
@@ -34,6 +60,8 @@ export const NoteView = () => {
           variant='filled'
           multiline
           minRows={3}
+          value={body}
+          onChange={(e) => onBodyChange(e, noteId as string)}
         />
       </div>
       <ImageGallery />

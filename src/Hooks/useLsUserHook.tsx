@@ -1,5 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { onUserExistsOnLS, onUserNotExistsOnLS } from '@/Store';
+import {
+  getAllNotesThunk,
+  onUserExistsOnLS,
+  onUserNotExistsOnLS
+} from '@/Store';
 import { useEffect } from 'react';
 import { LogDataType } from '@/Interfaces';
 
@@ -12,6 +16,7 @@ export const useLsUserHook = () => {
     if (userOnLS !== null) {
       const parsedUser: LogDataType = JSON.parse(userOnLS);
       dispatch(onUserExistsOnLS(parsedUser));
+      dispatch<any>(getAllNotesThunk(parsedUser.uuid!));
     } else {
       dispatch(onUserNotExistsOnLS());
     }

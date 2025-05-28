@@ -1,27 +1,39 @@
-import { useSelector } from 'react-redux';
-// import { drawerWidthSizePx } from '@/PseudoStore';
-import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
-import { TurnedInNot } from '@mui/icons-material';
+import { useSelector, useDispatch } from 'react-redux';
+import { drawerWidthSizePx } from '@/PseudoStore';
+// import { drawerWidthSizePx } from '../../PseudoStore/drawerWidth';
+import { AddOutlined } from '@mui/icons-material';
 import {
   Box,
+  Button,
   Divider,
   Drawer,
   List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
-  Typography
+  Typography,
+  LinearProgress
 } from '@mui/material';
 
-// import { RootState } from '@/Store';
-import { RootState } from '../../Store/Store/Store';
+import { addNewEmptyNoteThunk, RootState } from '@/Store';
+import { SidebarSingleNoteItem } from '@/Journal';
+
+// const meses = ['Enero', 'Febrero'];
 
 export const SideBar = () => {
   const userName = useSelector(
     (state: RootState) => state.authReducer.data?.displayName
   );
+
+  const isFetching = useSelector(
+    (state: RootState) => state.journalReducer.httpInfo.isFetching
+  );
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
+  const notes = useSelector(
+    (state: RootState) => state.journalReducer.allNotes
+  );
+
+  const dispatch = useDispatch();
+
   return (
     <Box
       component={'nav'}
@@ -49,27 +61,48 @@ export const SideBar = () => {
         <Divider />
         <Divider />
         <Divider />
-        <List>
-          {['Enero', 'Febrero'].map((month) => (
-            <ListItem
-              key={month}
-              sx={{ color: 'primary.main' }}
-            >
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                </ListItemIcon>
-                <div>
-                  <b>{month}</b>
 
-                  <ListItemText>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </ListItemText>
-                </div>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        {isFetching ? (
+          <LinearProgress
+            color='error'
+            sx={{ height: 50, backgroundColor: 'primary.main' }}
+          ></LinearProgress>
+        ) : (
+          <Button
+            onClick={() => dispatch<any>(addNewEmptyNoteThunk(uuid!))}
+            sx={{
+              backgroundColor: 'primary.main',
+              color: 'white',
+              ':hover': {
+                backgroundColor: 'secondary.main',
+                opacity: 0.8
+              }
+            }}
+          >
+            Añadir Nueva Nota
+            <AddOutlined sx={{ color: 'white', fontSize: 50 }}></AddOutlined>
+          </Button>
+        )}
+        {isFetching ? (
+          <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
+            Sincronizando notas...
+          </Typography>
+        ) : (
+          <List>
+            {notes.length <= 0 ? (
+              <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
+                No hay notas escritas
+              </Typography>
+            ) : (
+              notes.map((note) => (
+                <SidebarSingleNoteItem
+                  key={note.noteId}
+                  {...note}
+                ></SidebarSingleNoteItem>
+              ))
+            )}
+          </List>
+        )}
       </Drawer>
     </Box>
   );
