@@ -70,3 +70,4 @@ export const NoteView = () => {
     </div>
   );
 };
+//
