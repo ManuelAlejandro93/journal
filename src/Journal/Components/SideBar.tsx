@@ -98,7 +98,7 @@ export const SideBar = () => {
                 <SidebarSingleNoteItem
                   key={note.noteId}
                   {...note}
-                ></SidebarSingleNoteItem>
+                />
               ))
             )}
           </List>
