@@ -16,7 +16,8 @@ export const NoteView = () => {
     onTitleChange,
     formattedDate,
     storeActiveNote,
-    isFetching
+    isFetching,
+    imageInputElementRef
   } = useNoteForm();
   const dispatch = useDispatch();
   const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
@@ -66,7 +67,15 @@ export const NoteView = () => {
           onChange={(e) => onBodyChange(e, noteId as string)}
         />
       </div>
-      <ImageGallery />
+      {/* //!start - componente de pruebas */}
+      <input
+        type='file'
+        accept='image/*'
+        name='file'
+        ref={imageInputElementRef}
+      />
+      {/* //!end - componente de pruebas */}
+      {/* <ImageGallery /> */}
     </div>
   );
 };

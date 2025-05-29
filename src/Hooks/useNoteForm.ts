@@ -5,7 +5,7 @@ import {
   onChangeActiveNoteTitle
 } from '@/Store';
 import { Note } from '@/Interfaces';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 import SweetAlert from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
@@ -21,13 +21,16 @@ interface useNoteFormOutput extends Note {
   formattedDate: string;
   storeActiveNote: Note;
   isFetching: boolean;
+  imageInputElementRef: React.RefObject<HTMLInputElement>;
 }
 
 export const useNoteForm = (): useNoteFormOutput => {
   //dispatch
   const dispatch = useDispatch();
 
-  //general state
+  //image controller
+  const imageInputElementRef = useRef<HTMLInputElement>(null);
+
   const storeActiveNote: Note = useSelector(
     (state: RootState) => state.journalReducer.activeNote
   );
@@ -75,7 +78,7 @@ export const useNoteForm = (): useNoteFormOutput => {
     onBodyChange,
     onTitleChange,
     isFetching,
-    storeActiveNote
+    storeActiveNote,
+    imageInputElementRef
   };
 };
-//
