@@ -65,6 +65,7 @@ export const useNoteForm = (): useNoteFormOutput => {
       console.log('No hay imágenes.');
       return;
     } else {
+      const singleImage: File = files[0];
       return;
     }
   };
