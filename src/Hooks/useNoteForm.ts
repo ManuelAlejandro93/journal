@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   RootState,
   onChangeActiveNoteBody,
-  onChangeActiveNoteTitle
+  onChangeActiveNoteTitle,
+  uploadImageThunk
 } from '@/Store';
 import { Note } from '@/Interfaces';
 import { useEffect, useMemo, useRef } from 'react';
@@ -63,10 +64,9 @@ export const useNoteForm = (): useNoteFormOutput => {
     const files = imageInputElementRef.current?.files;
     if (!files || files?.length <= 0) {
       console.log('No hay imágenes.');
-      return;
     } else {
       const singleImage: File = files[0];
-      return;
+      dispatch<any>(uploadImageThunk(singleImage));
     }
   };
 

@@ -4,9 +4,10 @@ import { noteInitialData } from '@/Data';
 import {
   addNewEmptyNoteThunk,
   getAllNotesThunk,
-  updateSingleNoteByIDThunk
+  updateSingleNoteByIDThunk,
+  uploadImageThunk
 } from '@/Store';
-import { Note } from '@/Interfaces';
+import { CloudinarySuccessed, Note } from '@/Interfaces';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -114,6 +115,27 @@ const journalSlice = createSlice({
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = true;
       noteState.dbSavingMessage = 'pending-on-updating-single-note-by-id';
+    });
+    builder.addCase(uploadImageThunk.fulfilled, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = false;
+      noteState.dbSavingMessage = 'saving-image-successed';
+    });
+
+    builder.addCase(uploadImageThunk.rejected, (noteState) => {
+      noteState!.httpInfo.hasError = true;
+      noteState!.httpInfo.errorMessage = 'error';
+      noteState!.httpInfo.isFetching = false;
+      noteState.dbSavingMessage = '';
+      noteState.dbSavingMessage = 'saving-image-failed';
+    });
+
+    builder.addCase(uploadImageThunk.pending, (noteState) => {
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.isFetching = true;
+      noteState.dbSavingMessage = 'saving-image-in-process';
     });
   }
 });

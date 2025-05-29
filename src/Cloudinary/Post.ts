@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { CloudinaryFailedType, CloudinarySuccessed } from '@/Interfaces';
 
-async function cloudinaryPost(
+export async function cloudinaryPost(
   file: File
 ): Promise<CloudinarySuccessed | CloudinaryFailedType> {
   const formData = new FormData();

@@ -3,9 +3,12 @@ import { SaveOutlined } from '@mui/icons-material';
 // import { ImageGallery } from '@/Journal';
 import { ImageGallery } from '../Components/ImageGallery';
 import { useNoteForm } from '@/Hooks';
-import { updateSingleNoteByIDThunk } from '@/Store';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/Store';
+import {
+  RootState,
+  updateSingleNoteByIDThunk,
+  uploadImageThunk
+} from '@/Store';
 
 export const NoteView = () => {
   const {
@@ -33,12 +36,12 @@ export const NoteView = () => {
         variant='outlined'
         sx={{ color: 'primary.main' }}
         onClick={() => {
-          dispatch<any>(
-            updateSingleNoteByIDThunk({
-              note: storeActiveNote,
-              uuid: uuid as string
-            })
-          );
+          // dispatch<any>(
+          //   updateSingleNoteByIDThunk({
+          //     note: storeActiveNote,
+          //     uuid: uuid as string
+          //   })
+          // );
           onSubmitImageToCloudinary();
         }}
       >
