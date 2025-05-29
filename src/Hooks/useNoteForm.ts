@@ -22,6 +22,7 @@ interface useNoteFormOutput extends Note {
   storeActiveNote: Note;
   isFetching: boolean;
   imageInputElementRef: React.RefObject<HTMLInputElement>;
+  onSubmitImageToCloudinary: () => void;
 }
 
 export const useNoteForm = (): useNoteFormOutput => {
@@ -58,6 +59,16 @@ export const useNoteForm = (): useNoteFormOutput => {
     dispatch(onChangeActiveNoteBody({ newString: e.target.value, uuid: uuid }));
   };
 
+  const onSubmitImageToCloudinary = () => {
+    const files = imageInputElementRef.current?.files;
+    if (!files || files?.length <= 0) {
+      console.log('No hay imágenes.');
+      return;
+    } else {
+      return;
+    }
+  };
+
   useEffect(() => {
     if (dbSavingMessage === 'ok-on-updating-single-note-by-id') {
       SweetAlert.fire(
@@ -79,6 +90,7 @@ export const useNoteForm = (): useNoteFormOutput => {
     onTitleChange,
     isFetching,
     storeActiveNote,
-    imageInputElementRef
+    imageInputElementRef,
+    onSubmitImageToCloudinary
   };
 };
