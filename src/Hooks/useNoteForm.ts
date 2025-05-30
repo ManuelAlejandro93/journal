@@ -61,12 +61,15 @@ export const useNoteForm = (): useNoteFormOutput => {
   };
 
   const onSubmitImageToCloudinary = () => {
-    const files = imageInputElementRef.current?.files;
-    if (!files || files?.length <= 0) {
+    const formImages = imageInputElementRef.current?.files;
+    if (!formImages || formImages?.length <= 0) {
       console.log('No hay imágenes.');
+      return;
     } else {
-      const singleImage: File = files[0];
-      dispatch<any>(uploadImageThunk(singleImage));
+      for (let i = 0; i < formImages.length; i++) {
+        dispatch<any>(uploadImageThunk(formImages[i]));
+      }
+      imageInputElementRef.current.value = '';
     }
   };
 

@@ -76,8 +76,9 @@ export const NoteView = () => {
       <input
         type='file'
         accept='image/*'
-        name='file'
+        multiple
         ref={imageInputElementRef}
+        disabled={isFetching}
       />
       {/* //!end - componente de pruebas */}
       {/* <ImageGallery /> */}
