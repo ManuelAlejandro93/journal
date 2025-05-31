@@ -15,6 +15,8 @@ export const NoteView = () => {
     body,
     title,
     noteId,
+    imgUrls,
+    updatedImgUrls,
     onBodyChange,
     onTitleChange,
     formattedDate,
@@ -74,6 +76,7 @@ export const NoteView = () => {
       </div>
       {/* //!start - componente de pruebas */}
       <input
+        style={{ color: 'transparent' }}
         type='file'
         accept='image/*'
         multiple
@@ -81,6 +84,23 @@ export const NoteView = () => {
         disabled={isFetching}
       />
       {/* //!end - componente de pruebas */}
+      {updatedImgUrls.length <= 0 ? (
+        <Typography
+          className='col-span-2'
+          sx={{ color: 'primary.main' }}
+        >
+          Sin imágenes guardadas
+        </Typography>
+      ) : (
+        <span className='col-span-2'>
+          <ol>
+            {updatedImgUrls.map((img, i) => (
+              <li key={img + i}>{img}</li>
+            ))}
+          </ol>
+        </span>
+      )}
+
       {/* <ImageGallery /> */}
     </div>
   );

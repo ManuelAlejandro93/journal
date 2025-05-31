@@ -7,7 +7,7 @@ import {
   updateSingleNoteByIDThunk,
   uploadImageThunk
 } from '@/Store';
-import { CloudinarySuccessed, Note } from '@/Interfaces';
+import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -18,6 +18,7 @@ const journalSlice = createSlice({
       state.activeNote.date = action.payload.date;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
+      state.activeNote.imgUrls = action.payload.imgUrls;
     },
     onChangeActiveNoteTitle(
       state,
@@ -116,12 +117,32 @@ const journalSlice = createSlice({
       noteState!.httpInfo.isFetching = true;
       noteState.dbSavingMessage = 'pending-on-updating-single-note-by-id';
     });
-    builder.addCase(uploadImageThunk.fulfilled, (noteState) => {
-      noteState!.httpInfo.hasError = false;
-      noteState!.httpInfo.errorMessage = null;
-      noteState!.httpInfo.isFetching = false;
-      noteState.dbSavingMessage = 'saving-image-successed';
-    });
+    builder.addCase<any>(
+      uploadImageThunk.fulfilled,
+      (
+        noteState: NoteInitialData,
+        action: PayloadAction<CloudinarySuccessed>
+      ) => {
+        //? Http state
+        noteState!.httpInfo.hasError = false;
+        noteState!.httpInfo.errorMessage = null;
+        noteState!.httpInfo.isFetching = false;
+        noteState.dbSavingMessage = 'saving-image-successed';
+        //? active note state
+        noteState.activeNote.imgUrls.push(action.payload.secure_url);
+        //? all notes state
+        noteState.allNotes = noteState.allNotes.map((note) => {
+          if (note.noteId === noteState.activeNote.noteId) {
+            return {
+              ...note,
+              imgUrls: [...note.imgUrls, action.payload.secure_url]
+            };
+          } else {
+            return note;
+          }
+        });
+      }
+    );
 
     builder.addCase(uploadImageThunk.rejected, (noteState) => {
       noteState!.httpInfo.hasError = true;

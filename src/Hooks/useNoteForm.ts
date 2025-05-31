@@ -20,6 +20,7 @@ interface useNoteFormOutput extends Note {
   onTitleChange: (e: ChangeEvent, uuid: string) => void;
   onBodyChange: (e: ChangeEvent, uuid: string) => void;
   formattedDate: string;
+  updatedImgUrls: string[];
   storeActiveNote: Note;
   isFetching: boolean;
   imageInputElementRef: React.RefObject<HTMLInputElement>;
@@ -43,12 +44,20 @@ export const useNoteForm = (): useNoteFormOutput => {
     (state: RootState) => state.journalReducer.dbSavingMessage
   );
 
-  //formatted date.
+  // updated note img urls
 
-  const formattedDate = useMemo(
-    () => new Date(storeActiveNote.date!).toUTCString(),
-    [storeActiveNote.date]
+  const updatedImgUrls = useMemo(
+    () => storeActiveNote.imgUrls.filter((x) => x),
+    [storeActiveNote.imgUrls]
   );
+
+  // formatted date.
+
+  const formattedDate = useMemo(() => {
+    console.log('use Memo');
+
+    return new Date(storeActiveNote.date!).toUTCString();
+  }, [storeActiveNote.date]);
 
   //controllerss
   const onTitleChange = (e: ChangeEvent, uuid: string): void => {
@@ -87,6 +96,7 @@ export const useNoteForm = (): useNoteFormOutput => {
     body: storeActiveNote.body,
     date: storeActiveNote.date,
     imgUrls: storeActiveNote.imgUrls,
+    updatedImgUrls,
     noteId: storeActiveNote.noteId,
     title: storeActiveNote.title,
     formattedDate,
