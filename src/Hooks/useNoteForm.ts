@@ -3,7 +3,8 @@ import {
   RootState,
   onChangeActiveNoteBody,
   onChangeActiveNoteTitle,
-  uploadImageThunk
+  uploadImageThunk,
+  updateSingleNoteByIDThunk
 } from '@/Store';
 import { Note } from '@/Interfaces';
 import { useEffect, useMemo, useRef } from 'react';
@@ -24,7 +25,7 @@ interface useNoteFormOutput extends Note {
   storeActiveNote: Note;
   isFetching: boolean;
   imageInputElementRef: React.RefObject<HTMLInputElement>;
-  onSubmitImageToCloudinary: () => void;
+  fullUpdateSingleNote: () => void;
 }
 
 export const useNoteForm = (): useNoteFormOutput => {
@@ -54,8 +55,6 @@ export const useNoteForm = (): useNoteFormOutput => {
   // formatted date.
 
   const formattedDate = useMemo(() => {
-    console.log('use Memo');
-
     return new Date(storeActiveNote.date!).toUTCString();
   }, [storeActiveNote.date]);
 
@@ -69,10 +68,9 @@ export const useNoteForm = (): useNoteFormOutput => {
     dispatch(onChangeActiveNoteBody({ newString: e.target.value, uuid: uuid }));
   };
 
-  const onSubmitImageToCloudinary = () => {
+  const submitImageToCloudinary = () => {
     const formImages = imageInputElementRef.current?.files;
     if (!formImages || formImages?.length <= 0) {
-      console.log('No hay imágenes.');
       return;
     } else {
       for (let i = 0; i < formImages.length; i++) {
@@ -81,7 +79,19 @@ export const useNoteForm = (): useNoteFormOutput => {
       imageInputElementRef.current.value = '';
     }
   };
+  const setNoteOnfirebases = () => {
+    dispatch<any>(
+      updateSingleNoteByIDThunk({
+        note: storeActiveNote,
+        uuid: storeActiveNote.noteId as string
+      })
+    );
+  };
 
+  const fullUpdateSingleNote = () => {
+    submitImageToCloudinary();
+    setNoteOnfirebases();
+  };
   useEffect(() => {
     if (dbSavingMessage === 'ok-on-updating-single-note-by-id') {
       SweetAlert.fire(
@@ -102,9 +112,9 @@ export const useNoteForm = (): useNoteFormOutput => {
     formattedDate,
     onBodyChange,
     onTitleChange,
+    fullUpdateSingleNote,
     isFetching,
     storeActiveNote,
-    imageInputElementRef,
-    onSubmitImageToCloudinary
+    imageInputElementRef
   };
 };

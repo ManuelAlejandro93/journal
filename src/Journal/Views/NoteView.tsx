@@ -23,7 +23,7 @@ export const NoteView = () => {
     storeActiveNote,
     isFetching,
     imageInputElementRef,
-    onSubmitImageToCloudinary
+    fullUpdateSingleNote
   } = useNoteForm();
   const dispatch = useDispatch();
   const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
@@ -37,15 +37,7 @@ export const NoteView = () => {
         disabled={isFetching}
         variant='outlined'
         sx={{ color: 'primary.main' }}
-        onClick={() => {
-          // dispatch<any>(
-          //   updateSingleNoteByIDThunk({
-          //     note: storeActiveNote,
-          //     uuid: uuid as string
-          //   })
-          // );
-          onSubmitImageToCloudinary();
-        }}
+        onClick={() => fullUpdateSingleNote()}
       >
         <SaveOutlined sx={{ mr: 2 }}></SaveOutlined>
         Guardar
