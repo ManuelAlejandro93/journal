@@ -84,7 +84,6 @@ export const useNoteForm = (): useNoteFormOutput => {
     dispatch<any>(
       updateSingleNoteByIDThunk({
         note: storeActiveNote,
-        //todo: cambiar esto por el uuid - user uid
         uuid: uuid as string
       })
     );
