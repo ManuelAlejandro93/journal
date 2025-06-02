@@ -12,7 +12,7 @@ export const JournalLayout = ({ children }: Props) => {
     <div className='flex animate-jump-in animate-duration-500'>
       <SideBar />
       <Navbar />
-      <main className='p-4 mt-20'>{children}</main>
+      <main className='p-4 mt-20 w-3/4'>{children}</main>
     </div>
   );
 };
