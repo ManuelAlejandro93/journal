@@ -1,32 +1,24 @@
 import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
-// import { ImageGallery } from '@/Journal';
-import { ImageGallery } from '../Components/ImageGallery';
 import { useNoteForm } from '@/Hooks';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  RootState,
-  updateSingleNoteByIDThunk,
-  uploadImageThunk
-} from '@/Store';
+import { SubmitEvent } from '@/Interfaces';
+// import { ImageGallery } from '@/Journal';
 
 export const NoteView = () => {
   const {
+    //! listos.
+    formattedDate,
     body,
     title,
+    //! dañados.
     noteId,
-    imgUrls,
     updatedImgUrls,
     onBodyChange,
     onTitleChange,
-    formattedDate,
-    storeActiveNote,
     isFetching,
     imageInputElementRef,
     fullUpdateSingleNote
   } = useNoteForm();
-  const dispatch = useDispatch();
-  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
 
   return (
     <div className='w-full grid grid-cols-2 justify-evenly content-center gap-8 animate-fade-down'>
@@ -37,7 +29,8 @@ export const NoteView = () => {
         disabled={isFetching}
         variant='outlined'
         sx={{ color: 'primary.main' }}
-        onClick={() => fullUpdateSingleNote()}
+        type='submit'
+        onClick={(e) => fullUpdateSingleNote(e as unknown as SubmitEvent)}
       >
         <SaveOutlined sx={{ mr: 2 }}></SaveOutlined>
         Guardar
@@ -66,7 +59,6 @@ export const NoteView = () => {
           onChange={(e) => onBodyChange(e, noteId as string)}
         />
       </div>
-      {/* //!start - componente de pruebas */}
       <input
         style={{ color: 'transparent' }}
         type='file'
@@ -75,7 +67,6 @@ export const NoteView = () => {
         ref={imageInputElementRef}
         disabled={isFetching}
       />
-      {/* //!end - componente de pruebas */}
       {updatedImgUrls.length <= 0 ? (
         <Typography
           className='col-span-2'

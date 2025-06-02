@@ -11,21 +11,18 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import SweetAlert from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
-// type SubmitEvent = React.FormEvent<HTMLFormElement>;
-
-// type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+import { ChangeEvent, SubmitEvent } from '@/Interfaces';
 
 interface useNoteFormOutput extends Note {
-  onTitleChange: (e: ChangeEvent, uuid: string) => void;
-  onBodyChange: (e: ChangeEvent, uuid: string) => void;
+  onTitleChange: (e: ChangeEvent, noteID: string) => void;
+  onBodyChange: (e: ChangeEvent, noteID: string) => void;
   formattedDate: string;
   updatedImgUrls: string[];
   storeActiveNote: Note;
   isFetching: boolean;
   imageInputElementRef: React.RefObject<HTMLInputElement>;
-  fullUpdateSingleNote: () => void;
+  fullUpdateSingleNote: (e: SubmitEvent) => void;
 }
 
 export const useNoteForm = (): useNoteFormOutput => {
@@ -45,6 +42,8 @@ export const useNoteForm = (): useNoteFormOutput => {
     (state: RootState) => state.journalReducer.dbSavingMessage
   );
 
+  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
+
   // updated note img urls
 
   const updatedImgUrls = useMemo(
@@ -59,13 +58,15 @@ export const useNoteForm = (): useNoteFormOutput => {
   }, [storeActiveNote.date]);
 
   //controllerss
-  const onTitleChange = (e: ChangeEvent, uuid: string): void => {
+  const onTitleChange = (e: ChangeEvent, noteID: string): void => {
     dispatch(
-      onChangeActiveNoteTitle({ newString: e.target.value, uuid: uuid })
+      onChangeActiveNoteTitle({ newString: e.target.value, noteID: noteID })
     );
   };
-  const onBodyChange = (e: ChangeEvent, uuid: string): void => {
-    dispatch(onChangeActiveNoteBody({ newString: e.target.value, uuid: uuid }));
+  const onBodyChange = (e: ChangeEvent, noteID: string): void => {
+    dispatch(
+      onChangeActiveNoteBody({ newString: e.target.value, noteID: noteID })
+    );
   };
 
   const submitImageToCloudinary = () => {
@@ -83,12 +84,14 @@ export const useNoteForm = (): useNoteFormOutput => {
     dispatch<any>(
       updateSingleNoteByIDThunk({
         note: storeActiveNote,
-        uuid: storeActiveNote.noteId as string
+        //todo: cambiar esto por el uuid - user uid
+        uuid: uuid as string
       })
     );
   };
 
-  const fullUpdateSingleNote = () => {
+  const fullUpdateSingleNote = (e: SubmitEvent) => {
+    e.preventDefault();
     submitImageToCloudinary();
     setNoteOnfirebases();
   };

@@ -22,26 +22,26 @@ const journalSlice = createSlice({
     },
     onChangeActiveNoteTitle(
       state,
-      action: PayloadAction<{ newString: string; uuid: string }>
+      action: PayloadAction<{ newString: string; noteID: string }>
     ) {
       //actualizo el body activa
       state.activeNote.title = action.payload.newString;
       //actualizo todas los body
       state.allNotes = state.allNotes.map((note) => {
-        if (note.noteId === action.payload.uuid) {
+        if (note.noteId === action.payload.noteID) {
           return { ...note, title: action.payload.newString };
         } else return note;
       });
     },
     onChangeActiveNoteBody(
       state,
-      action: PayloadAction<{ newString: string; uuid: string }>
+      action: PayloadAction<{ newString: string; noteID: string }>
     ) {
       //actualizo el body activa
       state.activeNote.body = action.payload.newString;
       //actualizo todas los body
       state.allNotes = state.allNotes.map((note) => {
-        if (note.noteId === action.payload.uuid) {
+        if (note.noteId === action.payload.noteID) {
           return { ...note, body: action.payload.newString };
         } else return note;
       });
@@ -75,12 +75,13 @@ const journalSlice = createSlice({
       noteState!.httpInfo.isFetching = false;
       noteState.isSavingInDB = false;
       noteState.isThereActiveNote = true;
-      noteState.allNotes = action.payload;
-      noteState.activeNote.body = action.payload[0].body;
-      noteState.activeNote.date = action.payload[0].date;
-      noteState.activeNote.noteId = action.payload[0].noteId;
-      noteState.activeNote.noteId = action.payload[0].noteId;
-      noteState.activeNote.title = action.payload[0].title;
+
+      if (!action.payload || action.payload.length <= 0) {
+        noteState.allNotes = [];
+        console.log('No hay imágenes.');
+      } else {
+        noteState.allNotes = action.payload;
+      }
     });
 
     builder.addCase(getAllNotesThunk.rejected, (noteState, action) => {

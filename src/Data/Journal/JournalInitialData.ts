@@ -9,10 +9,10 @@ export const noteInitialData: NoteInitialData = {
   isSavingInDB: false,
   allNotes: [],
   activeNote: {
-    body: null,
+    body: '',
     date: null,
     noteId: null,
-    title: null,
+    title: '',
     imgUrls: []
   },
   isThereActiveNote: false
