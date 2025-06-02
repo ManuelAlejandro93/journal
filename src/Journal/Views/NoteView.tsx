@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
 import { useNoteForm } from '@/Hooks';
 import { SubmitEvent } from '@/Interfaces';
-// import { ImageGallery } from '@/Journal';
+import { ImageGallery } from '@/Journal';
 
 export const NoteView = () => {
   const {
