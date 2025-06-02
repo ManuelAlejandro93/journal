@@ -18,7 +18,7 @@ const journalSlice = createSlice({
       state.activeNote.date = action.payload.date;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
-      state.activeNote.imgUrls = action.payload.imgUrls;
+      state.activeNote.imgUrls = [...action.payload.imgUrls];
     },
     onChangeActiveNoteTitle(
       state,
@@ -80,7 +80,7 @@ const journalSlice = createSlice({
         noteState.allNotes = [];
         console.log('No hay imágenes.');
       } else {
-        noteState.allNotes = action.payload;
+        noteState.allNotes = [...action.payload];
       }
     });
 
