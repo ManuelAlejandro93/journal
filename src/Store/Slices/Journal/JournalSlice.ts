@@ -130,13 +130,31 @@ const journalSlice = createSlice({
         noteState!.httpInfo.isFetching = false;
         noteState.dbSavingMessage = 'saving-image-successed';
         //? active note state
-        noteState.activeNote.imgUrls.push(action.payload.secure_url);
+        if (noteState.activeNote.imgUrls.length === 0) {
+          noteState.activeNote.imgUrls = [action.payload.secure_url];
+        } else {
+          noteState.activeNote.imgUrls = [
+            action.payload.secure_url,
+            ...noteState.activeNote.imgUrls
+          ];
+        }
         //? all notes state
         noteState.allNotes = noteState.allNotes.map((note) => {
-          if (note.noteId === noteState.activeNote.noteId) {
+          if (
+            note.noteId === noteState.activeNote.noteId &&
+            note.imgUrls.length === 0
+          ) {
             return {
               ...note,
-              imgUrls: [...note.imgUrls, action.payload.secure_url]
+              imgUrls: [action.payload.secure_url]
+            };
+          } else if (
+            note.noteId === noteState.activeNote.noteId &&
+            note.imgUrls.length >= 1
+          ) {
+            return {
+              ...note,
+              imgUrls: [action.payload.secure_url, ...note.imgUrls]
             };
           } else {
             return note;
