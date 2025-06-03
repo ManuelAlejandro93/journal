@@ -14,11 +14,12 @@ const journalSlice = createSlice({
   initialState: noteInitialData,
   reducers: {
     setActiveNote(state, action: PayloadAction<Note>) {
-      state.activeNote.body = action.payload.body;
       state.activeNote.date = action.payload.date;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
-      state.activeNote.imgUrls = [...action.payload.imgUrls];
+      state.activeNote.imgUrls = state.activeNote.imgUrls;
+      state.activeNote.noteId = action.payload.noteId;
+      state.activeNote.body = action.payload.body;
     },
     onChangeActiveNoteTitle(
       state,

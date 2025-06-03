@@ -17,8 +17,6 @@ import { addNewEmptyNoteThunk, getAllNotesThunk, RootState } from '@/Store';
 import { SidebarSingleNoteItem } from '@/Journal';
 import { useEffect } from 'react';
 
-// const meses = ['Enero', 'Febrero'];
-
 export const SideBar = () => {
   const userName = useSelector(
     (state: RootState) => state.authReducer.data?.displayName

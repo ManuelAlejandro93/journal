@@ -3,6 +3,7 @@ import { SaveOutlined, CloudUploadOutlined } from '@mui/icons-material';
 import { useNoteForm } from '@/Hooks';
 import { SubmitEvent } from '@/Interfaces';
 import { ImageGallery } from '@/Journal';
+import { Attributes } from 'react';
 
 export const NoteView = () => {
   const {
@@ -17,7 +18,8 @@ export const NoteView = () => {
     onTitleChange,
     isFetching,
     imageInputElementRef,
-    fullUpdateSingleNote
+    fullUpdateSingleNote,
+    storeActiveNote
   } = useNoteForm();
 
   return (
@@ -96,8 +98,7 @@ export const NoteView = () => {
               ))}
             </ol>
           </span>
-
-          <ImageGallery />
+          <ImageGallery photoURLS={updatedImgUrls} />
         </>
       )}
     </div>

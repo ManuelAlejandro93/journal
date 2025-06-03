@@ -10,7 +10,11 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
   };
 }
 
-export function ImageGallery() {
+interface Props {
+  photoURLS: string[];
+}
+
+export function ImageGallery({ photoURLS }: Props) {
   return (
     <ImageList
       sx={{ width: '70vw', height: '60vh' }}
@@ -18,15 +22,15 @@ export function ImageGallery() {
       cols={5}
       rowHeight={121}
     >
-      {itemData.map((item) => (
+      {photoURLS.map((photo, i) => (
         <ImageListItem
-          key={item.img}
-          cols={item.cols || 1}
-          rows={item.rows || 1}
+          key={photo + i}
+          cols={1}
+          rows={1}
         >
           <img
-            {...srcset(item.img, 121, item.rows, item.cols)}
-            alt={item.title}
+            {...srcset(photo, 121, 1, 1)}
+            alt={'imagen subida por el usuario'}
             loading='lazy'
           />
         </ImageListItem>
