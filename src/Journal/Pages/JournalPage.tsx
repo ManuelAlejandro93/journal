@@ -13,14 +13,17 @@ export const JournalPage = () => {
   const isThereActiveNote = useSelector(
     (state: RootState) => state.journalReducer.isThereActiveNote
   );
+  const allNotes = useSelector(
+    (state: RootState) => state.journalReducer.allNotes
+  );
 
   return (
     <JournalLayout>
-      {isThereActiveNote ? (
-        <NoteView></NoteView>
+      {allNotes.length <= 0 || !allNotes ? (
+        <NothingSelectedView></NothingSelectedView>
       ) : (
         <>
-          <NothingSelectedView></NothingSelectedView>
+          <NoteView></NoteView>
 
           {isFetching ? (
             <CircularProgress

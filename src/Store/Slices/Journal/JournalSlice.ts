@@ -17,9 +17,11 @@ const journalSlice = createSlice({
       state.activeNote.date = action.payload.date;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.title = action.payload.title;
-      state.activeNote.imgUrls = state.activeNote.imgUrls;
       state.activeNote.noteId = action.payload.noteId;
       state.activeNote.body = action.payload.body;
+      state.activeNote.imgUrls = [
+        `Las imgURLS no van a cambiar ni por el putas. ${action.payload.noteId} `
+      ];
     },
     onChangeActiveNoteTitle(
       state,
