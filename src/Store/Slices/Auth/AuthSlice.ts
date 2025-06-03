@@ -183,15 +183,16 @@ const authSlice = createSlice({
       logQueryState.data!.uuid = null;
       deleteUserOnLS();
     });
-    builder.addCase(allCasesLogoutThunk.pending, (logQueryState) => {
-      logQueryState.state = 'pending';
-      logQueryState.errorMessage = null;
-      logQueryState.data!.dataStatus = 'checking';
-      logQueryState.data!.displayName = null;
-      logQueryState.data!.email = null;
-      logQueryState.data!.errorMessage = null;
-      logQueryState.data!.photoURL = null;
-      logQueryState.data!.uuid = null;
+    builder.addCase(allCasesLogoutThunk.pending, (state) => {
+      state.state = 'pending';
+      state.errorMessage = null;
+      state.data!.dataStatus = 'checking';
+      state.data!.displayName = null;
+      state.data!.email = null;
+      state.data!.errorMessage = null;
+      state.data!.photoURL = null;
+      state.data!.uuid = null;
+
       deleteUserOnLS();
     });
   }

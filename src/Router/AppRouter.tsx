@@ -9,10 +9,11 @@ import { LSCheckingView } from '@/UI';
 import { useLsUserHook } from '@/Hooks';
 
 export const AppRouter = () => {
+  useLsUserHook();
+
   const authDataState = useSelector(
     (state: RootState) => state.authReducer.data?.dataStatus
   );
-  useLsUserHook();
 
   return (
     <Routes>

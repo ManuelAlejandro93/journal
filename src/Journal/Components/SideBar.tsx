@@ -13,8 +13,9 @@ import {
   LinearProgress
 } from '@mui/material';
 
-import { addNewEmptyNoteThunk, RootState } from '@/Store';
+import { addNewEmptyNoteThunk, getAllNotesThunk, RootState } from '@/Store';
 import { SidebarSingleNoteItem } from '@/Journal';
+import { useEffect } from 'react';
 
 // const meses = ['Enero', 'Febrero'];
 
@@ -33,6 +34,10 @@ export const SideBar = () => {
   );
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch<any>(getAllNotesThunk(uuid as string));
+  }, []);
 
   return (
     <Box
