@@ -12,8 +12,8 @@ export const AppRouter = () => {
   const authDataState = useSelector(
     (state: RootState) => state.authReducer.data?.dataStatus
   );
-
   useLsUserHook();
+
   return (
     <Routes>
       {authDataState === 'authenticated' ? (

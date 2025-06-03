@@ -22,8 +22,14 @@ const authSlice = createSlice({
       state.data = { ...action.payload };
     },
     onUserNotExistsOnLS(state) {
-      //? solo es necesario cambiar un valor respecto al valor inicial de arranque.
+      state.state = 'fulfilled';
+      state.errorMessage = null;
       state.data!.dataStatus = 'non-authenticated';
+      state.data!.displayName = '';
+      state.data!.displayName = null;
+      state.data!.email = null;
+      state.data!.errorMessage = null;
+      state.data!.uuid = null;
     }
   },
   extraReducers(builder) {

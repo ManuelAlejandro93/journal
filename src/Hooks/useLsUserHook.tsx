@@ -13,10 +13,12 @@ export const useLsUserHook = () => {
   useEffect(() => {
     const userOnLS: string | null = localStorage.getItem('userData');
 
-    if (userOnLS !== null) {
+    if (typeof userOnLS === 'string') {
       const parsedUser: LogDataType = JSON.parse(userOnLS);
       dispatch(onUserExistsOnLS(parsedUser));
-      dispatch<any>(getAllNotesThunk(parsedUser.uuid!));
+      console.log(parsedUser.uuid);
+
+      dispatch<any>(getAllNotesThunk(parsedUser.uuid as string));
     } else {
       dispatch(onUserNotExistsOnLS());
     }
