@@ -238,16 +238,14 @@ const journalSlice = createSlice({
     });
 
     builder.addCase(updateSingleNoteByIDThunk.rejected, (noteState, action) => {
-      noteState.dbSavingMessage = 'error-on-updating-single-note-by-id';
-
       //Petición http
       noteState!.httpInfo.isFetching = false;
-      noteState!.httpInfo.hasError = false;
-      noteState!.httpInfo.errorMessage = null;
+      noteState!.httpInfo.hasError = true;
+      noteState!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
       noteState.isSavingInDB = false;
-      noteState.dbSavingMessage = 'ok-on-updating-single-note-by-id';
+      noteState.dbSavingMessage = 'error-on-updating-single-note-by-id';
       noteState.isThereActiveNote = true;
 
       //active note
@@ -262,10 +260,25 @@ const journalSlice = createSlice({
     });
 
     builder.addCase(updateSingleNoteByIDThunk.pending, (noteState) => {
+      //Petición http
+      noteState!.httpInfo.isFetching = true;
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
-      noteState!.httpInfo.isFetching = true;
-      noteState.dbSavingMessage = 'pending-on-updating-single-note-by-id';
+
+      //Note informacion
+      noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = '';
+      noteState.isThereActiveNote = false;
+
+      //active note
+      noteState.activeNote.body = null;
+      noteState.activeNote.date = null;
+      noteState.activeNote.title = null;
+      noteState.activeNote.noteId = null;
+      noteState.activeNote.imgUrls = [];
+
+      //all notes
+      noteState.allNotes = [];
     });
     builder.addCase<any>(
       uploadImageThunk.fulfilled,
