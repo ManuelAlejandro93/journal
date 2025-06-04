@@ -38,9 +38,9 @@ const journalSlice = createSlice({
       state,
       action: PayloadAction<{ newString: string; noteID: string }>
     ) {
-      //actualizo el body activa
+      //actualizo el titulo de la nota activa
       state.activeNote.title = action.payload.newString;
-      //actualizo todas los body
+      //actualizo todas los body en el arreglo de todas las notas.
       state.allNotes = state.allNotes.map((note) => {
         if (note.noteId === action.payload.noteID) {
           return { ...note, title: action.payload.newString };
@@ -51,9 +51,9 @@ const journalSlice = createSlice({
       state,
       action: PayloadAction<{ newString: string; noteID: string }>
     ) {
-      //actualizo el body activa
+      //actualizo el body de la nota activa
       state.activeNote.body = action.payload.newString;
-      //actualizo todas los body
+      //actualizo todas los body en el arreglo de todas las notas.
       state.allNotes = state.allNotes.map((note) => {
         if (note.noteId === action.payload.noteID) {
           return { ...note, body: action.payload.newString };
