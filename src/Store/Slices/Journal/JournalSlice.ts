@@ -216,18 +216,49 @@ const journalSlice = createSlice({
       noteState.allNotes = [];
     });
     builder.addCase(updateSingleNoteByIDThunk.fulfilled, (noteState) => {
+      //Petición http
+      noteState!.httpInfo.isFetching = false;
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
-      noteState!.httpInfo.isFetching = false;
+
+      //Note informacion
       noteState.isSavingInDB = false;
       noteState.dbSavingMessage = 'ok-on-updating-single-note-by-id';
+      noteState.isThereActiveNote = true;
+
+      //active note
+      // noteState.activeNote.body = noteState.activeNote.body;
+      // noteState.activeNote.date = noteState.activeNote.date;
+      // noteState.activeNote.title = noteState.activeNote.title;
+      // noteState.activeNote.noteId = noteState.activeNote.noteId;
+      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+
+      //all notes
+      // noteState.allNotes = noteState.allNotes;
     });
 
     builder.addCase(updateSingleNoteByIDThunk.rejected, (noteState, action) => {
-      noteState!.httpInfo.hasError = true;
-      noteState!.httpInfo.errorMessage = action.error.message!;
-      noteState!.httpInfo.isFetching = false;
       noteState.dbSavingMessage = 'error-on-updating-single-note-by-id';
+
+      //Petición http
+      noteState!.httpInfo.isFetching = false;
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = null;
+
+      //Note informacion
+      noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = 'ok-on-updating-single-note-by-id';
+      noteState.isThereActiveNote = true;
+
+      //active note
+      // noteState.activeNote.body = noteState.activeNote.body;
+      // noteState.activeNote.date = noteState.activeNote.date;
+      // noteState.activeNote.title = noteState.activeNote.title;
+      // noteState.activeNote.noteId = noteState.activeNote.noteId;
+      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+
+      //all notes
+      // noteState.allNotes = noteState.allNotes;
     });
 
     builder.addCase(updateSingleNoteByIDThunk.pending, (noteState) => {
