@@ -61,27 +61,64 @@ const journalSlice = createSlice({
 
         //Note informacion
         noteState.isSavingInDB = false;
+        noteState.dbSavingMessage = '';
         noteState.isThereActiveNote = true;
 
         //active note
-        // noteState.activeNote.body = action.payload[0].body;
-        // noteState.activeNote.date = action.payload[0].date;
-        // noteState.activeNote.title = action.payload[0].title;
-        // noteState.activeNote.noteId = action.payload[0].noteId;
-        // noteState.activeNote.imgUrls = [];
+        noteState.activeNote.body = action.payload.body;
+        noteState.activeNote.date = action.payload.date;
+        noteState.activeNote.title = action.payload.title;
+        noteState.activeNote.noteId = action.payload.noteId;
+        noteState.activeNote.imgUrls = action.payload.imgUrls;
+
+        //all notes
+        noteState.allNotes =
+          !noteState.allNotes.length || noteState.allNotes.length <= 0
+            ? [action.payload]
+            : [action.payload, ...noteState.allNotes];
       }
     );
     builder.addCase(addNewEmptyNoteThunk.rejected, (noteState, action) => {
+      //Petición http
       noteState!.httpInfo.hasError = true;
-      noteState!.httpInfo.errorMessage = action.error.message!;
+      noteState!.httpInfo.errorMessage = action.error.message as string;
       noteState!.httpInfo.isFetching = false;
+
+      //Note informacion
       noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = '';
+      noteState.isThereActiveNote = false;
+
+      //active note
+      noteState.activeNote.body = null;
+      noteState.activeNote.date = null;
+      noteState.activeNote.title = null;
+      noteState.activeNote.noteId = null;
+      noteState.activeNote.imgUrls = [];
+
+      //all notes
+      noteState.allNotes = [];
     });
     builder.addCase(addNewEmptyNoteThunk.pending, (noteState) => {
+      //Petición http
+      noteState!.httpInfo.isFetching = true;
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
-      noteState!.httpInfo.isFetching = true;
-      noteState.isSavingInDB = false;
+
+      //Note informacion
+      noteState.isSavingInDB = true;
+      noteState.dbSavingMessage = '';
+      noteState.isThereActiveNote = false;
+
+      //active note
+      noteState.activeNote.body = null;
+      noteState.activeNote.date = null;
+      noteState.activeNote.title = null;
+      noteState.activeNote.noteId = null;
+      noteState.activeNote.imgUrls = [];
+
+      //all notes
+      noteState.allNotes = [];
     });
     builder.addCase(getAllNotesThunk.fulfilled, (noteState, action) => {
       if (!action.payload || action.payload.length <= 0) {
