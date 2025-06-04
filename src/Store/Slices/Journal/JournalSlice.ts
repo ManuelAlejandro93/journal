@@ -52,13 +52,21 @@ const journalSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(addNewEmptyNoteThunk.fulfilled, (noteState, action) => {
+      //Petición http
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = false;
+
+      //Note informacion
       noteState.isSavingInDB = false;
-      noteState.allNotes.unshift(action.payload);
-      noteState.activeNote = { ...action.payload };
       noteState.isThereActiveNote = true;
+
+      //active note
+      noteState.activeNote.body = action.payload[0].body;
+      noteState.activeNote.date = action.payload[0].date;
+      noteState.activeNote.title = action.payload[0].title;
+      noteState.activeNote.noteId = action.payload[0].noteId;
+      noteState.activeNote.imgUrls = [];
     });
     builder.addCase(addNewEmptyNoteThunk.rejected, (noteState, action) => {
       noteState!.httpInfo.hasError = true;
@@ -73,26 +81,63 @@ const journalSlice = createSlice({
       noteState.isSavingInDB = false;
     });
     builder.addCase(getAllNotesThunk.fulfilled, (noteState, action) => {
+      if (!action.payload || action.payload.length <= 0) {
+        //Petición http
+        noteState!.httpInfo.isFetching = false;
+        noteState!.httpInfo.hasError = false;
+        noteState!.httpInfo.errorMessage = null;
+
+        //Note informacion
+        noteState.isSavingInDB = false;
+        noteState.isThereActiveNote = false;
+
+        //active note
+        noteState.activeNote.body = null;
+        noteState.activeNote.date = null;
+        noteState.activeNote.title = null;
+        noteState.activeNote.noteId = null;
+        noteState.activeNote.imgUrls = [];
+
+        //all notes
+        noteState.allNotes = [];
+        return;
+      }
+
+      //Petición http
       noteState!.httpInfo.hasError = false;
       noteState!.httpInfo.errorMessage = null;
       noteState!.httpInfo.isFetching = false;
+
+      //Note informacion
       noteState.isSavingInDB = false;
       noteState.isThereActiveNote = true;
 
+      //active note
+      noteState.activeNote.body = action.payload[0].body;
+      noteState.activeNote.date = action.payload[0].date;
+      noteState.activeNote.title = action.payload[0].title;
+      noteState.activeNote.noteId = action.payload[0].noteId;
+
+      //todo: Revisar despues de añadir una nueva nota
+      noteState.activeNote.imgUrls = [];
+
+      //todo: Revisar despues de añadir una nueva nota
+      //all notes
       if (!action.payload || action.payload.length <= 0) {
         noteState.allNotes = [];
-        console.log('No hay imágenes.');
       } else {
         noteState.allNotes = [...action.payload];
       }
     });
 
     builder.addCase(getAllNotesThunk.rejected, (noteState, action) => {
-      noteState!.httpInfo.hasError = true;
-      noteState!.httpInfo.errorMessage = action.error.message!;
-      noteState!.httpInfo.isFetching = false;
-      //!no hay notas.
-      noteState!.allNotes = [];
+      console.log('error en la query.');
+
+      // noteState!.httpInfo.hasError = true;
+      // noteState!.httpInfo.errorMessage = action.error.message!;
+      // noteState!.httpInfo.isFetching = false;
+      // //!no hay notas.
+      // noteState!.allNotes = [];
     });
 
     builder.addCase(getAllNotesThunk.pending, (noteState) => {
