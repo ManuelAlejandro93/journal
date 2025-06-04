@@ -1,5 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
+import {
+  LogoutOutlined,
+  MenuOutlined,
+  DeleteOutline
+} from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar } from '@mui/material';
 
 // import { allCasesLogoutThunk } from '@/Store';
@@ -25,12 +29,13 @@ export const Navbar = () => {
           <MenuOutlined></MenuOutlined>
         </IconButton>
 
-        <div className='w-full flex justify-between items-center'>
-          <p>opcion n</p>
-          <p>opcion n</p>
-          <p>opcion n</p>
-          <p>opcion n</p>
+        <div className='w-full flex items-center justify-end'>
+          <div className='mr-8 text-red-500 flex items-center'>
+            <DeleteOutline></DeleteOutline>
+            Eliminar Nota
+          </div>
           <IconButton onClick={() => dispatch<any>(allCasesLogoutThunk())}>
+            <span className='text-white text-base mr-1'>Salir</span>
             <LogoutOutlined sx={{ color: 'white' }}></LogoutOutlined>
           </IconButton>
         </div>
