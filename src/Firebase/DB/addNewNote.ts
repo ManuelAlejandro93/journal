@@ -9,7 +9,7 @@ export const addNewEmptyNote = async (uuid: string): Promise<Note> => {
     title: '',
     body: '',
     date: new Date().getTime(),
-    imgUrls: ['']
+    imgUrls: []
   };
 
   try {

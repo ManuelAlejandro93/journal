@@ -51,23 +51,26 @@ const journalSlice = createSlice({
     }
   },
   extraReducers(builder) {
-    builder.addCase(addNewEmptyNoteThunk.fulfilled, (noteState, action) => {
-      //Petición http
-      noteState!.httpInfo.hasError = false;
-      noteState!.httpInfo.errorMessage = null;
-      noteState!.httpInfo.isFetching = false;
+    builder.addCase(
+      addNewEmptyNoteThunk.fulfilled,
+      (noteState, action: PayloadAction<Note>) => {
+        //Petición http
+        noteState!.httpInfo.hasError = false;
+        noteState!.httpInfo.errorMessage = null;
+        noteState!.httpInfo.isFetching = false;
 
-      //Note informacion
-      noteState.isSavingInDB = false;
-      noteState.isThereActiveNote = true;
+        //Note informacion
+        noteState.isSavingInDB = false;
+        noteState.isThereActiveNote = true;
 
-      //active note
-      noteState.activeNote.body = action.payload[0].body;
-      noteState.activeNote.date = action.payload[0].date;
-      noteState.activeNote.title = action.payload[0].title;
-      noteState.activeNote.noteId = action.payload[0].noteId;
-      noteState.activeNote.imgUrls = [];
-    });
+        //active note
+        // noteState.activeNote.body = action.payload[0].body;
+        // noteState.activeNote.date = action.payload[0].date;
+        // noteState.activeNote.title = action.payload[0].title;
+        // noteState.activeNote.noteId = action.payload[0].noteId;
+        // noteState.activeNote.imgUrls = [];
+      }
+    );
     builder.addCase(addNewEmptyNoteThunk.rejected, (noteState, action) => {
       noteState!.httpInfo.hasError = true;
       noteState!.httpInfo.errorMessage = action.error.message!;
@@ -89,6 +92,7 @@ const journalSlice = createSlice({
 
         //Note informacion
         noteState.isSavingInDB = false;
+        noteState.dbSavingMessage = '';
         noteState.isThereActiveNote = false;
 
         //active note
@@ -110,6 +114,7 @@ const journalSlice = createSlice({
 
       //Note informacion
       noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = '';
       noteState.isThereActiveNote = true;
 
       //active note
@@ -131,19 +136,47 @@ const journalSlice = createSlice({
     });
 
     builder.addCase(getAllNotesThunk.rejected, (noteState, action) => {
-      console.log('error en la query.');
+      //Petición http
+      noteState!.httpInfo.hasError = false;
+      noteState!.httpInfo.errorMessage = action.error.message as string;
+      noteState!.httpInfo.isFetching = false;
 
-      // noteState!.httpInfo.hasError = true;
-      // noteState!.httpInfo.errorMessage = action.error.message!;
-      // noteState!.httpInfo.isFetching = false;
-      // //!no hay notas.
-      // noteState!.allNotes = [];
+      //Note informacion
+      noteState.isSavingInDB = false;
+      noteState.dbSavingMessage = '';
+      noteState.isThereActiveNote = false;
+
+      //active note
+      noteState.activeNote.body = null;
+      noteState.activeNote.date = null;
+      noteState.activeNote.title = null;
+      noteState.activeNote.noteId = null;
+      noteState.activeNote.imgUrls = [];
+
+      //all notes
+      noteState.allNotes = [];
     });
 
     builder.addCase(getAllNotesThunk.pending, (noteState) => {
-      noteState!.httpInfo.hasError = false;
-      noteState!.httpInfo.errorMessage = null;
+      //Petición http
       noteState!.httpInfo.isFetching = true;
+      noteState!.httpInfo.hasError = false;
+      noteState.httpInfo.errorMessage = null;
+
+      //Note informacion
+      noteState.isSavingInDB = true;
+      noteState.isThereActiveNote = false;
+      noteState.dbSavingMessage = '';
+
+      //active note
+      noteState.activeNote.body = null;
+      noteState.activeNote.date = null;
+      noteState.activeNote.title = null;
+      noteState.activeNote.noteId = null;
+      noteState.activeNote.imgUrls = [];
+
+      //all notes
+      noteState.allNotes = [];
     });
     builder.addCase(updateSingleNoteByIDThunk.fulfilled, (noteState) => {
       noteState!.httpInfo.hasError = false;
