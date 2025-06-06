@@ -77,7 +77,6 @@ const journalSlice = createSlice({
         state.activeNote!.title = action.payload.title;
         state.activeNote!.noteId = action.payload.noteId;
         state.activeNote!.imgUrls = action.payload.imgUrls;
-
         //all notes
         state.allNotes =
           !state.allNotes || state.allNotes!.length <= 0
@@ -87,9 +86,9 @@ const journalSlice = createSlice({
     );
     builder.addCase(addNewEmptyNoteThunk.rejected, (state, action) => {
       //Petición http
+      state!.httpInfo.isFetching = false;
       state!.httpInfo.hasError = true;
       state!.httpInfo.errorMessage = action.error.message as string;
-      state!.httpInfo.isFetching = false;
 
       //Note informacion
       state.dbSavingMessage = null;
@@ -117,6 +116,8 @@ const journalSlice = createSlice({
     });
     builder.addCase(getAllNotesThunk.fulfilled, (state, action) => {
       if (!action.payload || action.payload.length <= 0) {
+        console.log('Estoy conn un arreglo vacio.');
+
         //Petición http
         state!.httpInfo.isFetching = false;
         state!.httpInfo.hasError = false;
@@ -140,7 +141,7 @@ const journalSlice = createSlice({
       //Note informacion
       state.dbSavingMessage = null;
 
-      //active note
+      //Active Note
       state.activeNote!.body = action.payload[0].body;
       state.activeNote!.date = action.payload[0].date;
       state.activeNote!.title = action.payload[0].title;
