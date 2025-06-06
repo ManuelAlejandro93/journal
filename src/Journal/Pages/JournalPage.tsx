@@ -10,9 +10,7 @@ export const JournalPage = () => {
   const isFetching = useSelector(
     (state: RootState) => state.journalReducer.httpInfo.isFetching
   );
-  const isThereActiveNote = useSelector(
-    (state: RootState) => state.journalReducer!.isThereActiveNote
-  );
+
   const allNotes = useSelector(
     (state: RootState) => state.journalReducer.allNotes
   );

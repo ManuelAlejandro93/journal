@@ -92,12 +92,12 @@ export const SideBar = () => {
           </Typography>
         ) : (
           <List>
-            {notes.length <= 0 ? (
+            {!notes || notes!.length <= 0 ? (
               <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
                 No hay notas escritas
               </Typography>
             ) : (
-              notes.map((note) => (
+              notes!.map((note) => (
                 <SidebarSingleNoteItem
                   key={note.noteId}
                   {...note}
