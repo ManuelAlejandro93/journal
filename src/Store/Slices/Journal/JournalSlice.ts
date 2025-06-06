@@ -1,9 +1,11 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
 import {
   addNewEmptyNoteThunk,
   getAllNotesThunk,
+  RootState,
   updateSingleNoteByIDThunk,
   uploadImageThunk
 } from '@/Store';

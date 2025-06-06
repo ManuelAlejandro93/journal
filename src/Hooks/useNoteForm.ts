@@ -14,18 +14,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 
 import { ChangeEvent, SubmitEvent } from '@/Interfaces';
 
-interface useNoteFormOutput extends Note {
-  onTitleChange: (e: ChangeEvent, noteID: string) => void;
-  onBodyChange: (e: ChangeEvent, noteID: string) => void;
-  formattedDate: string;
-  updatedImgUrls: string[];
-  storeActiveNote: Note;
-  isFetching: boolean;
-  imageInputElementRef: React.RefObject<HTMLInputElement>;
-  fullUpdateSingleNote: (e: SubmitEvent) => void;
-}
-
-export const useNoteForm = (): useNoteFormOutput => {
+export const useNoteForm = () => {
   //dispatch
   const dispatch = useDispatch();
 
@@ -47,7 +36,7 @@ export const useNoteForm = (): useNoteFormOutput => {
   // updated note img urls
 
   const updatedImgUrls = useMemo(
-    () => storeActiveNote.imgUrls.filter((x) => x),
+    () => storeActiveNote.imgUrls.map((x) => x),
     [storeActiveNote.imgUrls]
   );
 
@@ -83,13 +72,13 @@ export const useNoteForm = (): useNoteFormOutput => {
   const setNoteOnfirebases = () => {
     dispatch<any>(
       updateSingleNoteByIDThunk({
-        note: storeActiveNote,
+        note: { ...storeActiveNote },
         uuid: uuid as string
       })
     );
   };
 
-  const fullUpdateSingleNote = (e: SubmitEvent) => {
+  const fullUpdateSingleNote = async (e: SubmitEvent) => {
     e.preventDefault();
     submitImageToCloudinary();
     setNoteOnfirebases();
