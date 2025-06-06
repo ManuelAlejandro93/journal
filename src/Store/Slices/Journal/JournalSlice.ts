@@ -20,7 +20,7 @@ const journalSlice = createSlice({
       // state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      // state.dbSavingMessage = '';
+      state.dbSavingMessage = null;
 
       //active note
       state.activeNote!.body = action.payload.body;
@@ -69,7 +69,7 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.dbSavingMessage = '';
+        state.dbSavingMessage = null;
 
         //active note
         state.activeNote!.body = action.payload.body;
@@ -92,14 +92,10 @@ const journalSlice = createSlice({
       state!.httpInfo.isFetching = false;
 
       //Note informacion
-      // state.dbSavingMessage = '';
+      state.dbSavingMessage = null;
 
       //active note
-      // state.activeNote.body = null;
-      // state.activeNote.date = null;
-      // state.activeNote.title = null;
-      // state.activeNote.noteId = null;
-      // state.activeNote.imgUrls = [];
+      // state.activeNote = state.activeNote;
 
       //all notes
       // state.allNotes = [];
@@ -111,17 +107,13 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      // state.dbSavingMessage = '';
+      state.dbSavingMessage = null;
 
       //active note
-      // state.activeNote.body = null;
-      // state.activeNote.date = null;
-      // state.activeNote.title = null;
-      // state.activeNote.noteId = null;
-      // state.activeNote.imgUrls = [];
+      // state.activeNote = state.activeNote;
 
       //all notes
-      // state.allNotes = [];
+      // state.allNotes = state.allNotes;
     });
     builder.addCase(getAllNotesThunk.fulfilled, (state, action) => {
       if (!action.payload || action.payload.length <= 0) {
@@ -131,7 +123,7 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.dbSavingMessage = '';
+        state.dbSavingMessage = null;
 
         //active note
         state.activeNote = null;
@@ -146,7 +138,7 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = '';
+      state.dbSavingMessage = null;
 
       //active note
       state.activeNote!.body = action.payload[0].body;
