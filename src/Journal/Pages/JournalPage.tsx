@@ -11,7 +11,7 @@ export const JournalPage = () => {
     (state: RootState) => state.journalReducer.httpInfo.isFetching
   );
   const isThereActiveNote = useSelector(
-    (state: RootState) => state.journalReducer.isThereActiveNote
+    (state: RootState) => state.journalReducer!.isThereActiveNote
   );
   const allNotes = useSelector(
     (state: RootState) => state.journalReducer.allNotes
@@ -19,7 +19,7 @@ export const JournalPage = () => {
 
   return (
     <JournalLayout>
-      {allNotes.length <= 0 || !allNotes ? (
+      {allNotes === null || allNotes!.length <= 0 || !allNotes ? (
         <NothingSelectedView></NothingSelectedView>
       ) : (
         <>
