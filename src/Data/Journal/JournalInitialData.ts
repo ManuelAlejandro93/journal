@@ -6,7 +6,6 @@ export const noteInitialData: NoteInitialData = {
     errorMessage: null
   },
   dbSavingMessage: '',
-  isSavingInDB: false,
   allNotes: [],
   activeNote: {
     body: '',
@@ -14,6 +13,5 @@ export const noteInitialData: NoteInitialData = {
     noteId: null,
     title: '',
     imgUrls: []
-  },
-  isThereActiveNote: false
+  }
 };

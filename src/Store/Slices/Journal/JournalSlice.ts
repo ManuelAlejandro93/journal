@@ -20,16 +20,14 @@ const journalSlice = createSlice({
       // state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      // state.isSavingInDB = false;
       // state.dbSavingMessage = '';
-      // state.isThereActiveNote = state.isThereActiveNote;
 
       //active note
-      state.activeNote.body = action.payload.body;
-      state.activeNote.date = action.payload.date;
-      state.activeNote.title = action.payload.title;
-      state.activeNote.noteId = action.payload.noteId;
-      state.activeNote.imgUrls = action.payload.imgUrls;
+      state.activeNote!.body = action.payload.body;
+      state.activeNote!.date = action.payload.date;
+      state.activeNote!.title = action.payload.title;
+      state.activeNote!.noteId = action.payload.noteId;
+      state.activeNote!.imgUrls = action.payload.imgUrls;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
@@ -39,9 +37,9 @@ const journalSlice = createSlice({
       action: PayloadAction<{ newInput: string; noteID: string }>
     ) {
       //actualizo el titulo de la nota activa
-      state.activeNote.title = action.payload.newInput;
+      state.activeNote!.title = action.payload.newInput;
       //actualizo el titulo en el arreglo de todas las notas.
-      state.allNotes = state.allNotes.map((note) => {
+      state.allNotes = state.allNotes!.map((note) => {
         if (note.noteId === action.payload.noteID) {
           return { ...note, title: action.payload.newInput };
         } else return note;
@@ -52,9 +50,9 @@ const journalSlice = createSlice({
       action: PayloadAction<{ newString: string; noteID: string }>
     ) {
       //actualizo el body de la nota activa
-      state.activeNote.body = action.payload.newString;
+      state.activeNote!.body = action.payload.newString;
       //actualizo el body en el arreglo de todas las notas.
-      state.allNotes = state.allNotes.map((note) => {
+      state.allNotes = state.allNotes!.map((note) => {
         if (note.noteId === action.payload.noteID) {
           return { ...note, body: action.payload.newString };
         } else return note;
@@ -66,25 +64,23 @@ const journalSlice = createSlice({
       addNewEmptyNoteThunk.fulfilled,
       (state, action: PayloadAction<Note>) => {
         //Petición http
+        state!.httpInfo.isFetching = false;
         state!.httpInfo.hasError = false;
         state!.httpInfo.errorMessage = null;
-        state!.httpInfo.isFetching = false;
 
         //Note informacion
-        state.isSavingInDB = false;
         state.dbSavingMessage = '';
-        state.isThereActiveNote = true;
 
         //active note
-        state.activeNote.body = action.payload.body;
-        state.activeNote.date = action.payload.date;
-        state.activeNote.title = action.payload.title;
-        state.activeNote.noteId = action.payload.noteId;
-        state.activeNote.imgUrls = action.payload.imgUrls;
+        state.activeNote!.body = action.payload.body;
+        state.activeNote!.date = action.payload.date;
+        state.activeNote!.title = action.payload.title;
+        state.activeNote!.noteId = action.payload.noteId;
+        state.activeNote!.imgUrls = action.payload.imgUrls;
 
         //all notes
         state.allNotes =
-          !state.allNotes.length || state.allNotes.length <= 0
+          !state.allNotes || state.allNotes!.length <= 0
             ? [action.payload]
             : [action.payload, ...state.allNotes];
       }
@@ -96,19 +92,17 @@ const journalSlice = createSlice({
       state!.httpInfo.isFetching = false;
 
       //Note informacion
-      state.isSavingInDB = false;
-      state.dbSavingMessage = '';
-      state.isThereActiveNote = false;
+      // state.dbSavingMessage = '';
 
       //active note
-      state.activeNote.body = null;
-      state.activeNote.date = null;
-      state.activeNote.title = null;
-      state.activeNote.noteId = null;
-      state.activeNote.imgUrls = [];
+      // state.activeNote.body = null;
+      // state.activeNote.date = null;
+      // state.activeNote.title = null;
+      // state.activeNote.noteId = null;
+      // state.activeNote.imgUrls = [];
 
       //all notes
-      state.allNotes = [];
+      // state.allNotes = [];
     });
     builder.addCase(addNewEmptyNoteThunk.pending, (state) => {
       //Petición http
@@ -117,19 +111,17 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = true;
-      state.dbSavingMessage = '';
-      state.isThereActiveNote = false;
+      // state.dbSavingMessage = '';
 
       //active note
-      state.activeNote.body = null;
-      state.activeNote.date = null;
-      state.activeNote.title = null;
-      state.activeNote.noteId = null;
-      state.activeNote.imgUrls = [];
+      // state.activeNote.body = null;
+      // state.activeNote.date = null;
+      // state.activeNote.title = null;
+      // state.activeNote.noteId = null;
+      // state.activeNote.imgUrls = [];
 
       //all notes
-      state.allNotes = [];
+      // state.allNotes = [];
     });
     builder.addCase(getAllNotesThunk.fulfilled, (state, action) => {
       if (!action.payload || action.payload.length <= 0) {
@@ -139,48 +131,31 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.isSavingInDB = false;
         state.dbSavingMessage = '';
-        state.isThereActiveNote = false;
 
         //active note
-        state.activeNote.body = null;
-        state.activeNote.date = null;
-        state.activeNote.title = null;
-        state.activeNote.noteId = null;
-        state.activeNote.imgUrls = [];
-
+        state.activeNote = null;
         //all notes
-        state.allNotes = [];
+        state.allNotes = null;
         return;
       }
 
       //Petición http
+      state!.httpInfo.isFetching = false;
       state!.httpInfo.hasError = false;
       state!.httpInfo.errorMessage = null;
-      state!.httpInfo.isFetching = false;
 
       //Note informacion
-      state.isSavingInDB = false;
       state.dbSavingMessage = '';
-      state.isThereActiveNote = true;
 
       //active note
-      state.activeNote.body = action.payload[0].body;
-      state.activeNote.date = action.payload[0].date;
-      state.activeNote.title = action.payload[0].title;
-      state.activeNote.noteId = action.payload[0].noteId;
-
-      //todo: Revisar despues de añadir una nueva nota
-      state.activeNote.imgUrls = [];
-
-      //todo: Revisar despues de añadir una nueva nota
+      state.activeNote!.body = action.payload[0].body;
+      state.activeNote!.date = action.payload[0].date;
+      state.activeNote!.title = action.payload[0].title;
+      state.activeNote!.noteId = action.payload[0].noteId;
+      state.activeNote!.imgUrls = action.payload[0].imgUrls;
       //all notes
-      if (!action.payload || action.payload.length <= 0) {
-        state.allNotes = [];
-      } else {
-        state.allNotes = [...action.payload];
-      }
+      state.allNotes = action.payload;
     });
 
     builder.addCase(getAllNotesThunk.rejected, (state, action) => {
@@ -190,19 +165,13 @@ const journalSlice = createSlice({
       state!.httpInfo.isFetching = false;
 
       //Note informacion
-      state.isSavingInDB = false;
-      state.dbSavingMessage = '';
-      state.isThereActiveNote = false;
+      state.dbSavingMessage = null;
 
       //active note
-      state.activeNote.body = null;
-      state.activeNote.date = null;
-      state.activeNote.title = null;
-      state.activeNote.noteId = null;
-      state.activeNote.imgUrls = [];
+      state.activeNote = null;
 
       //all notes
-      state.allNotes = [];
+      state.allNotes = null;
     });
 
     builder.addCase(getAllNotesThunk.pending, (state) => {
@@ -212,19 +181,13 @@ const journalSlice = createSlice({
       state.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = true;
-      state.isThereActiveNote = false;
-      state.dbSavingMessage = '';
+      state.dbSavingMessage = null;
 
       //active note
-      state.activeNote.body = null;
-      state.activeNote.date = null;
-      state.activeNote.title = null;
-      state.activeNote.noteId = null;
-      state.activeNote.imgUrls = [];
+      // state.activeNote = state.activeNote;
 
       //all notes
-      state.allNotes = [];
+      // state.allNotes = state.allNotes;
     });
     builder.addCase(updateSingleNoteByIDThunk.fulfilled, (state) => {
       //Petición http
@@ -233,16 +196,10 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = false;
       state.dbSavingMessage = 'ok-on-updating-single-note-by-id';
-      state.isThereActiveNote = true;
 
       //active note
-      // noteState.activeNote.body = noteState.activeNote.body;
-      // noteState.activeNote.date = noteState.activeNote.date;
-      // noteState.activeNote.title = noteState.activeNote.title;
-      // noteState.activeNote.noteId = noteState.activeNote.noteId;
-      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+      // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
@@ -255,16 +212,10 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
-      state.isSavingInDB = false;
       state.dbSavingMessage = 'error-on-updating-single-note-by-id';
-      state.isThereActiveNote = true;
 
       //active note
-      // noteState.activeNote.body = noteState.activeNote.body;
-      // noteState.activeNote.date = noteState.activeNote.date;
-      // noteState.activeNote.title = noteState.activeNote.title;
-      // noteState.activeNote.noteId = noteState.activeNote.noteId;
-      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+      // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
@@ -277,19 +228,13 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = false;
-      state.dbSavingMessage = '';
-      state.isThereActiveNote = false;
+      state.dbSavingMessage = null;
 
       //active note
-      state.activeNote.body = null;
-      state.activeNote.date = null;
-      state.activeNote.title = null;
-      state.activeNote.noteId = null;
-      state.activeNote.imgUrls = [];
+      // state.activeNote = state.activeNote;
 
       //all notes
-      state.allNotes = [];
+      // state.allNotes = state.allNotes;
     });
     builder.addCase<any>(
       uploadImageThunk.fulfilled,
@@ -300,23 +245,20 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.isSavingInDB = false;
-        state.dbSavingMessage = '';
-        state.isThereActiveNote = true;
+        state.dbSavingMessage = null;
 
         //active note
-        state.activeNote.imgUrls =
-          !state.activeNote.imgUrls || state.activeNote.imgUrls.length === 0
+        //solo quiero cambiar de la nota activa en su arreglo de imgURLS
+        state.activeNote!.imgUrls =
+          !state.activeNote!.imgUrls || state.activeNote!.imgUrls.length === 0
             ? [action.payload.secure_url]
-            : [action.payload.secure_url, ...state.activeNote.imgUrls];
-        // quiero dejar la nota activa que tenía antes.
-        //lo que sí quiero cambiar de la nota activa es su arreglo de imgURLS
+            : [action.payload.secure_url, ...state.activeNote!.imgUrls];
 
         //all notes
 
-        state.allNotes = state.allNotes.map((note) => {
+        state.allNotes = state.allNotes!.map((note) => {
           if (
-            note.noteId === state.activeNote.noteId &&
+            note.noteId === state.activeNote!.noteId &&
             note.imgUrls.length === 0
           ) {
             return {
@@ -324,7 +266,7 @@ const journalSlice = createSlice({
               imgUrls: [action.payload.secure_url]
             };
           } else if (
-            note.noteId === state.activeNote.noteId &&
+            note.noteId === state.activeNote!.noteId &&
             note.imgUrls.length >= 1
           ) {
             return {
@@ -345,16 +287,10 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
-      state.isSavingInDB = false;
-      state.dbSavingMessage = '';
-      // noteState.isThereActiveNote = noteState.isThereActiveNote;
+      state.dbSavingMessage = null;
 
       //active note
-      // noteState.activeNote.body = noteState.activeNote.body;
-      // noteState.activeNote.date = noteState.activeNote.date;
-      // noteState.activeNote.title = noteState.activeNote.title;
-      // noteState.activeNote.noteId = noteState.activeNote.noteId;
-      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+      // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
@@ -367,16 +303,10 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = true;
-      state.dbSavingMessage = '';
-      // noteState.isThereActiveNote = noteState.isThereActiveNote;
+      state.dbSavingMessage = null;
 
       //active note
-      // noteState.activeNote.body = noteState.activeNote.body;
-      // noteState.activeNote.date = noteState.activeNote.date;
-      // noteState.activeNote.title = noteState.activeNote.title;
-      // noteState.activeNote.noteId = noteState.activeNote.noteId;
-      // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
+      // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;

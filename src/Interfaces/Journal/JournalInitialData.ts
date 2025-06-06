@@ -6,9 +6,7 @@ export type NoteInitialData = {
     hasError: boolean;
     errorMessage: String | null;
   };
-  isSavingInDB: boolean;
-  allNotes: Note[];
-  activeNote: Note;
-  isThereActiveNote: boolean;
-  dbSavingMessage: string;
+  allNotes: Note[] | null;
+  activeNote: Note | null;
+  dbSavingMessage: string | null;
 };
