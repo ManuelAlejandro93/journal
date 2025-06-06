@@ -15,9 +15,9 @@ const journalSlice = createSlice({
   reducers: {
     setActiveNote(state, action: PayloadAction<Note>) {
       //Petición http
-      state!.httpInfo.isFetching = false;
-      state!.httpInfo.hasError = false;
-      state!.httpInfo.errorMessage = null;
+      // state!.httpInfo.isFetching = false;
+      // state!.httpInfo.hasError = false;
+      // state!.httpInfo.errorMessage = null;
 
       //Note informacion
       state.isSavingInDB = false;
@@ -305,45 +305,36 @@ const journalSlice = createSlice({
         state.isThereActiveNote = true;
 
         //active note
-        // noteState.activeNote.body = noteState.activeNote.body;
-        // noteState.activeNote.date = noteState.activeNote.date;
-        // noteState.activeNote.title = noteState.activeNote.title;
-        // noteState.activeNote.noteId = noteState.activeNote.noteId;
-        // noteState.activeNote.imgUrls = noteState.activeNote.imgUrls;
-
-        //!cosas que voy a necesitar más adelante. Start
-        // !noteState.activeNote.imgUrls ||
-        // noteState.activeNote.imgUrls.length === 0
-        //   ? [action.payload.secure_url]
-        //   : [action.payload.secure_url, ...noteState.activeNote.imgUrls];
+        state.activeNote.imgUrls =
+          !state.activeNote.imgUrls || state.activeNote.imgUrls.length === 0
+            ? [action.payload.secure_url]
+            : [action.payload.secure_url, ...state.activeNote.imgUrls];
+        // quiero dejar la nota activa que tenía antes.
+        //lo que sí quiero cambiar de la nota activa es su arreglo de imgURLS
 
         //all notes
-        // noteState.allNotes = noteState.allNotes;
-        //...................................................................................................................................................................................................................................................................................................................................
 
-        //? all notes state
-        // noteState.allNotes = noteState.allNotes.map((note) => {
-        //   if (
-        //     note.noteId === noteState.activeNote.noteId &&
-        //     note.imgUrls.length === 0
-        //   ) {
-        //     return {
-        //       ...note,
-        //       imgUrls: [action.payload.secure_url]
-        //     };
-        //   } else if (
-        //     note.noteId === noteState.activeNote.noteId &&
-        //     note.imgUrls.length >= 1
-        //   ) {
-        //     return {
-        //       ...note,
-        //       imgUrls: [action.payload.secure_url, ...note.imgUrls]
-        //     };
-        //   } else {
-        //     return note;
-        //   }
-        // });
-        //!cosas que voy a necesitar más adelante. End
+        state.allNotes = state.allNotes.map((note) => {
+          if (
+            note.noteId === state.activeNote.noteId &&
+            note.imgUrls.length === 0
+          ) {
+            return {
+              ...note,
+              imgUrls: [action.payload.secure_url]
+            };
+          } else if (
+            note.noteId === state.activeNote.noteId &&
+            note.imgUrls.length >= 1
+          ) {
+            return {
+              ...note,
+              imgUrls: [action.payload.secure_url, ...note.imgUrls]
+            };
+          } else {
+            return note;
+          }
+        });
       }
     );
 

@@ -29,7 +29,7 @@ export const useNoteForm = (): useNoteFormOutput => {
   //dispatch
   const dispatch = useDispatch();
 
-  //image controller
+  //imageinput actual reference
   const imageInputElementRef = useRef<HTMLInputElement>(null);
 
   const storeActiveNote: Note = useSelector(
