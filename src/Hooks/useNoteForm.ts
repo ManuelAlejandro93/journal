@@ -33,7 +33,7 @@ export const useNoteForm = (): useNoteFormOutput => {
   const imageInputElementRef = useRef<HTMLInputElement>(null);
 
   const storeActiveNote: Note = useSelector(
-    (state: RootState) => state.journalReducer.activeNote
+    (state: RootState) => state.journalReducer.activeNote as Note
   );
   const isFetching = useSelector(
     (state: RootState) => state.journalReducer.httpInfo.isFetching as boolean
