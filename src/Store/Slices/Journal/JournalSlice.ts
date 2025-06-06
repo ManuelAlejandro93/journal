@@ -20,9 +20,9 @@ const journalSlice = createSlice({
       // state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.isSavingInDB = false;
-      state.dbSavingMessage = '';
-      state.isThereActiveNote = state.isThereActiveNote;
+      // state.isSavingInDB = false;
+      // state.dbSavingMessage = '';
+      // state.isThereActiveNote = state.isThereActiveNote;
 
       //active note
       state.activeNote.body = action.payload.body;
@@ -36,14 +36,14 @@ const journalSlice = createSlice({
     },
     onChangeActiveNoteTitle(
       state,
-      action: PayloadAction<{ newString: string; noteID: string }>
+      action: PayloadAction<{ newInput: string; noteID: string }>
     ) {
       //actualizo el titulo de la nota activa
-      state.activeNote.title = action.payload.newString;
-      //actualizo todas los body en el arreglo de todas las notas.
+      state.activeNote.title = action.payload.newInput;
+      //actualizo el titulo en el arreglo de todas las notas.
       state.allNotes = state.allNotes.map((note) => {
         if (note.noteId === action.payload.noteID) {
-          return { ...note, title: action.payload.newString };
+          return { ...note, title: action.payload.newInput };
         } else return note;
       });
     },
@@ -53,7 +53,7 @@ const journalSlice = createSlice({
     ) {
       //actualizo el body de la nota activa
       state.activeNote.body = action.payload.newString;
-      //actualizo todas los body en el arreglo de todas las notas.
+      //actualizo el body en el arreglo de todas las notas.
       state.allNotes = state.allNotes.map((note) => {
         if (note.noteId === action.payload.noteID) {
           return { ...note, body: action.payload.newString };

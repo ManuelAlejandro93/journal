@@ -60,7 +60,7 @@ export const useNoteForm = (): useNoteFormOutput => {
   //controllerss
   const onTitleChange = (e: ChangeEvent, noteID: string): void => {
     dispatch(
-      onChangeActiveNoteTitle({ newString: e.target.value, noteID: noteID })
+      onChangeActiveNoteTitle({ newInput: e.target.value, noteID: noteID })
     );
   };
   const onBodyChange = (e: ChangeEvent, noteID: string): void => {
