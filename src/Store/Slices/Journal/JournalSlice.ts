@@ -72,6 +72,7 @@ const journalSlice = createSlice({
         state.dbSavingMessage = null;
 
         //active note
+        state.activeNote = { ...noteInitialData } as unknown as Note;
         state.activeNote!.body = action.payload.body;
         state.activeNote!.date = action.payload.date;
         state.activeNote!.title = action.payload.title;
@@ -116,8 +117,6 @@ const journalSlice = createSlice({
     });
     builder.addCase(getAllNotesThunk.fulfilled, (state, action) => {
       if (!action.payload || action.payload.length <= 0) {
-        console.log('Estoy conn un arreglo vacio.');
-
         //Petición http
         state!.httpInfo.isFetching = false;
         state!.httpInfo.hasError = false;
