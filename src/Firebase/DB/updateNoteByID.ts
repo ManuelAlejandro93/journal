@@ -15,7 +15,6 @@ export const updateSingleNoteById = async ({
   const docRef = doc(firebaseDB, `${uuid}/journal/notes/${note.noteId}`);
   try {
     await setDoc(docRef, noteForFireBase, { merge: true });
-
     return;
   } catch (error) {
     throw error;

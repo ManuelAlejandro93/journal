@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
 import {
   addNewEmptyNoteThunk,
   getAllNotesThunk,
-  RootState,
   updateSingleNoteByIDThunk,
   uploadImageThunk
 } from '@/Store';
 import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
+
+import SweetAlert from 'sweetalert2';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -22,7 +22,6 @@ const journalSlice = createSlice({
       // state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       state.activeNote!.body = action.payload.body;
@@ -71,7 +70,6 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.dbSavingMessage = null;
 
         //active note
         state.activeNote = { ...noteInitialData } as unknown as Note;
@@ -94,7 +92,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // state.activeNote = state.activeNote;
@@ -109,7 +106,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // state.activeNote = state.activeNote;
@@ -125,7 +121,6 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.dbSavingMessage = null;
 
         //active note
         state.activeNote = null;
@@ -140,7 +135,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //Active Note
       state.activeNote!.body = action.payload[0].body;
@@ -159,7 +153,6 @@ const journalSlice = createSlice({
       state!.httpInfo.isFetching = false;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       state.activeNote = null;
@@ -175,7 +168,6 @@ const journalSlice = createSlice({
       state.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // state.activeNote = state.activeNote;
@@ -190,13 +182,17 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = 'ok-on-updating-single-note-by-id';
 
       //active note
       // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
+      SweetAlert.fire(
+        'Nota actualizada.',
+        'tus notas están a salvo',
+        'success'
+      );
     });
 
     builder.addCase(updateSingleNoteByIDThunk.rejected, (state, action) => {
@@ -206,13 +202,18 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
-      state.dbSavingMessage = 'error-on-updating-single-note-by-id';
 
       //active note
       // noteState.activeNote = noteState.activeNote;
 
       //all notes
       // noteState.allNotes = noteState.allNotes;
+
+      SweetAlert.fire(
+        'Las notas no fueron actualizadas',
+        'vuelva a cargar tu nota.',
+        'error'
+      );
     });
 
     builder.addCase(updateSingleNoteByIDThunk.pending, (state) => {
@@ -222,7 +223,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // state.activeNote = state.activeNote;
@@ -239,7 +239,6 @@ const journalSlice = createSlice({
         state!.httpInfo.errorMessage = null;
 
         //Note informacion
-        state.dbSavingMessage = null;
 
         //active note
         //solo quiero cambiar de la nota activa en su arreglo de imgURLS
@@ -281,7 +280,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = action.error.message as string;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // noteState.activeNote = noteState.activeNote;
@@ -297,7 +295,6 @@ const journalSlice = createSlice({
       state!.httpInfo.errorMessage = null;
 
       //Note informacion
-      state.dbSavingMessage = null;
 
       //active note
       // noteState.activeNote = noteState.activeNote;

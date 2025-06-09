@@ -8,5 +8,4 @@ export type NoteInitialData = {
   };
   allNotes: Note[] | null;
   activeNote: Note | null;
-  dbSavingMessage: string | null;
 };
