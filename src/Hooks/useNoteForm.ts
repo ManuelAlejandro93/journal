@@ -1,3 +1,4 @@
+import { useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   RootState,
@@ -6,52 +7,33 @@ import {
   uploadImageThunk,
   updateSingleNoteByIDThunk
 } from '@/Store';
-import { Note } from '@/Interfaces';
-import { useEffect, useMemo, useRef } from 'react';
-
-import SweetAlert from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.css';
-
-import { ChangeEvent, SubmitEvent } from '@/Interfaces';
+import { Note, ChangeEvent, SubmitEvent } from '@/Interfaces';
 
 export const useNoteForm = () => {
   //dispatch
   const dispatch = useDispatch();
 
-  //imageinput actual reference
+  //Referencia actualizada al input que contiene las imágenes.
   const imageInputElementRef = useRef<HTMLInputElement>(null);
 
-  const storeActiveNote: Note = useSelector(
-    (state: RootState) => state.journalReducer.activeNote as Note
-  );
-  const isFetching = useSelector(
-    (state: RootState) => state.journalReducer.httpInfo.isFetching as boolean
-  );
-  const dbSavingMessage = useSelector(
-    (state: RootState) => state.journalReducer.dbSavingMessage
+  //journal + auth actualizado
+  const { journalReducer: journalState, authReducer: authState } = useSelector(
+    (state: RootState) => state
   );
 
-  const uuid = useSelector((state: RootState) => state.authReducer.data?.uuid);
-
-  // updated note img urls
-
-  const updatedImgUrls = useMemo(
-    () => storeActiveNote.imgUrls.map((x) => x),
-    [storeActiveNote.imgUrls]
-  );
-
-  // formatted date.
-
+  //formattedDate
   const formattedDate = useMemo(() => {
-    return new Date(storeActiveNote.date!).toUTCString();
-  }, [storeActiveNote.date]);
+    return new Date(journalState.activeNote?.date!).toUTCString();
+  }, [journalState.activeNote?.date]);
 
-  //controllerss
+  //controllers
+  //titleChange
   const onTitleChange = (e: ChangeEvent, noteID: string): void => {
     dispatch(
       onChangeActiveNoteTitle({ newInput: e.target.value, noteID: noteID })
     );
   };
+  //bodyChange
   const onBodyChange = (e: ChangeEvent, noteID: string): void => {
     dispatch(
       onChangeActiveNoteBody({ newString: e.target.value, noteID: noteID })
@@ -72,8 +54,8 @@ export const useNoteForm = () => {
   const setNoteOnfirebases = () => {
     dispatch<any>(
       updateSingleNoteByIDThunk({
-        note: { ...storeActiveNote },
-        uuid: uuid as string
+        note: { ...(journalState.activeNote as Note) },
+        uuid: authState.data?.uuid as string
       })
     );
   };
@@ -83,29 +65,22 @@ export const useNoteForm = () => {
     submitImageToCloudinary();
     setNoteOnfirebases();
   };
-  useEffect(() => {
-    if (dbSavingMessage === 'ok-on-updating-single-note-by-id') {
-      SweetAlert.fire(
-        'Nota actualizada.',
-        'tus notas están a salvo',
-        'success'
-      );
-    }
-  }, [dbSavingMessage]);
 
   return {
-    body: storeActiveNote.body,
-    date: storeActiveNote.date,
-    imgUrls: storeActiveNote.imgUrls,
-    updatedImgUrls,
-    noteId: storeActiveNote.noteId,
-    title: storeActiveNote.title,
-    formattedDate,
+    //Active Note State
+    noteId: journalState.activeNote?.noteId,
+    title: journalState.activeNote?.title,
+    body: journalState.activeNote?.body,
+    date: formattedDate,
+    imgUrls: journalState.activeNote?.imgUrls,
+    updatedImgUrls: journalState.activeNote?.imgUrls,
+    //form change controllers
     onBodyChange,
     onTitleChange,
+    //form submit controller
     fullUpdateSingleNote,
-    isFetching,
-    storeActiveNote,
+    storeActiveNote: journalState.activeNote,
+    //image input reference
     imageInputElementRef
   };
 };
