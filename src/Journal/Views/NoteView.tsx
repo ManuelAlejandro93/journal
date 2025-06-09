@@ -1,32 +1,35 @@
 import { Button, TextField, Typography } from '@mui/material';
 import { SaveOutlined, CloudUploadOutlined } from '@mui/icons-material';
 import { useNoteForm } from '@/Hooks';
-import { SubmitEvent } from '@/Interfaces';
 import { ImageGallery } from '@/Journal';
+import { SubmitEvent } from '@/Interfaces';
 
 export const NoteView = () => {
   const {
-    //! listos.
-    formattedDate,
-    body,
-    title,
-    //! dañados.
+    //General Journal State
+    isFetching,
+    //Active Note State
     noteId,
-    updatedImgUrls,
+    title,
+    body,
+    date,
+    imgUrls,
+    //form change controllers
     onBodyChange,
     onTitleChange,
-    isFetching,
-    imageInputElementRef,
-    fullUpdateSingleNote
+    //form submit controller
+    fullUpdateSingleNote,
+    //image input reference
+    imageInputElementRef
   } = useNoteForm();
 
   return (
     <div className='grid grid-cols-2 gap-8 animate-fade-down'>
       <Typography sx={{ color: 'primary.main', textAlign: 'center' }}>
-        {formattedDate}
+        {date}
       </Typography>
       <Button
-        disabled={isFetching}
+        disabled={isFetching as boolean}
         variant='outlined'
         sx={{ color: 'primary.main' }}
         type='submit'
@@ -70,7 +73,7 @@ export const NoteView = () => {
           accept='image/*'
           multiple
           ref={imageInputElementRef}
-          disabled={isFetching}
+          disabled={isFetching as boolean}
           style={{ display: 'none' }}
         />
         <CloudUploadOutlined
@@ -80,7 +83,7 @@ export const NoteView = () => {
         <Typography sx={{ color: 'primary.main' }}>Subir imágenes</Typography>
       </label>
 
-      {updatedImgUrls.length <= 0 ? (
+      {imgUrls!.length <= 0 ? (
         <Typography
           className='col-span-2'
           sx={{ color: 'primary.main' }}
@@ -91,12 +94,12 @@ export const NoteView = () => {
         <>
           <span className='col-span-2'>
             <ol>
-              {updatedImgUrls.map((img, i) => (
+              {imgUrls!.map((img, i) => (
                 <li key={img + i}>{img}</li>
               ))}
             </ol>
           </span>
-          <ImageGallery photoURLS={updatedImgUrls} />
+          <ImageGallery photoURLS={imgUrls as string[]} />
         </>
       )}
     </div>

@@ -67,19 +67,19 @@ export const useNoteForm = () => {
   };
 
   return {
+    //General Journal State
+    isFetching: journalState.httpInfo.isFetching,
     //Active Note State
     noteId: journalState.activeNote?.noteId,
     title: journalState.activeNote?.title,
     body: journalState.activeNote?.body,
     date: formattedDate,
     imgUrls: journalState.activeNote?.imgUrls,
-    updatedImgUrls: journalState.activeNote?.imgUrls,
     //form change controllers
     onBodyChange,
     onTitleChange,
     //form submit controller
     fullUpdateSingleNote,
-    storeActiveNote: journalState.activeNote,
     //image input reference
     imageInputElementRef
   };
