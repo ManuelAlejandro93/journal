@@ -8,6 +8,7 @@ import {
   updateSingleNoteByIDThunk
 } from '@/Store';
 import { Note, ChangeEvent, SubmitEvent } from '@/Interfaces';
+import { log } from 'node:console';
 
 export const useNoteForm = () => {
   //dispatch
@@ -48,7 +49,6 @@ export const useNoteForm = () => {
       for (let i = 0; i < formImages.length; i++) {
         dispatch<any>(uploadImageThunk(formImages[i]));
       }
-      imageInputElementRef.current.value = '';
     }
   };
   const setNoteOnfirebases = () => {
@@ -64,6 +64,9 @@ export const useNoteForm = () => {
     e.preventDefault();
     submitImageToCloudinary();
     setNoteOnfirebases();
+    console.log(journalState.activeNote);
+
+    imageInputElementRef.current!.value = '';
   };
 
   return {

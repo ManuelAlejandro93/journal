@@ -233,6 +233,8 @@ const journalSlice = createSlice({
     builder.addCase<any>(
       uploadImageThunk.fulfilled,
       (state: NoteInitialData, action: PayloadAction<CloudinarySuccessed>) => {
+        console.log(action.payload.secure_url);
+
         //Petición http
         state!.httpInfo.isFetching = false;
         state!.httpInfo.hasError = false;
