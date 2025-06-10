@@ -4,11 +4,10 @@ import {
   RootState,
   onChangeActiveNoteBody,
   onChangeActiveNoteTitle,
-  uploadImageThunk,
   updateSingleNoteByIDThunk
 } from '@/Store';
 import { Note, ChangeEvent, SubmitEvent } from '@/Interfaces';
-import { log } from 'node:console';
+import { uploadImageThunk } from '@/Store';
 
 export const useNoteForm = () => {
   //dispatch
@@ -42,31 +41,24 @@ export const useNoteForm = () => {
   };
 
   const submitImageToCloudinary = () => {
-    const formImages = imageInputElementRef.current?.files;
-    if (!formImages || formImages?.length <= 0) {
-      return;
-    } else {
-      for (let i = 0; i < formImages.length; i++) {
-        dispatch<any>(uploadImageThunk(formImages[i]));
-      }
-    }
-  };
-  const setNoteOnfirebases = () => {
     dispatch<any>(
-      updateSingleNoteByIDThunk({
-        note: { ...(journalState.activeNote as Note) },
-        uuid: authState.data?.uuid as string
-      })
+      uploadImageThunk(imageInputElementRef.current?.files as FileList)
     );
   };
+
+  // const setNoteOnfirebases = () => {
+  //   dispatch<any>(
+  //     updateSingleNoteByIDThunk({
+  //       note: { ...(journalState.activeNote as Note) },
+  //       uuid: authState.data?.uuid as string
+  //     })
+  //   );
+  // };
 
   const fullUpdateSingleNote = async (e: SubmitEvent) => {
     e.preventDefault();
     submitImageToCloudinary();
-    setNoteOnfirebases();
-    console.log(journalState.activeNote);
-
-    imageInputElementRef.current!.value = '';
+    // setNoteOnfirebases();
   };
 
   return {

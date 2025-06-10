@@ -10,6 +10,7 @@ import {
 import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
 
 import SweetAlert from 'sweetalert2';
+import { AxiosResponse } from 'axios';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -232,25 +233,34 @@ const journalSlice = createSlice({
     });
     builder.addCase<any>(
       uploadImageThunk.fulfilled,
-      (state: NoteInitialData, action: PayloadAction<CloudinarySuccessed>) => {
-        console.log(action.payload.secure_url);
+      (
+        state: NoteInitialData,
+        action: PayloadAction<AxiosResponse<CloudinarySuccessed>[]>
+      ) => {
+        if (!action.payload) {
+          state.httpInfo.isFetching = false;
+          state.httpInfo.errorMessage = null;
+          state.httpInfo.hasError = false;
+          return;
+        }
+
+        const newNoteURLS = action.payload.map(
+          (singleImgResponse) => singleImgResponse.data.secure_url
+        );
 
         //Petición http
         state!.httpInfo.isFetching = false;
         state!.httpInfo.hasError = false;
         state!.httpInfo.errorMessage = null;
-
         //Note informacion
-
         //active note
         //solo quiero cambiar de la nota activa en su arreglo de imgURLS
         state.activeNote!.imgUrls =
           !state.activeNote!.imgUrls || state.activeNote!.imgUrls.length === 0
-            ? [action.payload.secure_url]
-            : [action.payload.secure_url, ...state.activeNote!.imgUrls];
-
-        //all notes
-
+            ? [...newNoteURLS]
+            : [...newNoteURLS, ...state.activeNote!.imgUrls];
+        // all notes
+        //
         state.allNotes = state.allNotes!.map((note) => {
           if (
             note.noteId === state.activeNote!.noteId &&
@@ -258,7 +268,7 @@ const journalSlice = createSlice({
           ) {
             return {
               ...note,
-              imgUrls: [action.payload.secure_url]
+              imgUrls: [...newNoteURLS]
             };
           } else if (
             note.noteId === state.activeNote!.noteId &&
@@ -266,7 +276,7 @@ const journalSlice = createSlice({
           ) {
             return {
               ...note,
-              imgUrls: [action.payload.secure_url, ...note.imgUrls]
+              imgUrls: [...newNoteURLS, ...note.imgUrls]
             };
           } else {
             return note;
