@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   RootState,
   onChangeActiveNoteBody,
-  onChangeActiveNoteTitle,
-  updateSingleNoteByIDThunk
+  onChangeActiveNoteTitle
+  /* updateSingleNoteByIDThunk */
 } from '@/Store';
-import { Note, ChangeEvent, SubmitEvent } from '@/Interfaces';
+import { /* Note */ ChangeEvent, SubmitEvent } from '@/Interfaces';
 import { uploadImageThunk } from '@/Store';
 
 export const useNoteForm = () => {
@@ -17,9 +17,8 @@ export const useNoteForm = () => {
   const imageInputElementRef = useRef<HTMLInputElement>(null);
 
   //journal + auth actualizado
-  const { journalReducer: journalState, authReducer: authState } = useSelector(
-    (state: RootState) => state
-  );
+  const { journalReducer: journalState /* authReducer: authState */ } =
+    useSelector((state: RootState) => state);
 
   //formattedDate
   const formattedDate = useMemo(() => {
