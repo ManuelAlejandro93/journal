@@ -40,14 +40,14 @@ export const useNoteForm = () => {
     );
   };
 
-  const submitImageToCloudinary = () => {
-    dispatch<any>(
+  const submitImageToCloudinary = async () => {
+    await dispatch<any>(
       uploadImageThunk(imageInputElementRef.current?.files as FileList)
     );
   };
 
-  const setNoteOnfirebases = () => {
-    dispatch<any>(
+  const setNoteOnfirebases = async () => {
+    await dispatch<any>(
       updateSingleNoteByIDThunk({
         note: { ...(journalState.activeNote as Note) },
         uuid: authState.data?.uuid as string
@@ -57,8 +57,8 @@ export const useNoteForm = () => {
 
   const fullUpdateSingleNote = async (e: SubmitEvent) => {
     e.preventDefault();
-    submitImageToCloudinary();
-    setNoteOnfirebases();
+    await submitImageToCloudinary();
+    await setNoteOnfirebases();
   };
 
   return {

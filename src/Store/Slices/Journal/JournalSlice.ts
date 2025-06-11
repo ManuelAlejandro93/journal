@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { noteInitialData } from '@/Data';
@@ -10,7 +11,6 @@ import {
 import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
 
 import SweetAlert from 'sweetalert2';
-import { AxiosResponse } from 'axios';
 
 const journalSlice = createSlice({
   name: 'journal-state',
