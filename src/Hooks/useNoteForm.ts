@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   RootState,
   onChangeActiveNoteBody,
-  onChangeActiveNoteTitle
-  /* updateSingleNoteByIDThunk */
+  onChangeActiveNoteTitle,
+  updateSingleNoteByIDThunk
 } from '@/Store';
-import { /* Note */ ChangeEvent, SubmitEvent } from '@/Interfaces';
+import { ChangeEvent, Note, SubmitEvent } from '@/Interfaces';
 import { uploadImageThunk } from '@/Store';
 
 export const useNoteForm = () => {
@@ -17,8 +17,9 @@ export const useNoteForm = () => {
   const imageInputElementRef = useRef<HTMLInputElement>(null);
 
   //journal + auth actualizado
-  const { journalReducer: journalState /* authReducer: authState */ } =
-    useSelector((state: RootState) => state);
+  const { journalReducer: journalState, authReducer: authState } = useSelector(
+    (state: RootState) => state
+  );
 
   //formattedDate
   const formattedDate = useMemo(() => {
@@ -45,19 +46,19 @@ export const useNoteForm = () => {
     );
   };
 
-  // const setNoteOnfirebases = () => {
-  //   dispatch<any>(
-  //     updateSingleNoteByIDThunk({
-  //       note: { ...(journalState.activeNote as Note) },
-  //       uuid: authState.data?.uuid as string
-  //     })
-  //   );
-  // };
+  const setNoteOnfirebases = () => {
+    dispatch<any>(
+      updateSingleNoteByIDThunk({
+        note: { ...(journalState.activeNote as Note) },
+        uuid: authState.data?.uuid as string
+      })
+    );
+  };
 
   const fullUpdateSingleNote = async (e: SubmitEvent) => {
     e.preventDefault();
     submitImageToCloudinary();
-    // setNoteOnfirebases();
+    setNoteOnfirebases();
   };
 
   return {
