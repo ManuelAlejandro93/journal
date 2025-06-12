@@ -42,3 +42,4 @@ export const SidebarSingleNoteItem = (note: Note) => {
     </ListItem>
   );
 };
+//
