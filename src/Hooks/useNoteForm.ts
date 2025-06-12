@@ -7,7 +7,7 @@ import {
   updateSingleNoteByIDThunk
 } from '@/Store';
 import { ChangeEvent, Note, SubmitEvent } from '@/Interfaces';
-import { uploadImageThunk } from '@/Store';
+import { uploadImageThunk, store } from '@/Store';
 
 export const useNoteForm = () => {
   //dispatch
@@ -47,9 +47,13 @@ export const useNoteForm = () => {
   };
 
   const setNoteOnfirebases = async () => {
+    const {
+      journalReducer: { activeNote }
+    } = store.getState();
+
     await dispatch<any>(
       updateSingleNoteByIDThunk({
-        note: { ...(journalState.activeNote as Note) },
+        note: { ...(activeNote as Note) },
         uuid: authState.data?.uuid as string
       })
     );
