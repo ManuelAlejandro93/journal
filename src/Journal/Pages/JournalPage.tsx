@@ -20,7 +20,7 @@ export const JournalPage = () => {
       {allNotes === null || allNotes!.length <= 0 || !allNotes ? (
         <NothingSelectedView></NothingSelectedView>
       ) : (
-        <>
+        <div className='bg-red-50 '>
           <NoteView></NoteView>
 
           {isFetching ? (
@@ -34,20 +34,13 @@ export const JournalPage = () => {
               size={50}
             ></CircularProgress>
           ) : (
-            <>
+            <div className='w-full flex justify-end'>
               <IconButton
                 size='large'
                 sx={{
                   backgroundColor: 'secondary.main',
-                  position: 'fixed',
-                  right: 50,
-                  bottom: 60,
-                  width: 100,
-                  height: 100,
-
                   ':hover': {
                     backgroundColor: 'secondary.main',
-
                     opacity: 0.8
                   }
                 }}
@@ -57,9 +50,9 @@ export const JournalPage = () => {
                   sx={{ color: 'white', fontSize: 50 }}
                 ></AddOutlined>
               </IconButton>
-            </>
+            </div>
           )}
-        </>
+        </div>
       )}
     </JournalLayout>
   );

@@ -21,6 +21,7 @@ export function ImageGallery({ photoURLS }: { photoURLS: string[] }) {
       variant='masonry'
       cols={5}
       rowHeight={121}
+      className='bg-green-200'
     >
       {photoURLS.map((photo, i) => (
         <ImageListItem
