@@ -13,7 +13,7 @@ import { useMemo } from 'react';
 export const SidebarSingleNoteItem = (note: Note) => {
   const dispatch = useDispatch();
   const formattedDate = useMemo(
-    () => new Date(note.date as number).toUTCString(),
+    () => new Date(note.date as number).toUTCString().substring(0, 22),
     [note.date]
   );
   const formattedTitle = useMemo(() => {
@@ -36,7 +36,7 @@ export const SidebarSingleNoteItem = (note: Note) => {
         </ListItemIcon>
         <div>
           <b>{formattedTitle}</b>
-          <ListItemText>{formattedDate}</ListItemText>
+          <ListItemText className='text-gray-500'>{formattedDate}</ListItemText>
         </div>
       </ListItemButton>
     </ListItem>
