@@ -20,7 +20,7 @@ export const JournalPage = () => {
       {allNotes === null || allNotes!.length <= 0 || !allNotes ? (
         <NothingSelectedView></NothingSelectedView>
       ) : (
-        <div className='bg-red-50 '>
+        <div>
           <NoteView></NoteView>
 
           {isFetching ? (

@@ -91,16 +91,7 @@ export const NoteView = () => {
           Sin imágenes guardadas
         </Typography>
       ) : (
-        <>
-          <span className='col-span-2'>
-            <ol>
-              {imgUrls!.map((img, i) => (
-                <li key={img + i}>{img}</li>
-              ))}
-            </ol>
-          </span>
-          <ImageGallery photoURLS={imgUrls as string[]} />
-        </>
+        <ImageGallery photoURLS={imgUrls as string[]} />
       )}
     </div>
   );
