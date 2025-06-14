@@ -1,16 +1,17 @@
 import { AxiosResponse } from 'axios';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import SweetAlert from 'sweetalert2';
 
 import { noteInitialData } from '@/Data';
 import {
   addNewEmptyNoteThunk,
   getAllNotesThunk,
   updateSingleNoteByIDThunk,
-  uploadImageThunk
+  uploadImageThunk,
+  deleteNoteByIdThunk
 } from '@/Store';
-import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
 
-import SweetAlert from 'sweetalert2';
+import { CloudinarySuccessed, NoteInitialData, Note } from '@/Interfaces';
 
 const journalSlice = createSlice({
   name: 'journal-state',
@@ -101,6 +102,48 @@ const journalSlice = createSlice({
       // state.allNotes = [];
     });
     builder.addCase(addNewEmptyNoteThunk.pending, (state) => {
+      //Petición http
+      state!.httpInfo.isFetching = true;
+      state!.httpInfo.hasError = false;
+      state!.httpInfo.errorMessage = null;
+
+      //Note informacion
+
+      //active note
+      // state.activeNote = state.activeNote;
+
+      //all notes
+      // state.allNotes = state.allNotes;
+    });
+    builder.addCase(deleteNoteByIdThunk.fulfilled, (state, action) => {
+      //Petición http
+      state!.httpInfo.isFetching = false;
+      state!.httpInfo.hasError = false;
+      state!.httpInfo.errorMessage = null;
+
+      //all notes
+      state.allNotes = state.allNotes!.filter(
+        (note) => note.noteId !== (action!.payload as string)
+      );
+
+      //active note
+      state.activeNote = state.allNotes[0];
+    });
+    builder.addCase(deleteNoteByIdThunk.rejected, (state, action) => {
+      //Petición http
+      state!.httpInfo.isFetching = false;
+      state!.httpInfo.hasError = true;
+      state!.httpInfo.errorMessage = action.error.message as string;
+
+      //Note informacion
+
+      //active note
+      // state.activeNote = state.activeNote;
+
+      //all notes
+      // state.allNotes = state.allNotes;
+    });
+    builder.addCase(deleteNoteByIdThunk.pending, (state) => {
       //Petición http
       state!.httpInfo.isFetching = true;
       state!.httpInfo.hasError = false;
