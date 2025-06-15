@@ -4,7 +4,7 @@ import {
   MenuOutlined,
   DeleteOutline
 } from '@mui/icons-material';
-import { AppBar, Button, IconButton, Toolbar } from '@mui/material';
+import { AppBar, IconButton, Toolbar } from '@mui/material';
 
 // import { allCasesLogoutThunk } from '@/Store';
 // import { allCasesLogoutThunk } from '../../Store/Slices/Auth/Thunks/LogoutThunk';
