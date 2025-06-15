@@ -124,5 +124,5 @@ describe('Test on "cloudinaryMultiplePost async function"', () => {
     expect(realResult[0].status).toBe(200);
     expect(realResult[1].status).toBe(200);
     expect(realResult[2].status).toBe(200);
-  }, 10000);
+  });
 });
