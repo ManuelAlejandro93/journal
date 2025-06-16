@@ -1,9 +1,16 @@
 import { cloudinaryMultiplePost } from '@/Cloudinary';
 import { CloudinarySuccessed } from '@/Interfaces';
 import { AxiosResponse } from 'axios';
+import { v2 as sdkCloudinary } from 'cloudinary';
 // import { CloudinarySuccessed } from '@/Interfaces';
 // import { AxiosResponse } from 'axios';
 
+sdkCloudinary.config({
+  cloud_name: 'dkr08foul',
+  api_key: '342552854382581',
+  api_secret: '5aZzlYAoePa9UbkqvsER_QqQF3U',
+  secure: true
+});
 // Función para crear File desde URL
 const createFileFromUrl = async (
   url: string,
@@ -88,7 +95,17 @@ describe('Test on "cloudinaryMultiplePost async function"', () => {
         response as any as AxiosResponse<CloudinarySuccessed>[]
       )[0].data.secure_url.match(/cloudinary/g)
     ).toBeTruthy();
-  });
+
+    //Borrar el archivo de cloudinary.
+    // Dividir por '/' y obtener la última parte
+    const imageUrLparts = realResult[0].data.secure_url.split('/');
+    const imageLastUrlPart = imageUrLparts[imageUrLparts.length - 1];
+
+    // Quitar la extensión del archivo
+    const imageUrlId = imageLastUrlPart.split('.')[0];
+
+    sdkCloudinary.api.delete_resources([imageUrlId]);
+  }, 10000);
 
   test('Sube correctamente 3 archivos / uploads correctly 3 archives', async () => {
     const mockFile1 = await createFileFromUrl(imgUrl, 'test-image-1');
