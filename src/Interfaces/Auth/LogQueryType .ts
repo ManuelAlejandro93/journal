@@ -1,4 +1,5 @@
-import { LogDataType } from '@/Interfaces';
+// import { LogDataType } from '@/Interfaces';
+import { LogDataType } from '../../Interfaces/Auth/LogDataType';
 
 export interface LogQueryType {
   data: LogDataType | null;

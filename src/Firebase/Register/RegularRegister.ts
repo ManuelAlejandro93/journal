@@ -2,8 +2,10 @@ import {
   createUserWithEmailAndPassword
   /* updateCurrentUser */
 } from 'firebase/auth';
-import { firebaseAuth } from '@/Firebase';
-import { RegisterUserInputData } from '@/Interfaces';
+// import { firebaseAuth } from '@/Firebase';
+import { firebaseAuth } from '../MainTools/MainTools';
+// import { RegisterUserInputData } from '@/Interfaces';
+import { RegisterUserInputData } from '../../Interfaces/Auth/RegisterUserInputData';
 
 import { getAuth, updateProfile, User } from 'firebase/auth';
 

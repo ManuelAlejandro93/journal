@@ -22,7 +22,7 @@ import { deleteUserOnLS } from '../../../Helpers/LocalStorageFn/DeleteUserOnLS';
 // import { LogDataType } from '@/Interfaces';
 import { LogDataType } from '../../../Interfaces/Auth/LogDataType';
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth-state',
   initialState: logQueryInitialState,
   reducers: {
