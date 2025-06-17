@@ -1,16 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {
-  allCasesLogoutThunk,
-  googleLoginAndRegisterThunk,
-  regularRegisterThunk,
-  regularLoginThunk
-} from '@/Store';
+// import {
+//   allCasesLogoutThunk,
+//   googleLoginAndRegisterThunk,
+//   regularRegisterThunk,
+//   regularLoginThunk
+// } from '@/Store';
 
-import { logQueryInitialState } from '@/Data';
+import { allCasesLogoutThunk } from './Thunks/LogoutThunk';
+import { googleLoginAndRegisterThunk } from './Thunks/GoogleLoginAndRegisterThunk';
+import { regularRegisterThunk } from './Thunks/RegularRegisterThunk';
+import { regularLoginThunk } from './Thunks/regularLoginThunk';
 
-import { saveUserOnLS, deleteUserOnLS } from '@/Helpers';
-import { LogDataType } from '@/Interfaces';
+// import { logQueryInitialState } from '@/Data';
+import { logQueryInitialState } from '../../../Data/Auth/LogQueryInitialState';
+
+// import { saveUserOnLS, deleteUserOnLS } from '@/Helpers';
+import { saveUserOnLS } from '../../../Helpers/LocalStorageFn/SaveUserOnLS';
+import { deleteUserOnLS } from '../../../Helpers/LocalStorageFn/DeleteUserOnLS';
+
+// import { LogDataType } from '@/Interfaces';
+import { LogDataType } from '../../../Interfaces/Auth/LogDataType';
 
 const authSlice = createSlice({
   name: 'auth-state',
