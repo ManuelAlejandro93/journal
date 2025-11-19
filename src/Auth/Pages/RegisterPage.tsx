@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { Google } from '@mui/icons-material';
 import { Button, TextField, Typography, CircularProgress } from '@mui/material';
 
 import { AuthLayout } from '@/Auth';
@@ -15,7 +14,6 @@ export const RegisterPage = () => {
     onNameChange,
     onEmailChange,
     onPasswordChange,
-    onGoogleRegisterFormSubmit,
     onRegularRegisterFormSubmit,
     regularRegisterValidationState: {
       hasNameError,
@@ -98,13 +96,7 @@ export const RegisterPage = () => {
             <CircularProgress></CircularProgress>
           </div>
         ) : (
-          <Button
-            variant='contained'
-            onClick={onGoogleRegisterFormSubmit}
-          >
-            o Crear cuenta con Google
-            <Google className='ml-2' />
-          </Button>
+          ''
         )}
       </form>
       <RouterLink

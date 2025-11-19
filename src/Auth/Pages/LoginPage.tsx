@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { Google } from '@mui/icons-material';
 import { Button, TextField, Typography, CircularProgress } from '@mui/material';
 
 import { AuthLayout } from '@/Auth';
@@ -14,7 +13,6 @@ export const LoginPage = () => {
     onEmailChange,
     onPasswordChange,
     onRegularLoginFormSubmit,
-    onGoogleLoginFormSubmit,
     loginValidationState: {
       hasEmailError,
       emailErrorMessage,
@@ -83,13 +81,7 @@ export const LoginPage = () => {
               <CircularProgress></CircularProgress>
             </div>
           ) : (
-            <Button
-              variant='contained'
-              onClick={onGoogleLoginFormSubmit}
-            >
-              Iniciar Sesion con Google
-              <Google className='ml-2' />
-            </Button>
+            ''
           )}
         </form>
         <RouterLink
